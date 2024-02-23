@@ -11,13 +11,14 @@ const sum = (a, b) => a + b
 
 //NORMAL FUNCTION
 function multiply(a, b){
-    const result = a* b;
-    if( result > 4){
-        return "verdade"
-    }else{
-        return "mentira"
-    }
+    return a * b
 }
+
+// -> DIFERENCAS ENTRE ARROW E FUNCTION TRADICIONAL:
+// THIS -> É 
+
+
+
 
 //ARRAYS
 const vodka = ["smirnoff", "belvedere", "komarofona"]
@@ -57,11 +58,11 @@ while( x < 4){
     x++
 }
 
-//CALLBACKS
+//CALLBACKS & PROMISES & REQUISICOES
+
 // -> Códigos que serão executados de forma assíncrona que funcionam como uma promessa. Por exemplo: Realize uma requisição (ou qualquer código assíncrono), e assim que obtiver a resposta, execute essa função pré determinada(Callback).
 
 // LINK FALSE API :  http://jsonplaceholder.typicode.com/posts
-
 
 function handleClick(){
     loadPostsWithPromises();
@@ -137,6 +138,18 @@ async function loadPostsWithAsyncAwait(){
     })
     const json = await req.json()
 }
+// ----> DIFERENCA ENTRE THEN & ASYNC/AWAIT
+// A maior diferenca é que utilizando o Async Await, voce PAUSA toda a execucao de código para que ele aguarde a resposta da promise. Tudo que vem abaixo mesmo sendo fora da promise, será pausado e só continuará o fluxo da execucao após o término. 
+// Já utilizando o THEN, a execucao do código todo fora é executado e quando obtiver a resposta da promise ele executará o Callback.
+
+
+
+
+
+
+
+
+
 
 /// -------  MÉTODOS DE STRING. ---------
 let nome = "Guilherme Tavares e Tavares";
@@ -165,6 +178,13 @@ nome.charAt(5)
 // Transforma uma String em um array, dividindo a string exatamente onde houver o "informado". Exemplo: Se passarmos um espaco em branco, sempre que houver um espaco, sera dividido em demais itens.
 nome.split(' ')
 
+// Procura se uma String começa com a string a ser buscada:
+nome.startsWith('Gui')
+
+// Procura se o final de uma string é igual a string a buscar:
+nome.endsWith('')
+
+
 
 
 
@@ -185,7 +205,6 @@ n.toFixed(2);
 // Quando temos uma String de um número, podemos transforma-la para um number, ex:
 let string = "25"
 parseInt(string);
-
 
 
 
@@ -237,7 +256,10 @@ const users = [
 const finded = users.find((item) => item.nome === 'guigui')
 console.log(finded)
 
-
+//-> Saber se algo está incluido dentro de uma Lista. 
+// Retorna True or False. por exemplo:
+// No caso possui, então é verdadeiro, caso contrário, false.
+console.log("aqui que é " + array.includes('Ovo'))
 
 
 
@@ -275,16 +297,95 @@ date.setDate(date.getDate() + 5);
 date.setHours(date.getHours() + 4);
 
 
+
+
+
+
+
 // ----------- FUNCOES MATEMATICAS -------- //
+let numberExemple;
+// -> Arredondar Número .
+numberExemple = Math.floor(3.5)
+// -> Arredondar Número para Baixo:
+numberExemple = Math.floor(3.4)
+// -> Arredondar Número para Cima:
+numberExemple = Math.ceil(3.2)
+
+// -> Gera um número aleatório entre 0 e 1.
+let ramdomNumber = Math.random();
+// -> Gera um número aleatório entre 0 e o número Desejado: 
+// Aqui estamos pegando um número de 0 a 1, multiplicando por 100, e arredondando para baixo. 
+// Dessa forma teremos um número inteiro.
+let ramdomNumberSeted = Math.floor(Math.random() * 100);
 
 
-// -> 
+
+
+// ------------ TIMEOUT, TIME --------- //
+// -> Timer que roda uma função repetitivamente de tanto em tanto tempo.
+// Nesse exemplo, a cada 2 segundos ele irá executar a função 'FUNC'.
+// Abaixo temos o clearInterval, que é o antidoto para parar a repetição.
+const func = () =>{
+}
+let timer = setInterval(func, 2000)
+clearInterval(timer);
+
+// -> Aqui setamos um tempo, e depois de determinado x tempo, ele irá executar a funcao.
+// -> No caso abaixo, ao disparar o timeout, depois de Dois segundos a funcao será executada.
+setTimeout(2000, () =>{
+})
 
 
 
+/// -------- DESCONSTRUINDO/DESESTRUTURANDO OBJETOS --------
+const personn = {
+    name: 'gui',
+    idade: 30, 
+    social: {
+        fb: 'fb',
+        inst: 'inst'
+    }
+}
+// Através da desestruturacao podemos pegar uma informacao de forma mais simples.
+// -> Forma Antiga:
+let personAge = personn.idade;
+let personFb = personn.social.fb;
+// -> Forma Desestruturada: 
+let {idade, name} = personn; 
+let {fb, inst} = personn.social;
 
 
-/// -------- DESCONSTRUINDO OBJETOS --------
 
+/// ----------  SPREAD & REST OPERATOR ---------.
+// -> Ao trabalharmos com frameorks como React, nos depararemos com o conceito da Imutabilidade, logo, constantemente precisaremos alterar arrays por exemplo.
+// -> IMUTABILIDADE: é o conceito de que nenhum dado será alterado. Sempre que quisermos alterar algum objeto, iremos criar outro objeto com as alteracoes desejadas.
+// -> Dessa forma, estamos juntando o array 1, o array 2, e mais um número.
+let array1 = [1, 2, 3]
+let array2 = [4,5,6]
+let array12 = [...array1, ...array2, 7]
+// -> Também podemos utilizar para aticionar atributos e a objetos. Ex:
+let human = {
+    nome: 'gui',
+    sobrenome: 'tvrs'
+}
+let human2 = {...human, maconha: 'jonatan'}
 
-/// ----------  SPREAD OPERATOR ---------.
+// -> Também podemos utilizar para desestruturar e salvar todo o resto que sobrar. 
+// No Exemplo, salvaremos o titulo e o email em variaveis especificas, o resto em uma variavel chamada de Resto, que nesse caso irá conter o ano e a cor.
+const livro = {
+    titulo: 'arca de noe',
+    email: 'gggg',
+    ano: 1999,
+    cor: 'preto'
+}
+const {titulo, email, ...resto} = livro;
+
+// -> Mais um exemplo é quando queremos alterar algo utilizando o conceito da imutalibilidade. Por exemplo:
+const voto = {
+    data: 'hoje',
+    votou: false
+}
+// De acordo como a imutabilidade, nós não podemos fazer na mão grande igual abaixo:
+voto.votou = true;
+// Dessa forma estamos alterando diretamente um objeto.
+const newVoto = {...voto, votou: true}
