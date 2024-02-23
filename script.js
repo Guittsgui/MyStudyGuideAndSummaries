@@ -242,8 +242,45 @@ console.log(finded)
 
 
 
+/// ------ DATAS -------- ///
 
-/// ------ DATAS -------- 
+// -> Criar um objeto da classe Date.
+// Ele automáticamente vem com a data atual que foi criado.
+// A informação é pega através do hardware. 
+let date = new Date();
+
+// -> Também é possível gerar uma data de acordo com as informacoes passadas por parametro:
+// No caso, estamos gerando uma data de 1 de março de 2022.
+// -> No universo JS Janeiro é o mes 0, e assim por diante.
+let generateDate = new Date(2022, 2, 1);
+
+// -> Pegar apenas o ano, mes,  dia, hora de uma data:
+date.getFullYear();
+date.getMonth();
+date.getDate();
+date.getHours();
+
+// -> Pegar Timestump do momento atual.
+// Facilita 'calculos' de data.
+let momentDate = Date.now();
+
+// -> Setar valores das datas
+date.setFullYear(2024)
+date.setMonth(11)
+
+// -> Aumenta a data atual em 5 dias (exemplo).
+date.setDate(date.getDate() + 5);
+
+// -> Aumenta as horas de uma data em 4 horas(exemplo).
+date.setHours(date.getHours() + 4);
+
+
+// ----------- FUNCOES MATEMATICAS -------- //
+
+
+// -> 
+
+
 
 
 
