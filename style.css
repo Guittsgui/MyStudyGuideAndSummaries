@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#bt{
+    background-color: yellow;
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.294);
+}
+#bt:hover{
+    background-color: rgba(255, 255, 0, 0.327);
+}
