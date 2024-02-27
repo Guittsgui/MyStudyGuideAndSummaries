@@ -7,6 +7,48 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="base">
+        <h2> Startar Projeto React: </h2>
+        <ul>
+            <li> <span> NEXT</span> : npx create-next-app </li>
+            <li> <span> Update Next</span> : npm install -g create-next-app</li>
+            <li> <span>VITE</span> : npm create vite </li>
+        </ul>
+        <hr>
+        <h2> Componentes:</h2>
+        <p> Componentes são partes do seu aplicativo que irão exibir trechos de códigos <span>JSX</span>. Em resumo dentro de um app temos diversos Componentes juntos construindo a interface. Todo componente que criamos precisamos Exporta-los. Por padrão colocamos todos os componentes iniciando com letra maiúscula. Exemplo de um componente: </p>
+        <img src="./photo/r1.png" alt="">
+        <hr>
+        <h2> Passando & Recebendo Props </h2>
+        <p> Podemos enviar informacoes para dentro de um componente através das Props. Por exemplo, criamos um componente de um card, onde irá exibir o nome, foto e data. Para podermos reaproveitar esse card em diversas ocasioes, enviamos os dados a ser exibido via props. Assim em cada local que quisermos exibir ele exibirá os dados das Props. </p>
+        <p> Além de Enviarmos as props, também precisamos recebe-las e também criar os seus types dentro do componente para que tudo ocarra perfeitamente. <span>Exemplo Abaixo:</span> </p><br>
+        <p> <span>Enviando Props:</span></p>
+        <img src="./photo/r2.png" alt="">
+        <p> <span>Recebendo Props:</span></p>
+        <img src="./photo/r2.png" alt="">
+        <p> <span> Encurtando Props:</span></p>
+        <img src="./photo/r4.png" alt="">
+        <p> <span> Definindo valor Padrão Props:</span></p>
+        <p> <small> (Caso não seja enviada via props, terá um valor pré setado)</small></p>
+        <img src="./photo/r5.png" alt="">
+        <hr>
+        <h2> Childrens </h2>
+        <p> É o que permite que o componente receba outros conteúdos dentro dele mesmo. Sem ser via Props.  </p><br>
+        <p> <span> Utilizando Childrens:</span></p>
+        <img src="./photo/r6.png" alt="">
+        <p> <span> Recebendo Childrens:</span></p>
+        <img src="./photo/r7.png" alt="">
+        <hr>
+        <h2> Renderização Condicional</h2>
+        <p> Muito utilizada quando queremos renderizar algo de acordo com uma condicao. Por exemplo abaixo: Temos uma props Autor que é opcional. Caso ela seja enviada, renderize ela, caso não seja enviada, renderize "Autor Desconhecido:. <span>Exemplo:</span></p>
+        <img src="./photo/r8.png" alt="">
+        <hr>
+
+
+    </div>
+
+
     <button id="bt"> Json PlaceHolder - GET POSTS </button>
 
     <script src="./script.js"></script>

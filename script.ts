@@ -26,6 +26,17 @@ const tsReturnFunction = (): string =>{
     return 'vodka'
 }
 
+// -> TYPANDO FUNÇÃO INTEIRA.
+// Uma funcao de soma, podemos criar um type para typalas por completo. Ex:
+type MathFunction = (n1:number, n2: number) => number 
+
+const soma:MathFunction = (n1, n2) =>{
+    return n1 + n2
+}
+
+
+
+
 // -> TIPANDO OBJETOS:
 // Ao passarmos um objeto por parametro para uma função, é necessário que typemos cada atributo do objeto que será utilizado dentro da função.
 // No exemplo abaixo, ao enviarmos o user, precisamos tipar o nom e a idade, que está sendo utilizado dentro da funcao.
@@ -78,6 +89,9 @@ type StringLiteralType = {
 // Dessa forma ele 'aceitará' as duas.
 let doubleType: string | number = "Vodka"
 doubleType = 20
+
+
+
 
 
 // -> TS CONFIGS:
