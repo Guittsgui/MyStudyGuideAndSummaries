@@ -8,8 +8,24 @@
 </head>
 <body>
 
+        <div class="title">
+            <h1>Final Study Resume Guide</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#react"> ReactJS</a></li>
+                <li><a href="#styled"> StyledComponents</a></li>
+                <li><a href="#tanstack">TanstackQuery</a></li>
+                <li><a href="#rhf"> ReactHook/Zod</a></li>
+                <li><a href="#next"> NextJS</a></li>
+                
+                <li><a href=""> Shadcn-UI</a></li>
+            </ul>
+        </div>
+
+
     <div class="base">
-        <h2> Startar Projeto React: </h2>
+        <h2 id="react"> Startar Projeto React: </h2>
         <ul>
             <li> <span> NEXT</span> : npx create-next-app </li>
             <li> <span> Update Next</span> : npm install -g create-next-app</li>
@@ -44,6 +60,166 @@
         <p> Muito utilizada quando queremos renderizar algo de acordo com uma condicao. Por exemplo abaixo: Temos uma props Autor que é opcional. Caso ela seja enviada, renderize ela, caso não seja enviada, renderize "Autor Desconhecido:. <span>Exemplo:</span></p>
         <img src="./photo/r8.png" alt="">
         <hr>
+        <h2> Eventos Click </h2>
+        <p> Eventos podem ser acionados em React muito parecido como em JS. <br><span>onClick = {handleClick}</span></p><br>
+        <h2> Recebendo Evento de Click via Props</h2>
+        <p> Constantemente iremos passar funcoes para dentro de componentes Buttons por exemplo. Para isso, precisamos recebe-las dentro do seu type. </p>
+        <img src="./photo/r9.png" alt="">
+        <h2> Prevent Default </h2>
+        <p> Sempre que trabalharmos com formulários ele terá por natureza a funcao de ao ser enviado atualizar a página por completo, que é uma coisa que não queremos quando estamos trabalhando com react. Então em 99% dos casos iremos precisar 'cancelar' esse comportamento padrão, para que nós mesmos direcionemos o fluxo do formulário. Exemplo abaixo:  </p>
+        <img src="./photo/r10.png" alt="">
+        <hr>
+        <h2> States </h2>
+        <p> É literalmente um estado. Que armazena informacoes temporárias. </p>
+        <p> <span> const [count, setCount] = useState<type>(0)</span></p><br>
+        <p> Para conectar um state a um <span>input</span> precisamos dentro do input no value colocar o nome do state. </p>
+        <p> <span> value={count}</span></p>
+        <p> <span>onChange={e => setCount(e.target.value)}</span></p><br>
+        <p> Dessa forma eles ficarão responsíveis e sempre que alguém digitar dentro do input a alteração será executado automáticamente. </p><br>
+        <h3> Prev Default </h3>
+        <p> O processo de alteração de um state, por mais rápido que seja, funciona de forma assíncrona. Logo, caso disparemos uma sequencia de alteracao em uma state de forma seguida, ele não irá captar caso seja feito da maneira normal: </p>
+        <p> <span> setCount ( count + 2) </span></p>
+        <p> Para que a alteração seja realmente efetiva, precisamos trabalhar com o <span>PREV</span>, pois dessa forma ele irá pegar o valor EXATO da hora que a função for diparada.</p>
+        <p> <span> setCount(  prev => prev + 1)</span></p><br>
+        <h3> Arrays em States</h3><br>
+        <p> Sempre que quisermos renderizar uma lista (Array) em tela no react, utilizaremos a função <span>MAP</span> e sempre lembrar de utilizar a <span>KEY</span>.</p><br>
+        <p> Sempre que quisermos adicionar um item a lista, utilizaremos o Spread/Rest operator. De forma allguma podemos utilizar o PUSH. Por exemplo, em uma lista de string, para adicionarmos, utilizaremos: </p>
+        <p> Sempre que quisermos </p>
+        <p><span> setList( [...list, "pera"])</span>.</p>
+        <p> Sempre que quisermos excluir um item do Array, utilizaremos a função Filter. Que nos permite percorrer todo o array, gerando um novo array, sem o item que queremos. Exemplo: </p>
+        <p> Sempre que quisermos Alterar um item, </p>
+        <hr>
+        <h3> Effects</h3>
+        <p> Funciona como um sideEffect (efeito colateral). Em resumo é um hook do React, que nos permite disparar determinadas funções sempre que o gatilho for apertado. E quando esse gatilho pode ser apertado ? Pode ser apertado sempre que um componente for renderizado, ou sempre que um state for alterado. Exemplo úteis: Ao abrirmos uma página, que precise se comunicar com o servidor para receber as informacoes a serem exibidas. Nesse cenário precisamos de um effect, para que assim que o componente da página seja renderizado, executo a ação. Outro cenário muito utilizado é quando um state for alterado, automaticamente realizar alguma ação. </p><br>
+        <p><span> useEffect(() => {} , [])</span></p><br>
+        <p> Dessa forma, o primeiro parametro colocamos a funcao que será executada assim que o effect for disparado. Em seguida temos um array, onde colocamos todos os states que serão monitorados para disparar o effect. Um effect SEMPRE será disparado quando um componente for construído. O useEffect geralmente é mais utilizado quando precisamos interagir com o ambiente externo do Projeto.</p><br>
+        <h3> Clean Up</h3>
+        <p> No useEffect definimos a funcao, em seguida os estados a serem monitorados. Dentro de um useffect, também podemos colocar um retorno de uma funcao. Esse retorno será executado sempre que o componente for desmontado. por exemplo: </p>
+        <img src="./photo/r11.png" alt="">
+        <hr>
+        <h2> Reducers </h2>
+        <p> Reducers são basicamente States um pouco mais complexo. São utilizados para states que possuem muitas acoes. Por exemplo. Em uma TO-DO-LIST, voce cria o state da task, e cria funcoes separadas como: adicionarTask, removerTask, etc. Com o Reducer, essas funções ficam todas pré criadas dentro de um Reduce, centralizando o código todo em um só lugar, e informando que toads as funções fazem parte do mesmo state(reducer), ao invés de ficarem soltas pelo componente.</p>
+        <hr>
+        <h2> Context</h2>
+        <p> Como o próprio nome já diz, é um contexto, que nos permite armazenar uma série de informacoes importantes ( como os dados de um usuário logado por exemplo, ou seu token). Informações nas quais todos os componentes que estiverem dentro (abraçados) por esse contexto terão acesso de forma rápida e prática. A crianção de contexto é feita em <span>Três</span> etapas. A criação do contexto, Usar o contexto e também a criação do Provider, que é o que engloba o contexto. Esse processo de três etapas pode ser feito tanto em uma única página, como em várias páginas separadas. Vai depender  de sistema para sistema. </p><br>
+        <p> <h3>Criando o Contexto: (1/3)</h3> </p>
+        <img src="/photo/r12.png" alt="">
+        <p> <h3>Criando o Provider: (2/3)</span></p>
+        <img src="/photo/r13.png" alt="">
+        <p> <h3>Pegando Informações do Context: (3/3)</h3></p>
+        <img src="/photo/r14.png" alt="">
+        <p> No cenário atual, dentro do nosso contexto temos o state do contador. Mas e caso queiramos altera-lo ? No exemplo abaixo, é a forma Real como se trabalha com <span>Context</span>, utilizando  States e centralizando o context e o provider em um arquivo.</p><br>
+        <h3> Context + Provider:</h3>
+        <img src="/photo/r15.png" alt="">
+        <h3> Utulizando o Context:</h3>
+        <img src="/photo/r16.png" alt="">
+        <p> Provavelmente dentro de providers, muitas vezes precisaremos criar funcoes para serem enviadas ao contexto.  Por exemplo adicionar ou remover itens, por ai vai. Ex: </p>
+        <img src="/photo/r17.png" alt="">
+        <hr>
+        <h2> Requisições, Axios </h2>
+        <p> Já aprendemos a fazer requisições no módulo de JS. Dentro do React elas irão funcionar da mesma forma. Geralmente é muito utilizado o hook USEEFFECT para realizar requisições. Aqui nesse módulo vamos aprender sobre uma biblioteca chamada AXIOS, que serve basicamente para simplificar a forma que realizamos requisições. Com o axios conseugimos criar um arquivo de configuracao para centralizar todas as requisicoes em apenas um lugar. </p><br>
+        <h3>Comando:</h3>
+        <p> npm i axios</p><br>
+        <p> Para trabalharmos com o axios de forma eficiente, o primeiro passo é criarmos um arquivo de configuração para ele, onde centralizaremos todas as informacoes principais (baseUrl, métodos), e depois basta exportamos sua instância. Exemplo:</p>
+        <p> Aqui temos sua instância, e dentro do objeto que ele recebe por parâmetor podemos colocar diversas informações como por exemplo a BASEURL. </p>
+        <img src="/photo/r18.png" alt="">
+        <p> Dessa forma, para utilizarmos, basta importarmos nossa instancia API, e utiliza-la.</p>
+        <img src="/photo/r19.png" alt="">
+        <hr>
+        <h2 id="styled">Styled Components</h2>
+        <p> Styled Components é uma biblioteca que nos permite estilizar e criar designSystem para o nosso sistema de forma fácil. Para instalarmos o styled components precisamos usar o comando: </p><br>
+        <p> <span> npm install styled-components</span></p><br>
+        <p> A partir do momento que está instalado, podemos passar a criar nossos estilos. No exemplo a seguir será criado um botao, para isso criamos um arquivo chamado: Button.style.jsx por exemplo. E dentro dele: </p>
+        <img src="/photo/r20.png" alt="">
+        <p> Outra coisa que faremos constantemente, é enviar parametros para dentro da estilizacao do styled components. Podemos passar qualquer parametro para lá, e será fortemente utilizado, como por exemplo, em uma TODOLIST podemos enviar um boolean de feito ou não feito. Caso feito, cor verde, caso nao feito, cor vermelha. E por ai vai. No exemplo abaixo, enviaremos via PROPS a cor do background do button e caso tenha sido enviado, será da cor enviado, caso contrário, será da cor pré definida. </p>
+        <img src="/photo/r21.png" alt="">
+        <hr>
+        <h2 id="tanstack"> Tanstack</h2>
+        <p> TanstackQuery / ReactQuery, É uma biblioteca que age como um intermediário entre a aplicação e a requisição, que pode ser feita tanto com o Fetch quanto com o Axios. Mas para que precisamos de um intermediário se o Axios e o Fetch já fazem tudo que é necessário ? O TanstackQuery nos ajuda com o Fetching, com o cache de um requisicao, sincroniza e também atualizar dados de state em nossa aplicação.  </p>
+        <p> Primeiro passo é instalarmos a biblioteca com o comando:</p>
+        <p><span>npm i @tanstack/react-query</span></p>
+        <p> Uma das principais funcoes do TanstackQuery, é transportar dados entre diversos componentes da aplicação.  Logo, para isso vamos precisar criar um provider. Podemos criar um arquivo chamado <span>Providers</span> e dentro dele colocar Abaixo fica a configuração do Provider + criação do Client:</p>
+        <img src="/photo/r22.png" alt="">
+        <p> Em seguida envolvemos o Layout.tsx da aplicacao next pelo nosso provider.</p>
+        <img src="/photo/r23.png" alt="">
+        <p> Podemos também instalar uma outro biblioteca, que irá auxiliar no uso do <span>Tanstack</span>. Para isso basta colocarmos o comando:</p>
+        <p> <span>npm i @tanstack/react-query-devtools </span>.</p>
+        <p> Podemos colocar o reactDevTools dentro do próprio provider que criamos, assim teremos algumas dessas propriedades em todos os locais da aplicação. </p>
+        <img src="/photo/r24.png" alt="">
+        <p> Já tendo todos os passos a cima feitos, podemos começar a utilizar o tanstack. O primeiro passo que iremos ver, é como é realizada uma requisição com método <span>GET</span> de forma simples. </p>
+        <img src="/photo/r25.png" alt="">
+        <p> Uma das formas que temos para colocar nossas requisicoes é igual essa acima. Porém, dependendo do tamanho do sistema, fácilmente ele irá escalar e ficar tudo confuso. Para resolver esse processo, costumamos criar um local para unificar. Por exemplo, imagine que estamos trabalhando com a biblioteca <span>Axios</span> e por algum motivo precisemos trocar e utilizar o Fetch. Se estiver tudo solto pela aplicação, o trabalho será gigante, tendo que fiscalizar de arquivo por arquivo. Tendo tudo centraliza-do, já saberemos onde encontrar. </p>
+        <p> Para isso, criamos uma pasta separada chamada <span>API</span> e dentro dela, criar o arquivo API.TS . Ali dentro iremos exportar as funções da API que iremos utilizar dentro do Tanstack. </p>
+        <img src="/photo/r26.png" alt="">
+        <p> Agora que já temos uma API com as requisições criadas, precisamos aprender ou chegar a um consenso em como organizar o nosso código. Dessa forma podemos simplificar a requisicao anterior, por exemplo: </p>
+        <img src="/photo/r27.png" alt="">
+        <p> Porém ainda podemos por exemplo separar ainda mais. Por exemplo, em componentes grandes com diversas funções prórpias, pode ficar confuso a leitura, e ficando tudo misturado. Portanto, podemos CASO QUISERMOS, realizar uma outra separação, criando um arquivo chamado por exemplo Querys.ts, onde ficará hospedado todas as querys que irão utilizar o tanstack. Dessa forma fica simplificado dentro do componente que iremos usar, e também todas as querys ficam centralizadas em um único arquivo. </p><br>
+        <p> Arquivo único:</p>
+        <img src="/photo/r28.png" alt="">
+        <p> Componente utilizando:  </p>
+        <img src="/photo/r29.png" alt="">
+        <p> Mais funções dentro do arquivo de Post</p>
+        <img src="/photo/r30.png" alt="">
+        <p> <span>Resumo do passo a passo: </span></p>
+        <ul>
+            <li>1- Arquivo com Hooks para Montar as queries do Tanstack</li>
+            <li>2- Arquivo com as funções que fazem a requisição.</li>
+        </ul><br>
+        <H3> Entendendo o Query Key: </H3>
+        <p> Precisamos entender ele bem, pois é através dele que iremos organizar nossas querys. O Tanstack query, basicamente faz um processo de Cash da nossa requisição. Por exemplo, fazemos uma query para pegar todos os posts. Se futuramente em outro componentes precisarmos utilizar denovo essa lista, ele terá esses dados salvos durante um tempo X pré determinado. Ou seja, ele enviará os dados já salvos em cash, evitando ter que realizar uma nova requisicao indo até o servidor pegar a resposta, etc. </p>
+        <p> Para pegar todos os posts, utilizamos a chave  ['posts'], porém com o passar do tempo, iremos trabalhar com querys mais robustas. Um exemplo, em uma loja de carro, podemos filtrar por todos os carros. Também podemos exibir um carro em específico. Também podemos procurar só por uma faixa de ano em específico, cores, etc. Cada uma dessas querys ficam salvas pela sua Key. Por exemplo, abaixo: </p>
+        <img src="/photo/r31.png" alt="">
+        <h3> Entendendo o Query Function: </h3>
+        <p> Mais conhecido como query FN. Básicamente é um parametro que utilizaremos no tansttack que colocaremos a função que irá retornar os dados da query. Porém também podemos utilizar a funcao para retornar dados, nao necessáriamente apenas  em requisicoes. Qualqeur função que retorne dados pode ser passado na query function, independente de como seja.  </p>
+        <p> Também precisamos deixar claro que na queryfunction estamos passando uma função para ser executada, e não estamos executando. Outro fator que também é importante de saber, é que a funcao do queryfn pode receber parametros. Exemplo abaixo: </p>
+        <img src="/photo/r32.png" alt="">
+        <p> Outra cois que precisamos saber também, é que a query function pode disparar exibir ou receber erros. Por exemplo: </p>
+        <img src="/photo/r33.png" alt="">
+        <h3> Loading & Fetching </h3>
+        <p> Quando trabalhamos com requisicoes, existem o estado e Loading e também o estado de Fetching, que muita gente acha que são iguais, porém funcionam de forma diferente.  </p><br>
+        <h3>Controlando o StaleTime</h3>
+        <p> Existe um status chamado <span>Stale</span>, que em ingles significa algo do tipo "obsoleto". O tempo por padrão para uma requisição ficar obsoleta no tanstack é de zero. Ou seja, automáticamente assim que recebemos uma requisição no tanstack ela já passa a ser obsoleta. De forma que caso queiramos os dados novos, precisaremos dar um <span>refetch</span>, para realizar uma nova requisição. Porém nesse caso, o simples fato de mudarmos de aba e retornarmos para a próxima, já irá fazer com que precisemos realizar uma nova requisição. Porém obviamente não é isso que buscamos com a biblioteca em 90% dos casos, logo, existem formas que possamos <span>controlar</span> a requisição. </p>
+        <p> Como cada requisição terá sua particularidade, precisamos trabalhar com isso dentro de cada requisição. Que no nosso caso, é o arquivo <span>queries.ts</span>. Além do queryKey, queryFn, também podemos trabalhar com o <span>staleTime: miliseconds</span>. Também podemos colocar o valor <span>infinity</span>  caso queiramos que sempre que a tela permaneça aberta os dados nunca fiquem obsoletos.</p>
+        <p> Exemplo: </p>
+        <img src="/photo/r34.png" alt="">
+        <h3> Configurações padrão no QueryClient </h3>
+        <p> Vimos no exemplo acima que podemos configurar o <span>staleTime</span> de cada query. Porém também existe uma opção que possamos para que possamos configurar o padrão geral de todas as querys, comor deixar por padrão o staletime infinity por exemplo. Para isso vamos dentro do nosso provider criado e dentro do nosso <span>queryClient</span> colocamos essas informações. Como primeiro passo, podemos criar o queryClient em um arquivo separado ao invés de no mesmo lugar, e em seguida configurar: </p>
+        <img src="photo/r35.png" alt="">
+        <h3> Query sob Demandas: </h3>
+        <p> Até o atual momento, as querys estão sendo executadas sempre que uma página for aberta. Porém em diversos momentos, iremos querer executa-las apenas quando algum gatilho for desparado, como um botão sendo apertado por exemplo. Para isso, existe uma propriedade dentro da query que podemos ativar ou desativar. Essa prorpiedade se chama <span>enabled</span> que por padrão vem como true, ou seja, se abrimos a página ela já começa a ser executada. Quando setarmos o enabled para false, ela estará preparada e apenas esperando o gatilho ser ativado. </p><br>
+        <p> <a href="https://alunos.b7web.com.br/curso/reactjs/react-fazendo-query-sob-demanda" target="_blank">Link Aula Para Mais Infos.</a></p><br>
+        <h3> Fazendo Paginação</h3>
+        <p> Na maioria dos sistemas precisaremos trabalhar com paginação. Supomos que tenhamos uma lista com 100 posts, como a do jsonplaceholder por exemplo, se a cada requisicao retornar os 100 posts, a requisicao tende a demorar. Imagina se o google retornasse todos os resultados de uma pesquisa de uma vez? cada requisicao demoraria mais de 15 minutos para acontecer. Logo, trabalhamos com paginação. Para isso podemos usar algumas querys de filtro, como por exemplo: <span>_limit=10</span> que irá retornar apenas 10 itens da lista. E também podemos colocar outro que é <span>_start=10</span> que dessa forma ele irá retornar a partir do décimo item. Logo, com esses dois parametros, podemos trabalhar com a paginação de 10 em 10 items. (ou de quantos forem necessários).</p>
+
+        <h3> TO BE CONTINUED ....</h3>
+
+        <hr>
+        <h2 id="rhf"> React Hook Form + ZOD</h2>
+        <h3> Reac Hook Form</h3>
+        <p> Biblioteca que nos ajuda a construir formulários de forma mais rápida, prática e inteligente. Por exemplo, validações, verificações, autenticações, etc. Porém antes de qualquer coisa, precisamos instalar a biblioteca: <span>npm i react-hook-form</span>. 
+        Para utilizarmos essa biblioteca, nós não criamos formulários, e sim uma forma de gerir esse formulário. Começaremos do básico, um form com nome e sobrenome.</p>
+        <p> Como estamos utilizando TypeScript, o primeiro passo é criarmos os types para cada input do nosso formulário, informando os dados que serão trabalhados. Em seguida, criamos o form normal, e linkamos (registramos), para ser trabalhado de acordo com os types criados por nós anteriormente. Para registrarmos, utilizamos a função <strong>register()</strong>. Tendo os fields criados e associados, precisamos ativar a função para lidar com o submit. Para isso, dentro do <strong>onSubmit</strong> passamos a função do nosso hook, e dentro dela por parametor, a funcao que será executada a partir do momento que os dados forem validados. </p>
+        <img src="photo/r37.png" alt="">
+        <img src="photo/r36.png" alt="">
+        <p> Outra funcionalidae que o ReactHookForm nos oferece que é uma 'mão' na roda, é of ato dele conter 'Validações' para os fields. por exemplo: </p><br>
+        <p><strong> Item Required (Obrigatório):</strong> </p>
+        <p> {...register('name', {required: true})} </p><br>
+        <p><strong> Min/Max em Number`s Input`s : </strong></p>
+        <p> {...register('age', {min/max: 18})}</p><br>
+        <p><strong>Min/Max Lenght - Caracteres Field:</strong></p>
+        <p>{...register('name', {minLength/maxLength: 10})}</p><br>
+        <p> Até aqui aprendemos especificar como iremos querer as regras basicas de cada input do nosso form. A partir de agora vamos começar a tratar os erros de quando der errado. Como iremos lidar quando algo não bater com nossas especificações. Para lidar com os erros, alem do handleSubmit e do register, usaremos uma outra propriedade chamada formState. </p>
+        <img src="photo/r38.png" alt="">
+        <p> Dentro desse erros, teremos todos os erros e também quando houver esses erros, separados por campo. Por exemplo, abaixo de cada campo, podemos colocar : se tiver o erro, então... Exemplo: </p>
+        <img src="photo/r39.png" alt="">
+
+
+
+
+        <hr>
+        <h2 id="next"> NextJS 14</h2>
+        <hr>
+
 
 
     </div>
