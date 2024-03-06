@@ -212,10 +212,26 @@
         <img src="photo/r38.png" alt="">
         <p> Dentro desse erros, teremos todos os erros e também quando houver esses erros, separados por campo. Por exemplo, abaixo de cada campo, podemos colocar : se tiver o erro, então... Exemplo: </p>
         <img src="photo/r39.png" alt="">
+        <p> Também podemos colocar erros específicos informando-os pelo seu type. O legal é que essa validação acontece no ato. Exatamente no mesmo tempo em que o usuário irá digitando. Exemplo:</p>
+        <img src="photo/r40.png" alt="">
+        <p> Outro detalhe bacana que podemos trabalhar é informando a mensagem de error diretamente no type informado. Por exemplo: o campo idade será obrigatório: </p>
+        <img src="photo/r41.png" alt="">
+        <h3> Trabalhando mais Profissionalmente</h3><br>
+        <p> Até aqui já aprendemos todo o básico e necessário para trabalharmos com React Hook Form. Porém assim como muitas coisas que já vimos nesse curso, conforme os formulários forem crescendo nosso componente tende a ir ficando extremamente poluido. Uma das formas para solucionar isso, e aproveitando todo os benefícios do react, é criar um componente responsável pelo input, e assim utilizamos esse componente dentro do formulário. O primeiro passo é criarmos um componente chamado <strong>Input</strong> por exemplo. </p>
+        <img src="photo/r42.png" alt="" class="redu">
+        <p> E dentro do formulário, fica apenas: </p>
+        <img src="photo/r43.png" alt="" class="redu">
+        <img src="photo/r44.png" alt="" class="redu">
+        <p> Outra coisa que podemos querer fazer em algumas situações específicas é setar determinados valores sem que o usuário digite. Como por exemplo: ter um botão para setar o field idade como maior de idade. Para isso utilizamos o <strong>setValue</strong>, da seguinte forma: </p>
+        <img src="photo/r45.png" alt="">
+        <img src="photo/r46.png" alt="" class="redu">
+        <h3> Enviando dados para uma API</h3>
+        
 
-
-
-
+        <hr>
+        <h3> ZOD </h3><br>
+        <p> O primeiro passo é instalarmos o próprio zod <strong>npm i zod</strong>. ZOD É uma biblioteca que funciona tanto para JS quanto para TYPESCRIPT. É uma bibloteca que é extremamente leve, e que não foi feita exclusivamente para react, logo qualquer aplicação do universo JS irá funcionar. Porém precisamos entender um <strong>detalhe</strong>. Provavelmente iremos utilizar o zod em conjunto com o react hook form, então para isso precisamos instalar uma espécie de <strong>ponte</strong> entre as duas bibliotecas. Aí que entra o <strong>RESOLVER</strong>. Para isso utilizamos o comando <strong>npm i @hookform/resolvers</strong>.Agora já temos tudo que precisamos para dar continuidade aos nossos poderosos formulários com RHF + ZOD em conjunto. </p>
+        
         <hr>
         <h2 id="next"> NextJS 14</h2>
         <hr>
