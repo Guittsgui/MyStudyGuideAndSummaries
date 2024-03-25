@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front End.</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+        <a href="../index.html">Home</a>
+        <div class="title">
+            <h1>Final Study Resume Guide</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="#node"> NodeJS</a></li>
+            </ul>
+        </div>
+
+
+    <div class="base">
+        <h2 id="node"> Node JS </h2>
+        <p> Aqui iremos começar a jornada do <strong>BACKEND</strong>. Indo mais direto ao ponto, de acordo com a arquitetura da programação moderna, na maioria das vezes você irá se deparar com a criação de <strong>APIS</strong>. Apis é um ponto de conexão entre o front e o banco de dados. A API é o <strong>BACKEND</strong> da sua aplicação. Por exemplo, quando voce se cadastra em um site (FrontEnd), e envia a requisição para criar nova conta, essa requisição não vai direto para o banco de dados, ela passa por um "porteiro", que irá validar os dados, confirmar com o banco se os dados já não existem , etc. Esse porteiro é a nossa API, que é o BackEnd. Dito tudo isso, praticamente sempre no mundo real o backend irá se comunicar com um banco de dados, então podemos dar início aos estudos de <strong>BackEnd</strong> através dos Banco de Dados.</p>
+        <hr> 
+        <h2> MySQL </h2>
+        <p> Dentro do banco de dados temos basicamente duas coisas que precisamos mexer. O Servidor( Software que é o próprio banco de dados), e o Cliente, que é o software que utiliza o servidor, ou seja, usa o bacno de dados. Por exemplo, ao desenvolvermos uma API que consome um Banco, a API é o cliente e o Banco é o servidor. Primeiramente iremos aprender sobre banco de dados <strong>Relacionais - SQL</strong>. De início começaremos com o <strong>MySQL</strong> ou o <strong>Postgree</strong>. Ambos são open source, ambos funcimam em todos os sistemas operacionais, e ambos também suportam qualquer linguagem de programação. Porém possuem algumas diferenças como o <strong>mysql</strong> NÃO ser casesenstive, já o postgree é casesensitive. Porém e quando falamos de performance? Quando falamos em querys complexas ou grandes volumes, o postgree tende a ser um pouco mais rápido, já quando falamos para pequenos volumes ou consultas simples, o mysql tende a ser mais rápido do que o postgrees. Aqui quando estamos falando de mais rápido ou mais devagar, estamos falando de diferenças de milisegundos. Dito isto, quando esta iniciando, tanto faz a escolha, sem contar que sabendo utilizar um, o outro é praticamente tão fácil quanto. </p>
+        <p> O primeiro passo para começarmos a colocar a mão na massa é instalarmos o banco de dados que deseja escolher, e em seguida instalhar um <strong>cliente sql</strong> que é basicamente um software que nos permite interagir com o banco de dados em questão, executar querys, comando, etc. Particularmente eu costumo utilizar o <strong>MySQLWorkBench</strong>, que dependendo da configuração do dispositivo do usuário pode não ser a melhor escolha por acabar sendo um pouco 'pesado', porém temos opções como Dbeaver, etc.</p><br>
+        <h3> ORMS </h3>
+        <p> Agora que já entendemos o que são os banco de dados, seus tipos e seus clientes, precisamos entender outro fator fundamental para a integração deles com nossa aplicação(NodeJS), que são as <strong>ORMS</strong>. Existem várias formas de conectarmos os bancos de dados com nossos códigos, e uma dessas formas é o bom e velho ORM. ORM -> Object Relational Mapper, que traduzindo seria o mapeamento de um objeto-relacional. Basicamente instalamos bibliotecas em nosso sistema e criamos entre aspas uma cópia do banco de dados dentro do nosso código. Por exemplo, "O banco se chamará tal, teremos tais tabelas, cada tabela armazena tais atributos, seus tipos etc'. Mas, se já temos isso dito no banco, para que precisamos repetir no código ? Precisamos repetir no código para que ele entenda exatamente todo o comportamento do banco, desas forma, podemos dentro do código adicionar um usuário por exemplo ao banco de forma extremamente simples como : users.add(user), ao invés de termos que digitar querys longas, etc. Agora que já entendemos o que são as ORM's, estudaremos duas: <strong> Prima & Sequelize</strong>. </p><br>
+        <h3> Prisma </h3>
+        <p> Prisma foi feito exatamente para funcionar com o Node + Typescript. Basicamente no código criamos tudo em um só lugar. No código criamos como o banco irá ficar, que irá gerar um type, que irá criar a estrutura no banco de dados, tudo alinhado e padronizado. </p><p> O primeiro passo é criarmos nosso projeto e instalarmos a biblioteca do prisma. Para criarmos nosso projeto, poderemos utilizar um repositório que nos fornece uma pré configuração de um servidor. <a href="https://github.com/suporteb7web/node-api-base" target="_blank">NODE-API-BASE</a>. Após criado a base, precisamos instalar o Prisma em nosso projeto, com o comando: <strong>npm i -D prisma </strong>, que já vem por padrão com suporte a TypeScript. Uma das caracteristicas do Prisma é que ele trabalha com o conceito de CLI (linha de comandos no terminal).  O primeiro comando que precisamos entender é o seguinte: </p><br>
+        <p> <strong>INICIAR O PRISMA: NPX PRISMA INIT </strong></p><br>
+        <p> Após Criado, ele irá criar seu próprio .ENV, porém como já possuímos o nosso, basta copiar o que está la dentro, e colocar para dentro do nosso próprio env.local. Uma vez que o prisma estiver iniciado, ele já fará toda a configuração inicial, e a primeira que precisamos nos atentar, é a variavel de ambiente que copiamos. Por padrão ele vem configurado para trabalhar com POSTGREE, porém caso queiramos trocar para mysql, basta alterar ali. Ali também encontramos informacoes chave como o usuário, senha, porta e nome do banco. A única coisa que o prisma não faz é criar o próprio banco em si, isso precisaremos fazer na mão, mas o resto todo ele irá fazer por conta própria. </p>
+        <p> Podemos reparar que ao instalarmos o prisma, uma pasta PRISMA foi criada, logo, o próximo passo é entendermos o que há dentro dela. Ali iremos ver que temos um <strong>schema.prisma</strong> local onde iremos realizar grande parte de nossas configurações. Vale ressaltar que tabelas no Prisma são chamadas de <strong>Model</strong>. Ali dentro teremos o <strong>generator client & datasource DB</strong>. Abaixo deles, começaremos a construir o nosso Banco.  </p>
+        <img src="../backPhotos/b1.png" alt="">
+        <p> O prisma possui um recurso extremamente bacana que é o <strong>PUS & PULL</strong>. Funciona mais ou menos igual no git, quando damos um git push, pegamos o código e enviamos para o repositório remoto. Quando damos um git pull, pegamos o repositório remoto e juntamos com o código. No caso do prisma ele tem o mesmo princípio. Através do <strong> push </strong> e irá enviar para o banco tudo o que configuramos em seu arquivo acima. E caso tenhamos um banco criado e queiramos pegar o banco de dados e com base nele criar um schema, podemos usar o <strong> pull </strong>. Comandos: </p><br>
+        <p> <strong> ENVIAR P/ BANCO: NPX PRISMA DB PUSH</strong></p>
+        <p> <strong> PUXAR DO BANCO: NPX PRISMA DB PULL </strong></p><br>
+        <h3> Migrations </h3>
+        <p> Esse conceito não é exclusivo do Prisma, e sim da programação em geral. São basicamente um histórico de modificação na estrutura do banco de dados. Funciona basicamente igual um Commit, criando um histórico do banco de dados. Mas para que precisamos disso ? Primeramente sempre saberemos a evolucao do banco, e também para conseguir reverter modificações. Por ex: Adicionamos um novo campo na tabela usuário, um novo campo na tabela tarefas. Caso algo de errado nessas novas features, poderemos facilmente reverter e voltar pro estado anterior. Veremos o comando das migrations: <small>Quando criamos migraitons, automaticamente ele da o Push.</small> </p><br>
+        <p><strong> CRIANDO MIGRATIONS: NPX PRISMA MIGRATE DEV </strong></p><br>
+        <h3> Relações/FK</h3>
+        <p> Comumente dentro de nossas aplicações iremos trabalhar com entidades que possuem relações com outras entidades. Por exemplo, uma tabela de Usuários e uma tabela de Posts. Existe uma ligação entre elas, afinal, um usuário pode ter um ou muitos Posts. Para isso, basta por exemplo colocarmos dentro da tabela post, o campo UserID. Pronto, dessa forma eles passarão a ser interligados, e podemos gerenciar tudo pelo próprio código. Porém, imagine a situação em que um usuário resolve excluir sua conta. Se essa relação for feita apenas via código, iremos ter no banco de dados diversos registros de Posts de um usuário inexistente por exemplo. Por isso, é importante fazermos o relacionamento também no banco. E o Prisma nos possibilita isso, como no exemplo abaixo:  </p>
+        <img src="../backPhotos/b2.png" alt="">
+        <h3> Propriedades e ENUMS: </h3>
+        <p> Aqui iremos dar uma visualizada nos tipos de dados e opções que temos para trabalhar dentro do Prisma. </p>
+        <img src="../backPhotos/b3.png" alt="">
+        <h3> Usando o MAPPING: </h3>
+        <p> Mapping nao tem nenhuma aplicação prática em termos de recursos no código. Porém ele é importante no sentido de organização no código. É mais utilizado quando temos nomes diferentes entre o schema e a tabela em si do banco. Ou então quando temos por exemplo no schemna "subtitle" e no banco precisamos salvar "sub_title". Dessa forma através do <strong>mapping</strong> conseguimos realizar essas trocas. Exemplo abaixo: </p>
+        <img src="../backPhotos/b4.png" alt="">
+        <h3> Prisma Studio </h3>
+        <p> É uma ferramenta do próprio prisma que funciona basicamente como um dbiever ou workbench, e nos apresentar através de um sistema próprio, da nossa própria estrutura do schema.prisma. Para isso precisamos digitar o comando: </p><br>
+        <p> <strong> ABRIR PRISMA STUDIO: NPX PRISMA STUDIO</strong></p><br>
+        <h3> Prisma Client</h3>
+        <p> Como vimos anteriormente, ao darmos um prima init ele automaticamente cria um arquivo, que possui dois objetos, o de configuracao do banco, e o prisma client. E aqui iremos aprender sobre o prisma cliente, qeu será fortemente utilizado a patir de então. A partir daqui aprenderemos a utilizar o prisma no mundo real. Para isso, precisamos começar entendendo o que ele faz e como ele funciona. O <strong>prisma client</strong> nada mais é do que uma biblioteca que é criada/gerada no ato. Ela é criada conforme nosso código de configuração do Prisma. Após criarmos nossos schemas, com base nisso o prisma irá gerar para gente basicamente duas coisas distintas: Os types do Typescript exatamente igual nossos schemas. E o outro recurso, é o das relações por debaixo dos panos. Como por exemplo quando falamos user e posts, através do prisma client, podemos puxar por ex um post e as informacoes do usuário tudo de uma única vez. </p>
+        <p> Dito isto, como o prisma client é gerado baseado em nosso código, sempre que alterarmos o código precisamos automáticamente gerar outro prisma client. Porém, em muitos comandos que utilizamos como por exemplo as <strong>migrations</strong> ele já atualiza o PC automáticamente. </p>
+        <p> Dito isto, a partir daqui podemos definitivamente integrar o prisma ao projeto. É importante e ideal é que separemos o prisma client da aplicação. Para isso podemos criar uma pasta chamada <strong>Libs</strong> e dentro um arquivo chamado <strong>prisma.ts</strong> . Dentro desse prisma.ts , instanciaremos o prisma client, e em seguida iremos exportar essa instância, instancia essa na qual pode ser chamada de prisma ou de DB. A partir dessa instancia em qualquer lugar dentro da nossa aplicação podemos acessar o banco, através dessa instancia. Um problema muito comum de usuários de prisma é um error no banco de dados, informando que existem multiplas conexões no banco de dados, etc. Ao lermos a documentação ela explica o motivo e também a solução. É muito comum que em nossos projetos utilizemos o <strong>watch</strong>, nodemmon, etc, que nada mais é do que um recurso de monitoramento de qualquer mudança realizada na aplicação. Dessa forma, sempre que alteramos e voltamos, ele irá recarregar o código todo, logo, irá gerar uma nova instancia do prisma client, e assim uma nova conexão. Este é o <strong>Motivo do Erro</strong>, e lendo a documentação ela nos diz que precisamos copiar um trecho de código e colar em nosso prisma client. Dessa forma essa "duplicação" não irá mais acontecer. Link da documentação <a href="https://www.prisma.io/docs/orm/prisma-client/setup-and-configuration/databases-connections" target="_blank">Clicando Aqui</a></p>
+        <img src="../backPhotos/b5.png" alt=""><br>
+        
+
+    </div>
+
+</body>
+</html>
