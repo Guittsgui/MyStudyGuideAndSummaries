@@ -14,7 +14,9 @@
         </div>
         <div class="nav">
             <ul>
-                <li><a href="#node"> NodeJS</a></li>
+                <li><a href="#db"> BancoDados</a></li>
+                <li><a href="#pr"> Prisma</a></li>
+                <li><a href="#api"> API </a></li>
             </ul>
         </div>
 
@@ -23,12 +25,12 @@
         <h2 id="node"> Node JS </h2>
         <p> Aqui iremos começar a jornada do <strong>BACKEND</strong>. Indo mais direto ao ponto, de acordo com a arquitetura da programação moderna, na maioria das vezes você irá se deparar com a criação de <strong>APIS</strong>. Apis é um ponto de conexão entre o front e o banco de dados. A API é o <strong>BACKEND</strong> da sua aplicação. Por exemplo, quando voce se cadastra em um site (FrontEnd), e envia a requisição para criar nova conta, essa requisição não vai direto para o banco de dados, ela passa por um "porteiro", que irá validar os dados, confirmar com o banco se os dados já não existem , etc. Esse porteiro é a nossa API, que é o BackEnd. Dito tudo isso, praticamente sempre no mundo real o backend irá se comunicar com um banco de dados, então podemos dar início aos estudos de <strong>BackEnd</strong> através dos Banco de Dados.</p>
         <hr> 
-        <h2> MySQL </h2>
+        <h2 id="db"> MySQL </h2>
         <p> Dentro do banco de dados temos basicamente duas coisas que precisamos mexer. O Servidor( Software que é o próprio banco de dados), e o Cliente, que é o software que utiliza o servidor, ou seja, usa o bacno de dados. Por exemplo, ao desenvolvermos uma API que consome um Banco, a API é o cliente e o Banco é o servidor. Primeiramente iremos aprender sobre banco de dados <strong>Relacionais - SQL</strong>. De início começaremos com o <strong>MySQL</strong> ou o <strong>Postgree</strong>. Ambos são open source, ambos funcimam em todos os sistemas operacionais, e ambos também suportam qualquer linguagem de programação. Porém possuem algumas diferenças como o <strong>mysql</strong> NÃO ser casesenstive, já o postgree é casesensitive. Porém e quando falamos de performance? Quando falamos em querys complexas ou grandes volumes, o postgree tende a ser um pouco mais rápido, já quando falamos para pequenos volumes ou consultas simples, o mysql tende a ser mais rápido do que o postgrees. Aqui quando estamos falando de mais rápido ou mais devagar, estamos falando de diferenças de milisegundos. Dito isto, quando esta iniciando, tanto faz a escolha, sem contar que sabendo utilizar um, o outro é praticamente tão fácil quanto. </p>
         <p> O primeiro passo para começarmos a colocar a mão na massa é instalarmos o banco de dados que deseja escolher, e em seguida instalhar um <strong>cliente sql</strong> que é basicamente um software que nos permite interagir com o banco de dados em questão, executar querys, comando, etc. Particularmente eu costumo utilizar o <strong>MySQLWorkBench</strong>, que dependendo da configuração do dispositivo do usuário pode não ser a melhor escolha por acabar sendo um pouco 'pesado', porém temos opções como Dbeaver, etc.</p><br>
         <h3> ORMS </h3>
         <p> Agora que já entendemos o que são os banco de dados, seus tipos e seus clientes, precisamos entender outro fator fundamental para a integração deles com nossa aplicação(NodeJS), que são as <strong>ORMS</strong>. Existem várias formas de conectarmos os bancos de dados com nossos códigos, e uma dessas formas é o bom e velho ORM. ORM -> Object Relational Mapper, que traduzindo seria o mapeamento de um objeto-relacional. Basicamente instalamos bibliotecas em nosso sistema e criamos entre aspas uma cópia do banco de dados dentro do nosso código. Por exemplo, "O banco se chamará tal, teremos tais tabelas, cada tabela armazena tais atributos, seus tipos etc'. Mas, se já temos isso dito no banco, para que precisamos repetir no código ? Precisamos repetir no código para que ele entenda exatamente todo o comportamento do banco, desas forma, podemos dentro do código adicionar um usuário por exemplo ao banco de forma extremamente simples como : users.add(user), ao invés de termos que digitar querys longas, etc. Agora que já entendemos o que são as ORM's, estudaremos duas: <strong> Prima & Sequelize</strong>. </p><br>
-        <h3> Prisma </h3>
+        <h3 id="pr"> Prisma </h3><br>
         <p> Prisma foi feito exatamente para funcionar com o Node + Typescript. Basicamente no código criamos tudo em um só lugar. No código criamos como o banco irá ficar, que irá gerar um type, que irá criar a estrutura no banco de dados, tudo alinhado e padronizado. </p><p> O primeiro passo é criarmos nosso projeto e instalarmos a biblioteca do prisma. Para criarmos nosso projeto, poderemos utilizar um repositório que nos fornece uma pré configuração de um servidor. <a href="https://github.com/suporteb7web/node-api-base" target="_blank">NODE-API-BASE</a>. Após criado a base, precisamos instalar o Prisma em nosso projeto, com o comando: <strong>npm i -D prisma </strong>, que já vem por padrão com suporte a TypeScript. Uma das caracteristicas do Prisma é que ele trabalha com o conceito de CLI (linha de comandos no terminal).  O primeiro comando que precisamos entender é o seguinte: </p><br>
         <p> <strong>INICIAR O PRISMA: NPX PRISMA INIT </strong></p><br>
         <p> Após Criado, ele irá criar seu próprio .ENV, porém como já possuímos o nosso, basta copiar o que está la dentro, e colocar para dentro do nosso próprio env.local. Uma vez que o prisma estiver iniciado, ele já fará toda a configuração inicial, e a primeira que precisamos nos atentar, é a variavel de ambiente que copiamos. Por padrão ele vem configurado para trabalhar com POSTGREE, porém caso queiramos trocar para mysql, basta alterar ali. Ali também encontramos informacoes chave como o usuário, senha, porta e nome do banco. A única coisa que o prisma não faz é criar o próprio banco em si, isso precisaremos fazer na mão, mas o resto todo ele irá fazer por conta própria. </p>
@@ -57,7 +59,27 @@
         <p> Dito isto, como o prisma client é gerado baseado em nosso código, sempre que alterarmos o código precisamos automáticamente gerar outro prisma client. Porém, em muitos comandos que utilizamos como por exemplo as <strong>migrations</strong> ele já atualiza o PC automáticamente. </p>
         <p> Dito isto, a partir daqui podemos definitivamente integrar o prisma ao projeto. É importante e ideal é que separemos o prisma client da aplicação. Para isso podemos criar uma pasta chamada <strong>Libs</strong> e dentro um arquivo chamado <strong>prisma.ts</strong> . Dentro desse prisma.ts , instanciaremos o prisma client, e em seguida iremos exportar essa instância, instancia essa na qual pode ser chamada de prisma ou de DB. A partir dessa instancia em qualquer lugar dentro da nossa aplicação podemos acessar o banco, através dessa instancia. Um problema muito comum de usuários de prisma é um error no banco de dados, informando que existem multiplas conexões no banco de dados, etc. Ao lermos a documentação ela explica o motivo e também a solução. É muito comum que em nossos projetos utilizemos o <strong>watch</strong>, nodemmon, etc, que nada mais é do que um recurso de monitoramento de qualquer mudança realizada na aplicação. Dessa forma, sempre que alteramos e voltamos, ele irá recarregar o código todo, logo, irá gerar uma nova instancia do prisma client, e assim uma nova conexão. Este é o <strong>Motivo do Erro</strong>, e lendo a documentação ela nos diz que precisamos copiar um trecho de código e colar em nosso prisma client. Dessa forma essa "duplicação" não irá mais acontecer. Link da documentação <a href="https://www.prisma.io/docs/orm/prisma-client/setup-and-configuration/databases-connections" target="_blank">Clicando Aqui</a></p>
         <img src="../backPhotos/b5.png" alt=""><br>
-        
+        <h3> Watch & Imsonia </h3>
+        <p> Antes de fato de colocarmos a mão no ORM dentro do projeto, precisamos habilitar o Watch. para isso, utilizamos o comando:  </p><br>
+        <p><strong> Habilitar o Watch:  npm i -D tsx </strong></p><br>
+        <p> Agora que ja temos a dependencia watch instalada, precisamos ir dentro do arquivo <strong>package.json</strong>  e alterar o "script", como o da imagem, a partir daqui, qualquer alteração que realizarmos dentro do nosso código, será monitorado e o servidor rodará novamente. </p>
+        <img src="../backPhotos/b6.png" alt=""><br>
+        <h3> CRUD - CREATE </h3>
+        <p> Aqui iremos aprender a inserir um nobo registro na tabela. Da forma mais simples que temos, adicionamos um novo registro assim: </p>
+        <img src="../backPhotos/b7.png" alt="">
+        <p> <strong> OBS: </strong> Temos sempre que lembrar que a comunicação entre a API e o BANCO é uma comunicação assíncrona e do meio externo, logo, caso aconteça algum error nesse percurso, precisamos trata-los e informar aos demais. Quando falamos em tratar error, uma das primeiros coisas que lembramos é do <strong>try/catch</strong>. Abaixo um exemplo do error sendo tratado no trycatch: </p>
+        <img src="../backPhotos/b8.png" alt="">
+        <h2> Usando os Types do Prisma</h2>
+        <p> O prisma já nos permite utilizar um type pré criados para isso. Por exemplo, podemos tipar as props de um método no service utilizando um Type fornecido pelo próprio prisma, fazendo com que a confiabilidade fique exatamente igual e de acordo com o que possuímos dentro do nosso banco de dados. Exemplo: </p>
+        <img src="../backPhotos/b9.png" alt=""><br>
+        <p> Outro fator muito interessante no Prisma, é que ele nos permite criar muitos usuários de uma úica vez. Por exemplo, podemos receber por parâmetro um Array de usuários, e em seguida com apenas um comando, adicionar todos os usuários de uma única vez ao banco de dados, e ainda podemos colocar um comando que nos permite pular o duplicado.</p>
+        <img src="../backPhotos/b10.png" alt="">
+
+
+        <hr>
+        <h2 id="api"> API </h2>
+        <p> Quando comecamos a estudar backend aqui no capitulo de <a href="#node">NodeJS</a> nós já demos uma pincelada sobre o que é uma API, que funciona como um intermediador entre uma aplicacao front e um banco de dados. Quando trabalhamos com WEB, usaremos constantemente os termos <strong> REST </strong> e <strong> RestFull</strong>. </p>
+
 
     </div>
 
