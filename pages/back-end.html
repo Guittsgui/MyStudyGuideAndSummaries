@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-
         <a href="../index.html">Home</a>
         <div class="title">
-            <h1>Final Study Resume Guide</h1>
+            <h1>BACKEND - JS -  Resume Guide</h1>
         </div>
         <div class="nav">
             <ul>
@@ -22,15 +21,18 @@
                 <li><a href="#jwt"> JWT </a></li>
                 <li><a href="#bcrypt">Bcrypt</a></li>
                 <li><a href="#ema">EnvioEmail</a></li>
+                <li><a href="#uimg"> UpImages/Arq</a></li>
                 <li><a href="#tdd">Testes&Tdd</a></li>
             </ul>
         </div>
         <div class="nav">
             <ul>
+                <li><a href="#docker">Docker</a></li>
                 <li><a href=""> Clean Architecture </a></li>
-                <li><a href="">Docker</a></li>
                 <li><a href=""> Deploy</a></li>
                 <li><a href=""> CI/CD </a></li>
+                <li><a href=""> AwsCloud</a></li>
+                <li><a href=""> MicrosoftAzure</a></li>
             </ul>
         </div>
 
@@ -160,6 +162,15 @@
         <p> Agora partimos para o terceiro e último passo, que é o de enviar a mensagem através do transporter, que é a parte mais fácil:  </p>
         <img src="../backPhotos/b31.png" alt="">
         <hr>
+        <h2 id="uimg">Upload Arq/Imag</h2>
+
+
+
+
+
+
+
+        <hr>
         <h2 id="tdd"> Testes & TDD</h2>
         <p> Para começar precisamos entender o que são e principalmente para que que nós precisamos deles. Conforme vamos construindo uma aplicação e ela vai escalando, a tendencia é que as coisas comecem a ficar de forma mais complicadas, mas em qual sentido ? Muitas vezes esquecemos como alguma coisa funciona, muitas vezes realizamos uma pequena alteração que afeta uma outra partesinha no código sem que percebamos, entre várias outras coisas. As vezes recebemos uma task para corrigir uma feature, e ao corrigir essa feature, geramos um outro error que precisará ser corrigido em breve, e por ai vai. Dito isto, testes basicamente é uma parte do código da aplicação que serve para testar se as funcionalidades estão funcionando devidamente em ordem. Por exemplo, podemos criar um teste para testar todo o funcionamento do login. Se depois de varios meses de uso, e implementçõoes novas, podemos roadar o teste do login, para saber se essas novas features não interferiram em nada o sistema de login. Essa é a definição mais abstrata do que são testes. A partir de agora iremos nos aprofundar. </p>
         <p> <Strong>TDD</Strong> - É uma sigla que significa (Test-Driven Development), desenvolvimento orientado a testes. Basicamente é um conceito que consiste em ao invés de criarmos o sistema, e depois criarmos os testes, primeiro desenhamos todos os cenários que o sistema irá funcionar, e com base nesse cenário construímos o sistema. Basicamente primeiro o teste, depois o sistema. Se em algum momento resolvermos implementar uma nova funcionalidade, primeiro desenvolvemos os testes, depois construímos baseado no teste. Vale ressaltar que o <strong>TDD</strong> não é a maneira mais ou menos correta em desenvolver uma aplicação, é apenas uma opção, e assim como tudo na programção, temos os seus prós e contras.</p>
@@ -170,8 +181,58 @@
         <p> Agora que já entendemos a introdução, podemos começar a entrar no código em sí. E o primeiro passo é configurarmos o nosso ambiente de testes <a href="https://alunos.b7web.com.br/curso/node/configurando-o-jest-no-seu-projeto" target="_blank">LINK</a>. Ao menos o básico. E futuramente iremos avançaremos. Quando falamos em testes no universo JS e TS, a biblioteca mais famosa e a que iremos estudar é chamda <strong>JEST</strong>. Testes geralmente não são executados em ambiente de produção (quando o site estiver no ar). Testes ficam em ambiente de desenvolvimento, para serem executados antes deles subirem. Dito isto, precisamos entender que tanto a JEST quanto seus auxiliares, instalaremos na dependencia de desenvolvimento. comando: <strong>npm install -D jest ts-jest @types/jest </strong>. A primeira coisa que faremos é criar um arquivo de configuração do JEST, onde ditaremos como os testes irão funcionar, pois existem varias forams, como por ex: rode o teste exibindo o resultado, nao exibindo, todos em paralelo, rode um para depois rodar o outro, etc. </p>
         <p> Tendo o JEST instalado, a primeira coisa que iremos fazer é rodar o comando de configinit, <strong>comando: npx ts-jest config:init</strong>, e ao realizar, observaremos que será criado um arquivo chamado <strong>jest.config.js</strong>. Eventualmente iremos realizer testes assíncronos, então para isso, começamos colocando colocando a propriedade: detectOpenHandles:True. Em seguida podemos ir até o packageJson, e alterar o <strong>script tests</strong> para configurar o comando de startar o teste. </p>
         <img src="../backPhotos/b32.png" alt="">
-        <p> Tento tudo devidamente configurado, finalmente podemos começar a construir nossos testes, logo, precisamos pensar onde iremos coloca-los e para isso teremos diverssas abordagens. Basicamente o JEST procurará testes por toda a aplicação, então poderemos colocar em qualquer lugar da aplicação, porém existem determinados padrões para mantermos uma padronização. Quando falamos dos testes <strong>Unitários</strong> ..... , Já para os testes de <strong>Integração</strong> criaremos uma pasta test, na qual ali dentro iremos coloca-los. Vale ressaltar que não importa onde colocaremos os testes, o JEST irá acha-lo pois ele irá percorrer toda a aplicação.</p>
+        <p> Tento tudo devidamente configurado, finalmente podemos começar a construir nossos testes, logo, precisamos pensar onde iremos coloca-los e para isso teremos diverssas abordagens. Basicamente o JEST procurará testes por toda a aplicação, então poderemos colocar em qualquer lugar da aplicação, porém existem determinados padrões para mantermos uma padronização. Quando falamos dos testes <strong>Unitários</strong> temos basicamente três formas de guardalos. A primeira é criar uma única pasta Test, e lá dentro organizar todos os testes da sua aplicação, (inclusive não só os unitários), porém quando a aplicação começar a escalar, isso poderá gerar dificuldade de leitura. Outra maneiro que talvez seja a mais utilizada do mercado, é por exemplo: Supomos que iremos testar o Model da entidade User. Então dentro da pasta User model onde estará o <strong>User.ts</strong> criamos um <strong>User.test.ts</strong>.Assim em cada diretório específico terá o seu arquivo e também o seu devido teste.</p>
+
+        <p> Já para os testes de <strong>Integração</strong> criaremos uma pasta test, na qual ali dentro iremos coloca-los. Vale ressaltar que não importa onde colocaremos os testes, o JEST irá acha-lo pois ele irá percorrer toda a aplicação.</p><br>
+        <h2>Criando os primeiros Teste</h2>
+        <p> Vamos começar de exemplos simples, para entedermos a lógica do Teste. Aqui de início criaremos uma biblioteca para executar calculos matemáticos. Primeiro criaremos os testes, depois criaremos ela de fato. Aqui começaremos com um <strong>teste unitário</strong>. Para criarmos um teste, podemos criar uma função chamada test() ou então uma função chamada it(). Elas fazem basicamente a mesma coisa, em breve veremos alguma diferenca. Eles recebem basicamente dois parametros, o primeiro parametro e a descricao do que o teste irá executar, como por exemplo: 'Somar dois numeros corretamente', e o segundo parâmetro é a função que irá executar o teste em si. por exemplo: Math.sum(5,10). Em seguida através do <strong>expect</strong> poemos dizer o que o resultado está sendo esperado. No caso de somas matemáticas temos os exemplos:  </p>
+        <img src="../backPhotos/b33.png" alt="">
+        <p> Tendo criado, podemos começar a de fato testar nossos testes com o comando <strong>npm test</strong>, e assim dentro do nosso terminal ele será testado e retornará  todas as informações (quantos passaram, quantos reprovaram), quantos arquivos acharam, etc. </p>
+        <p> Agora que entendemos mais ou menos como funciona a lógica, precisamos entender os tipos de matches, pois até o momento vimos apenas o <strong>to Be.</strong> No expecct colocamos a resposta , e dentro do toBe, colocamos o valor da resposta que esperamos. Porém existem diversos tipos de matches e aqui veremos alguns como o <strong>toHaveLenght</strong> que irá rodar um .lenght na string ou array. </p>
+        <p> Outro cenáro é que por exemplo, supomos que queiramos no teste saber se dentro de um objeto, possui a propriedade email por exemplo podemos usar o matche <strong>toHaveProperty('name')</strong> </p>
+        <img src="../backPhotos/b34.png" alt="">
+        <p> Se quisermos verificar se o resultado for Undefined, podemos utilizar o match <strong>.toBeUndefined(), ou um .not.toBeUndefined()</strong>. Podemos ter também o <strong>tobeNull()</strong>, <strong>toBeGreaterThan()</strong>, <strong>toBeGreaterThanOrEqual()</strong>, <strong>toBeLessThan()</strong>, <strong>toBeLessThanOrEqual(50).</strong>. Também podemos executar REGEX dentro para ver se o toMatch(REGEXEEMAIL) por exemplo.</p><br>
+        <h2>LifeCycle para Testes</h2>
+        <p> Quando avançarmos nos testes por exemplo, testes com coisas que utilizam banco de dados, antes de realizarmos os testes, precisaremos criar um banco de usuário de teste, verificar sua conexão, verificações, para que assim façamos os testes. Para esses casos, temos 04 funções que irão nos auxiliar nesse processo. beforeEach, afterEach (Antes e depois de CADA teste, essas funções serão executadas. Se tivermos 20 testes, essas funcoes seãao executadas 20 vezes.) Também temos o afterall e o beforeAll, que são funções que serão executadas antes e depois de todos os testes acotnecerem. Se tivermos 20 testes, essas funções serão executadas apenas 1 vez cada. </p><br>
+        <h2> Preparando ambiente Test c/ Banco</h2>
+        <p> Quando estamos criando um sistema, quase sempre teremos que testar features que tenham conexão com o banco de dados. Assim como já haviamos dito, não faz muito sentido utilizarmos o nosso próprio banco de dados, ou o banco que está em produção para realizar esses testes. Para isso existem basicamente duas formas de trabalhar com esse tipo de testes. A primeira forma é criar um banco de dados específico para teste, na qual deixaremos vazio e através das <strong>migrations</strong> antes de fazermos os testes ele irá gerar nosso banco, na qual é de longe a mais utilizada. A outra maneira é a de "enganarmos" o banco de dado com um serviço como se fosse um banco de dados, porém não é. Dito isto, aqui iremos trabalhar com nosso banco de dados exclusivo para teste. O primeiro passo é informar o sistema quando que usaremos qual banco, e isso já está sendo feito através dessa linha no comando TEST dentro do packageJson. </p>
+        <img src="../backPhotos/b35.png" alt="">
+        <p> AQUI PRECISAMOS ESTUDAR/BUSCAR COMO CONFIGURAR COM O <STRONG>PRISMA</STRONG>. </p><br>
+        <h2> Services Test </h2>
+        <h2> Testando EndPoints </h2>
+        <hr>
+
+
+
+
+
+        <h2 id="docker"> Docker </h2>
+        <h2> O que é o Docker ?</h2>
+        <p> Docker basicamente é uma plataforma que foi criada para <strong>Construir, Rodar e principalmente Transferir </strong> aplicações do nosso ambiente de teste para o ambiente de produção. O docker não nasceu pelo simples fato de que alguém quis criar, e sim pelo fato de que é muito comum nos depararmos com a seguinte situação: Estamos construindo uma aplicação em nossa maquina, desenvolvendo o front, a api, o banco, e quando vamos coloca-la no ar, ela simplesmente quebra e não funciona. E <strong>porque isso acontece? </strong> Quando temos uma aplicação em nossa máquina temos uma quantidade X de arquivos, e não necessáriamente quando enviamos para produção todos esses arquivos irão. Quando temos uma aplicação em nossa máquina, temos determinadas versões instaladas ex: Node 10.0.0, e quando enviamos para produção pode não ser a mesma versão, fazendo com que quebre. As vezes as configurações do nosso ambiente local sejam completamente diferente do ambiente de produção, fazendo com que quebre. É deste ponto que veio a ideia de <strong>criar o Docker</strong>, será que não conseguiriamos criar um ambiente virtual dentro da nossa máquina para que possamos ao invés de subir apenas nossa aplicação subir o ambiente inteiro ? Pegar nossa aplicação e coloca-la dentro de uma caixa, um <strong>container</strong> com tudo que nossa aplicação necessita para rodar sem depender de nada do servidor ? </p>
+        <p> Podemos colocar nossa aplicação para rodar na nossa própria máquina, dentro de um Container, e depois realizamos o upload desse mesmo container para um servidor. Ainda por cima com uma outra vantagem de que tanto o usuário quanto o servidor podem utilizar qualquer SO. </p>
+        <img src="../dockerPhotos/d1.png" alt="">
+        <h3> Container x VM </h3><br>
+        <p> Quando vemos pela primeira vez, podemos achar que maquinas virtuais e containers sao bem parecidos, mas qual suas diferencas? Para apontar as diferencas, vamos apontar primeiro o que sao as VM. Quando temos um servidor, possuimos um hardware no servidor, no qual instalamos um hypervisor no topo do hardware, que quando o instalamos ele nos dá a possibilidade de no topo instalarmos outros sistemas operacionais. Porém um desvantagem da VM é que eles são limitados em recursos. Por exemplo, se o hardware(servidor) possui 32gb de Ram, cada máquina virtual abaixo trabalhará utilizando 8gb, como ilustrado na imagem: <small>Em vermelho temos nosso ambiente/enviroment para rodar nossas aplicações.</small> </p>
+        <img src="../dockerPhotos/d2.png" alt="">
+        <p> Já nos <strong>Containers</strong> nós não precisamos instalar os hypervisiors, vem direto o sistema operacional, que geralmente é rodado em Linux, eem seguida vem direto nossos containers com nosso ambiente/enviroment.  </p>
+        <img src="../dockerPhotos/d3.png" alt="">
+        <p> Mesmo observando as imagens, as vezes fica complexo de entender a diferença. Deixando mais explícito, a maior diferença é que nos containers temos apenas um sistema operacional, que fica concentrando com os recursos apenas para ele, nos possibilitando rodar nossos containers de forma isolada. Ou seja, o consumo de recursos se torna muito mais eficiente. Sem contar que através do docker conseguimos inciar uma aplicação de forma muito mais rápida. </p><br>
+        <h3>Testando o Docker</h3>
+        <p> A partir do terminal podemos utilizar o comando <strong>docker version</strong> e caso ele responda, saberemos que o docker está funcionando. </p><br>
+        <h3>Como o Docker Funciona?</h3>
+        <p> Imagine que tenhamos uma apçicação com nosso Front, nosso Back, e nosso Banco de dados e que desejemos <strong>Dockerizar</strong> essa aplicação. O primeiro passo a ser feito é criarmos um arquivo chamado <strong>dockerfile</strong>. Dentro desse dockerfile colocaremos alguns parametros para que a imagem seja criada. Então ele será o responsável em tirar a aplicação e criar uma imagem dela. A criação dessa imagem é de acordo com o que está dentro do <strong>dockerfile</strong>, basicamente ele que irá coordenar como que essa aplicação se tornará uma imagem. </p>
+        <p> Dito isto sabemos que o dockerfile configura a criacao da imagem, mas o que estará nessa imagem ? Nela teremos algumas coisas como um pedaço do OS, Ambiente (Node por ex), Files(Arquivos da app, tudo que está dentro do back, fornt, db), Como criamos em node, provavelmente teremos bibliotecas, variáveis. Em resumo, criamos uma cópia perfeita com todas as dependencias que nossa aplicacao precisa para ser posta dentro do container.  </p>
+        <img src="../dockerPhotos/d4.png" alt="">
+        <h3>O que é Docker Hub ?</h3>
+        <p> Funciona igual o git/gitub só que para Docker. Imagine que tenhamos uma apliçacão já dockerizada em nosas máquina local, e gostaríamos de enviala para o servidor de producao. Esse processo até pode ser feito diretamente, mas nao é convencional.Entao como é feito? Nós pegamos a nossa imagem, enviamos para o nosso <strong>Docker Hub</strong> e de lá ela é enviada para o Servidor de Producao. E qual a maior vantagem ?  Caso acoçteca algo com nossa maquina física, nossa imagem estará salva dentro do DockerHub. </p>
+        <img src="../dockerPhotos/d6.png" alt="">
+        <h3>Criado a primeira Imagem:</h3>
+        <p> Para criarmos uma primeira imagem para entender como funciona, o primeiro passo é criarmos uma aplicacao da mais simples possivel. Crie uma pasta, e dentro dela uma rquivo chamado <strong>docker.js</strong>, e dentro dele coloque uma linha: console.log('Ola Mundo'). Pronto, temos nossa aplicacao criada. Fora dela, crie outro arquivo chamado de <strong>Dockerfile</strong> que como estudamos acima, é onde iremos configurar a imagem a ser gerada. </p>
+        <img src="../dockerPhotos/d7.png" alt="">
+        <p> Dessa forma já temos as configuracoes prontas, e em seguida basta darmos o comando para o docker criar uma imagem baseada nesse arquivo. O primeiro passo para darmos o comando é estarmos na mesma camada e no mesmo diretório onde está o arquivo dockerfile. Em seguida podemos roadr o seguinte comando: <strong>docker build -t hi-docker(nomedaImagem) .</strong> Caso voce tenha instalado o <strong>DockerDesktop</strong> através da interface poderemos ver nossa imagem criada, mas também poderemos verificar através do comando <strong>docker images</strong>.</p>
+        <p> Agora que já temos nossa aplação e ela foi convertida na nossa imagem docker, já podemos rodar a aplicacao, e assim será criada o container. Para isso voltamos ao terminal, e pedimos para ele rodar essa imagem com o comando: <strong>docker run nomeDaImagem</strong> e provavelmente ele irá nos retornar uma mensagem <strong>Ola Mundo</strong> <small>mensagem posta dentro do console.log</small> caso tenha dado tudo certo. A partir desse momento já temos nosso container rodando, com nossa imagem lá dentro.  </p>
         
+
 
     </div>
 
