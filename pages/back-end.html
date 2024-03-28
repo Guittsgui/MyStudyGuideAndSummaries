@@ -201,39 +201,6 @@
         <h2> Services Test </h2>
         <h2> Testando EndPoints </h2>
         <hr>
-
-
-
-
-
-        <h2 id="docker"> Docker </h2>
-        <h2> O que é o Docker ?</h2>
-        <p> Docker basicamente é uma plataforma que foi criada para <strong>Construir, Rodar e principalmente Transferir </strong> aplicações do nosso ambiente de teste para o ambiente de produção. O docker não nasceu pelo simples fato de que alguém quis criar, e sim pelo fato de que é muito comum nos depararmos com a seguinte situação: Estamos construindo uma aplicação em nossa maquina, desenvolvendo o front, a api, o banco, e quando vamos coloca-la no ar, ela simplesmente quebra e não funciona. E <strong>porque isso acontece? </strong> Quando temos uma aplicação em nossa máquina temos uma quantidade X de arquivos, e não necessáriamente quando enviamos para produção todos esses arquivos irão. Quando temos uma aplicação em nossa máquina, temos determinadas versões instaladas ex: Node 10.0.0, e quando enviamos para produção pode não ser a mesma versão, fazendo com que quebre. As vezes as configurações do nosso ambiente local sejam completamente diferente do ambiente de produção, fazendo com que quebre. É deste ponto que veio a ideia de <strong>criar o Docker</strong>, será que não conseguiriamos criar um ambiente virtual dentro da nossa máquina para que possamos ao invés de subir apenas nossa aplicação subir o ambiente inteiro ? Pegar nossa aplicação e coloca-la dentro de uma caixa, um <strong>container</strong> com tudo que nossa aplicação necessita para rodar sem depender de nada do servidor ? </p>
-        <p> Podemos colocar nossa aplicação para rodar na nossa própria máquina, dentro de um Container, e depois realizamos o upload desse mesmo container para um servidor. Ainda por cima com uma outra vantagem de que tanto o usuário quanto o servidor podem utilizar qualquer SO. </p>
-        <img src="../dockerPhotos/d1.png" alt="">
-        <h3> Container x VM </h3><br>
-        <p> Quando vemos pela primeira vez, podemos achar que maquinas virtuais e containers sao bem parecidos, mas qual suas diferencas? Para apontar as diferencas, vamos apontar primeiro o que sao as VM. Quando temos um servidor, possuimos um hardware no servidor, no qual instalamos um hypervisor no topo do hardware, que quando o instalamos ele nos dá a possibilidade de no topo instalarmos outros sistemas operacionais. Porém um desvantagem da VM é que eles são limitados em recursos. Por exemplo, se o hardware(servidor) possui 32gb de Ram, cada máquina virtual abaixo trabalhará utilizando 8gb, como ilustrado na imagem: <small>Em vermelho temos nosso ambiente/enviroment para rodar nossas aplicações.</small> </p>
-        <img src="../dockerPhotos/d2.png" alt="">
-        <p> Já nos <strong>Containers</strong> nós não precisamos instalar os hypervisiors, vem direto o sistema operacional, que geralmente é rodado em Linux, eem seguida vem direto nossos containers com nosso ambiente/enviroment.  </p>
-        <img src="../dockerPhotos/d3.png" alt="">
-        <p> Mesmo observando as imagens, as vezes fica complexo de entender a diferença. Deixando mais explícito, a maior diferença é que nos containers temos apenas um sistema operacional, que fica concentrando com os recursos apenas para ele, nos possibilitando rodar nossos containers de forma isolada. Ou seja, o consumo de recursos se torna muito mais eficiente. Sem contar que através do docker conseguimos inciar uma aplicação de forma muito mais rápida. </p><br>
-        <h3>Testando o Docker</h3>
-        <p> A partir do terminal podemos utilizar o comando <strong>docker version</strong> e caso ele responda, saberemos que o docker está funcionando. </p><br>
-        <h3>Como o Docker Funciona?</h3>
-        <p> Imagine que tenhamos uma apçicação com nosso Front, nosso Back, e nosso Banco de dados e que desejemos <strong>Dockerizar</strong> essa aplicação. O primeiro passo a ser feito é criarmos um arquivo chamado <strong>dockerfile</strong>. Dentro desse dockerfile colocaremos alguns parametros para que a imagem seja criada. Então ele será o responsável em tirar a aplicação e criar uma imagem dela. A criação dessa imagem é de acordo com o que está dentro do <strong>dockerfile</strong>, basicamente ele que irá coordenar como que essa aplicação se tornará uma imagem. </p>
-        <p> Dito isto sabemos que o dockerfile configura a criacao da imagem, mas o que estará nessa imagem ? Nela teremos algumas coisas como um pedaço do OS, Ambiente (Node por ex), Files(Arquivos da app, tudo que está dentro do back, fornt, db), Como criamos em node, provavelmente teremos bibliotecas, variáveis. Em resumo, criamos uma cópia perfeita com todas as dependencias que nossa aplicacao precisa para ser posta dentro do container.  </p>
-        <img src="../dockerPhotos/d4.png" alt="">
-        <h3>O que é Docker Hub ?</h3>
-        <p> Funciona igual o git/gitub só que para Docker. Imagine que tenhamos uma apliçacão já dockerizada em nosas máquina local, e gostaríamos de enviala para o servidor de producao. Esse processo até pode ser feito diretamente, mas nao é convencional.Entao como é feito? Nós pegamos a nossa imagem, enviamos para o nosso <strong>Docker Hub</strong> e de lá ela é enviada para o Servidor de Producao. E qual a maior vantagem ?  Caso acoçteca algo com nossa maquina física, nossa imagem estará salva dentro do DockerHub. </p>
-        <img src="../dockerPhotos/d6.png" alt="">
-        <h3>Criado a primeira Imagem:</h3>
-        <p> Para criarmos uma primeira imagem para entender como funciona, o primeiro passo é criarmos uma aplicacao da mais simples possivel. Crie uma pasta, e dentro dela uma rquivo chamado <strong>docker.js</strong>, e dentro dele coloque uma linha: console.log('Ola Mundo'). Pronto, temos nossa aplicacao criada. Fora dela, crie outro arquivo chamado de <strong>Dockerfile</strong> que como estudamos acima, é onde iremos configurar a imagem a ser gerada. </p>
-        <img src="../dockerPhotos/d7.png" alt="">
-        <p> Dessa forma já temos as configuracoes prontas, e em seguida basta darmos o comando para o docker criar uma imagem baseada nesse arquivo. O primeiro passo para darmos o comando é estarmos na mesma camada e no mesmo diretório onde está o arquivo dockerfile. Em seguida podemos roadr o seguinte comando: <strong>docker build -t hi-docker(nomedaImagem) .</strong> Caso voce tenha instalado o <strong>DockerDesktop</strong> através da interface poderemos ver nossa imagem criada, mas também poderemos verificar através do comando <strong>docker images</strong>.</p>
-        <p> Agora que já temos nossa aplação e ela foi convertida na nossa imagem docker, já podemos rodar a aplicacao, e assim será criada o container. Para isso voltamos ao terminal, e pedimos para ele rodar essa imagem com o comando: <strong>docker run nomeDaImagem</strong> e provavelmente ele irá nos retornar uma mensagem <strong>Ola Mundo</strong> <small>mensagem posta dentro do console.log</small> caso tenha dado tudo certo. A partir desse momento já temos nosso container rodando, com nossa imagem lá dentro.  </p>
-        
-
-
     </div>
 
 </body>

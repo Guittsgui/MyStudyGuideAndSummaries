@@ -1,28 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Front End.</title>
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Front End.</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
 
-        <a href="../index.html">Home</a>
-        <div class="title">
-            <h1>Linux Resume Guide</h1>
-        </div>
-        <div class="nav">
+            <a href="../index.html">Home</a>
+            <div class="title">
+                <h1>Linux Resume Guide</h1>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="#dist">Distribuições</a></li>  
+                    <li><a href="#rc">ResumoComandos</a></li>       
+                </ul>
+
+            </div>
+
+        <div class="base">
+            <h2 id="dist"> Linux </h2>
+            <p> Para começar a falar de linux precisamos deixar claro que Linux é 100% open source, de forma que qualquer pessoa pode desenvolver, alterar, copiar uma versão do Linux. Essas versões do linux são chamada de <strong>Distribuições</strong>. Por isso é importante citar as mais famosas : <strong>Ubunto, Debian, CentOS, Fedora, Alpine</strong>, a alpine não é muito famosa, porém ela é de extrema relevância dentro do universo Docker, pois ela é extremamente leve. </p><br>
+            <h2>Instalando o Linux</h2>
+            <p> Dado nosso estudo em Docker, já sabemos que não precisamos ter exatamente o linux instalado dentro do nosso computador, e sim podemos criar um container, que dentro dele rode Linux em qualquer versao que no nosso caso instalaremos <strong>Ubuntu</strong> e em seguida iremos praticar os principais comandos de Linux. Basicamente acessaremos o <strong> <a href="https://hub.docker.com/" target="_blank">DockerHub</a></strong> nele realizaremos o download/PULL da imagem ubunto para dentro de nossa máquina, e em seguida, criaremos um container com essa imagem e a rodaremos. Esse é o objetivo atual para que posasmos comecar a trabalhar c linux. Aqui podemos trabalhar e duas formas: baixar a imagem salvar em nossa máquina e rodar ela, ou então podemos somos rodar ela no sistema Interativo (IT). Na verdae tanto faz a forma que escolhermos, nesse caso iremos rodar ela sem baixar, já que nós iremos apenas praticar os conceitos. Para isso comecamos no nosso terminal: <strong>docker ps</strong> para listar os Containers rodando. Também temos o <strong>docker ps -a</strong> visualizaremos todos os containers que existem sem estar rodando. Se fossemos apenas baixar para nosas maquina, colocariamos o comando: <strong>docker pull ubuntu</strong>, porém como iremos utilizar o modo interativo, colocamos <strong>docker run -it ubuntu</strong>. Dessa forma, poderemos reparar que logo em seguida, o terminal irá mudar e automaticamente estaremos dentro do root de um container Linux. Aqui já poderemos comçar a anotar os comandos. Aqui basicamente rodamos e acessamos uma imagem do dockerhub dentro de nossa máquina.</p><br>
+            <h2>Pacotes </h2>
+            <p> Quando compramos um notebook novo por exemplo, ele provavelmente nao irá vir com os aplicativos que utilizamos no dia a dia, como o vsCode, Docker, etc etc. Dentro do linux, também temos que adicionar nossos programas, que aqui sao chamados de <strong>Packages</strong>. Para comecarmos precisamos ver quais pacotes que já vieram por padrao com nossa distribuicao linux, utilizando o comando: <strong>apt list</strong>. Sempre que pegamos uma versao linux do zero, a primeira coisa que precisamos fazer é atualizar ele. Para isso utilizamos o comando; <strong>apt update</strong>. Agora que ja entedemos o que são os packages, vamos supor que queiramos criar um arquivo de texto, como criaremos ? Para isso existe um package chamado nano, e ao digitarmos <strong>nano</strong> ele nao sera apresentado. Para instalarmos, usando o comando <strong>apt install nano</strong>. Agora para criarmos um arquivo de texto, podemos colocar o comando: <strong>nano teste.txt</strong> e assim o arquivo será criado. </p><br>
+            <h2>Sistemas de Arquivos Linux.</h2>
+            <p> Dentro do linux precisamos entender o sistema de arquivos e de diretórios de pasta. Ele é bem parecido com o do windows porém com algumas diferencas. No windows tudo comeca com c:/...... e tudo é criado a partir dai. No Linux tudo comeca a partir do <strong>Root.</strong> Depois da barra temos acesso a estrutura de diretórios como por exemplo: /bin, /dev, / etc . o <strong>Bin</strong> foi criado para armazenar comandos binários que precisam ser disponibilizado para todos os usuários, como o <strong>LS</strong> por exemplo, e assim por diante, cada um desses locais. Podemos então procurar no google <a href="https://www.google.com/search?q=linux+directory+structure&oq=linux+directory&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyCQgBEEUYORiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIICAUQABgWGB4yCAgGEAAYFhgeMggIBxAAGBYYHjIICAgQABgWGB4yCAgJEAAYFhgeqAIAsAIB&sourceid=chrome&ie=UTF-8" target="_blank"> esta pesquisa</a> para nos aprofundarmos mais.</p><br>
+            <h2>Navegando no Linux</h2>
+            <p> Aqui iremos aprender a navegar pelo ambiente Linux. O primeiro comando é o <strong>LS </strong> que irá listar tudo o que há dentro do diretório atual.</p>
+            <hr>
+
+            <h2 id="rc">Resumo Comandos:</h2>
             <ul>
-                <li><a href="#dist">Distribuições</a></li>         
+                <li><strong>WHOAMI</strong> - Mostrar qual usuário atual.</li>
+                <li><strong>ECHO</strong> - Envia alguma coisa para a tela, Ex: Echo hi, retornará o Hi na tela.</li>
+                <li> <strong>ECHO $0</strong> - Informará qual o diretório que voce está. </li>
+                <li> <strong>HISTORY</strong> - Infomará quais os últimos comandos acessaram.</li><br>
+                <h3> Packages:</h3>
+                <li> <strong>APT LIST</strong> - Mostrará a lista de tudo que está instalado.</li>
+                <li><strong>APT UPDATE</strong> - Acessará o ubunto e atualizará os packages para os mais atualizados e usados.</li>
+                <li><strong>APT INSTALL NOMEPACOTE(NANO)</strong> Instala qualquer pacote. </li>
+                <li><strong>APT REMOVE NOMEPACOTE(NANO)</strong> Desinstala qualquer pacote. </li><br>
+                <h3>Navegation:</h3>
+                <li> <strong>LS</strong> Lista tudo que há dentro do diretório atual.</li>
+                <li><strong>LS -A</strong> Lista tudo + os arquivos ocultos.</li>
+                <li> <strong>LS -1</strong> Lista tudo um embaixo do outro</li>
+                <li><strong> LS -l</strong> Passa as informacoes detalhadas do que há no diretório.</li>
+                <li> <strong>PWD</strong> Nos mostra o caminho que estamos para o diretório atual.</li>
+                <li><strong>CD /dirname</strong> Serve para acessarmos um diretorio em questao no dirname. (CD = ChangeDirectory).</li>
+                <li><strong>CD ..</strong> Volta para o diretório ROOT.</li>
+                <li><strong>LS /direname</strong> Lista o que há dentro de um diretório sem navegar para ele.</li><br>
+                <h3>CreateFiles&Dir:</h3>
+                <li> <strong>CD ˜</strong> Navega para o diretório Home dentro do Root. </li>
+                <li> <strong>MKDIR NOMEDODIRETORIO</strong> Criar um diretório .</li>
+                <li> <strong>MV NOMEDIR NOVONOMEDIR</strong> Renomeia o nome de um diretório para outro.</li>
+                <li> <strong>TOUCH NOME.TXT</strong> Cria um arquivo. </li>
+                <li><strong>RM NOMEDOARQUIVO</strong> Remove um arquivo</li>
+                <li><strong>RM -R NOMEDODIRETORIO</strong> Remove um diretório.</li>
+                <li><strong>RM HI*</strong> irá remover tudo que comeca com hi.</li><br>
+                <h3>CreatingFiles: </h3>
+                <li><strong>NANO NOMEARQUIVO.TXT</strong> Cria um arquivo txt.</li>
+                <li><strong>CAT NOMEARQUIVO.TXT</strong> Visualiza o arquivo sem precisar abrir.</li><br>
+                <h3>Redirecionamento no Linux:</h3>
+                <li><strong> CAT ARQUIVO.TXT > ARQUIVONOVO.TXT</strong> Copia tudo que tem em um arquivo e cria um novo com essas informacoes.</li><br>
+                <h3>GREP</h3>
+                <small>(Procura por conteúdo dentro de Arquivos).</small>
+                <li><strong>GREP HELLO NOMEARQUIVO.TXT</strong> Procura se dentro do arquivo tem "HELLO". </li>
+                <li><strong>GREP HELLO ARQUIVO1.TXT ARQUIVO2.TXT</strong> Procura se no arquivo 1 e arquivo 2 possuem "HELLO". </li>
+                <li><strong>GREP HELLO FILL*</strong> Procura se há Hello em todos os arquivos que comecem com FILL.</li>
+                <li> <strong> GREP -I -R HELLO</strong> Procura por diretórios.</li><br>
+                <h3>FIND</h3>
+                <small>Procura por Arquivos.</small>
+                <li> <strong>FIND</strong> Irá mostrar tudo o que há no diretório incluindo arquivos ocultos. </li>
+                <li><strong>FIND -TYPE F</strong> Mostra apenas os arquivos.</li>
+                <li><strong>FIND -TYPE D</strong> Mostra apenas os diretórios.</li>
+                <li> <strong>FIND -TYPE F -NAME "DOCKER.TXT" </strong> Procura pelo arquivo em especficio. </li>
+                <li><strong>FIND -TYPE F -NAME "ASN*"</strong> Procura por arquivos que comecem com ASN.</li><br>
+                <h3>MultipleCommands</h3>
+                <li><strong>MKDIR TESTE1 ; CD TESTE1; ECHO OK</strong> Executa os 3 comandos seguidos em uma linha, separados por ;</li>
+                <li><strong>MKDIR TESTE1 && CD TESTE1 && ECHO OK</strong> Funciona igual o acima, porém irá parar quando apresentar error. ;</li><br>
+                <h3> ManagingProcesses</h3>
+                <li><strong>PS</strong> Nos mostra nossos processos e suas infos.</li>
+                <li><strong> SLEEP 5</strong> Nao responde a linha de comando por 5 segundos.</li>
+                <li><strong> KILL IDASERPARADO </strong> Mata o processo através de seu ID.</li><br>
+                <h3>MannageingUsers</h3>
+                <li><strong> WHOAMI  </strong> Mostra o usuário atual. </li>
+                <li><strong>USERADD -M nomeUsuario</strong> Cria um usuário. </li>
+                <li><strong> DOCKER EXEC -IT -U USERNAME ID BASH  </strong> Abre o container logando com o usuário desejado. <a href="https://www.udemy.com/course/docker-zero-avancado/learn/lecture/33433366#overview" target="_blank">link</a></li><br>
+                <h3>MannagingGroups</h3>
+                <li><strong> CAT /ETC/GROUP</strong> Lista todos os grupos.</li>
+                <li><strong> GROUPS USUARIO </strong> Mostra a quais grupos o usuario em questao participa.</li>
+                <li><strong> GROUPADD NOMEDOGRUPO</strong> Cria um novo grupo.</li>
+                <li><strong> usermod -G nomedoGrupo nomeUsuario</strong> Adiciona o usuario dentro do novo grupo.</li><br>
+                <h3>PermissionFiles</h3>
+                <p> Para falarmos de permissoes em arquivos/diretorios precisamos entender que um usuário basicamente pode <strong>R</strong>ead: Ler um arquivo, <strong>W</strong>rite: Escrever um arquivo e e<strong>X</strong>ecute: Executar um arquivo. <a href="https://www.udemy.com/course/docker-zero-avancado/learn/lecture/33433376#overview" target="_blank">Link</a></p>
+
             </ul>
-
         </div>
-
-    <div class="base">
-        <h2 id="dist"> Linux </h2>
-        <p> Para começar a falar de linux precisamos deixar claro que Linux é 100% open source, de forma que qualquer pessoa pode desenvolver, alterar, copiar uma versão do Linux. Essas versões do linux são chamada de <strong>Distribuições</strong>. Por isso é importante citar as mais famosas : <strong>Ubunto, Debian, CentOS, Fedora, Alpine</strong>, a alpine não é muito famosa, porém ela é de extrema relevância dentro do universo Docker, pois ela é extremamente leve. </p>
-    </div>
 
 
 
