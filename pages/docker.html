@@ -13,7 +13,8 @@
                 <h1>Docker Resume Guide</h1>
             </div>
             <div class="nav">
-                <ul>      
+                <ul>   
+                    <li><a href="#img"> ImagemDocker</a></li>   
                 </ul>
             </div>
 
@@ -46,10 +47,51 @@
             <hr>
                 <p><strong><a href="./linux.html" target="_blank">Aqui sugerimos ir para o Curso basico de Linux Para depois Continuar em Docker.</a></strong></p>
             <hr>
-            <h2> Imagens Docker </h2>
             <p> A partir daqui aprenderemos a trabalhar com o Docker em si. Começaremos nos aprofundando em o que sao <strong>Images & Containers</strong>. O que é uma <strong>Imagem ?</strong> Uma imagem é o que nós chamaos de <strong>cut-down OS</strong>. Dentro de uma imagem temos um sistema operacional, suas bibliotecas, os arquivos da aplicacao(tudo que ela precisa para funcionar), e por último todas as variáveis de ambiente(EnviromentVariables). Em resumo, uma imagem contém tudo o que é necessário para uma aplicacao funcionar. Caso tenhamos em nosso computador uma imagem com a aplicacao rodando, consegiumos transferir essa imagem para outro pc sem problema algum. Já por outro lado, os <strong>Containers</strong> possuem uma outra funcao, é um ambiente isolado. O Container pode ser iniciado e pode ser pausado <strong>(start/stop)</strong> e isso pode ser feito através do terminal ou do dockersOFT. O container é um <strong>Processo</strong>  que roda dentro de uma máquina. Quando temos nossa imagem pronta, criamos um container e esse container é um processo que roda e carrega a imagem. <strong>Exemplo: </strong> </p>
             <img src="../dockerPhotos/d8.png" alt="">
-            <p> Dando continuidade, falaremos um pouco da aplicacao. A partir adqui o objetivo é criar uma aplicacao, converter em imagem, gerar um container a partir da imagem  e em seguida roda-la em nossa maquina local.  </p>
+            <p> Dando continuidade, falaremos um pouco da aplicacao. A partir adqui o objetivo é criar uma aplicacao, converter em imagem, gerar um container a partir da imagem  e em seguida roda-la em nossa maquina local. </p><br>
+            <h2 id="img">Imagem Docker</h2>
+            <p> A partir daqui aprenderemos todo o passo a passo para configurarmos e criarmos uma <strong>Imagem</strong> dentro do docker. Como já vimos anteriormente, para comecar precisamos de um arquivo chamado <strong>Dockerfile</strong>, entao comecaremos aprendendo a como configura-lo. Quando criamos um <strong>Dockerfile</strong> a primeira coisa que precisamos especificar é o <strong>FROM</strong> que é qual imagem ele irá carregar, e também qual a plataforma (Node,Python, etc).  Logo em seguida precisamos especificar a <strong>Workdir</strong> que é basicamente: imagine que nossa aplicacao esteja dentro do diretorio app. Entao, poderemos ali colocar /APP para que ele já entenda que trabalhará a partir dali, nos poupando de em qualquer comando ficar digitando na mao o /app. Logo em segguida temos o <strong>Copy / Add </strong> que servem para copiar ou adicionar todos os arquivos que fazem parte da aplicacao dentro da nossa imagem. É aqui que enviamos tudo que for necessário e que estiver no diretório local para a imagem. Em seguida temos o <strong>RUN</strong> que serve para rodar a aplicacao ou rodar o processo, serve para colocar em funcionamento. Também temos o <strong>ENV</strong> que sao as configuracoes de ambiente, que em oturas palavras é : o que que eu preciso dentro do linux para rodar essa aplicacao. Também temos o <strong>Expose</strong> que é o responsavel por colocar a porta em que a aplicacao irá rodar. Também se for necessário podemos informar o <strong>USER</strong> que é qual usuário irá executar essa aplicacao. Depois que a aplicacao estiver rodando, as vezes precisaremos rodar alguns comandos através do <strong>CMD ou EntryPoint</strong>. Esse é basicamente tudo que precisaremos entender para trabalhar com Docker. Basicamente de início parece "complicado", mas rapidamente nos aprofundamos. <strong>Abaixo o RESUMO:</strong>   </p><br>
+            <p><strong><a href="#from">FROM:</a> </strong> Qual imagem(Ubuntu,Apache) e qual Plataforma(Node,Pyth)</p>
+            <p><strong> Workdir</strong> Diretório inicial da qual partiremos os comandos.</p>
+            <p><strong><a href="#cai">Copy/Add</a></strong> Adicionar & Copiar tudo o que for para dentro da imagem.</p>
+            <p><strong><a href="#run"> RUN </a></strong> Rodar o processo/aplicacao.</p>     
+            <p><strong>Env</strong> Tudo que o linux precisará para rodar a aplicacao.</p>  
+            <p><strong>Expose</strong> Define em qual porta irá subir</p>
+            <p><strong> User </strong> Qual usuário poderá acessar</p>
+            <p><strong>CMD/EntryPoint</strong> Executar comandos após aplicacao estiver rodando</p>
+            <p><strong> </strong></p><br/>     
+            <h3 id="from">Escolhendo a imagem: </h3>
+            <p> Antes de escolher a imagem precisamos ir na raiz da nossa aplicacao e nele criarmos nosso arquivo <strong>Dockerfile</strong>. O próximo passo, é analisarmos qual o sistema que nossa aplicacao está rodando (node?). Depois de ver isso, precisamos nos certificar qual versao do node foi desenvolvida a aplicacao. Após saber isso, podemos ir no site <a href="https://hub.docker.com/" target="_blank">DockerHub</a> e selecionar a imagem do <strong>NODE</strong>. Em seguida, podemos clicar em Tag, e procurar pela versao do node que desejamos. Ele irá apresentar diversas opcoes. Quanto menor, mais estavel e mais compativel for, melhor. Em seguida basta copiarmos o nome, ex: <strong>12-apine3.14</strong> e colocarmos dentro do nosso <strong>FROM</strong> no DockerFile.</p><br>
+            <h3 id="cai">Copiando Arquivos p/ Imagem:</h3>
+            <p> Após termos nossa imagem devidamente configurada através do FROM, o próximo passo é copiar os arquivos da aplicacao pra dentro da imagem. Ou seja, instruir o dockerfile através do Copy. Utilizando o <strong>COPY </strong> iremos copiar todos os arquivos incluindo pastas e subpastas para o diretório App por ex. Porém, e se precisarmos copiar um arquivo externo ? Como na internet por ex? nesse caso utilizaremos o <strong>ADD</strong> . Também utilizamos o ADD quando queremos copiar arquivos compactados, e ele automaticamente já irá descompactar o arquivo dentro do diretório em questao. Em resumo, se for uma cópia simples usamos o Copy, se for algo de um site, ou zipado, utilizamos o ADD. </p>
+            <img src="../dockerPhotos/d9.png" alt="">
+            <h3 id="run"> Utilizando o RUN: </h3>
+            <p> Aqui iremos instalar todas as dependencias que a nossa aplicacao precisa para funcionar normalmente. Todas as dependencias precisam estar funcionando antes do usuário tentar executar o processo. No <strong>ALPINE</strong> </p><br>
+            <h3> Env - Enviroment</h3>
+            <p> Muitas vezes precisaremos</p><br>
+            <h3>Expose</h3>
+            <p> Quando estamos rodando um container dentro do nosso PC com uma aplicacao web, e em seguida abrimos o browser para acessar a aplicacao do container, precisamos em algum lugar setar qual porta do container estará aberta. No caso, setaremos dentro do <strong>EXPOSE</strong>. </p><br>
+            <h3>CMD</h3>
+            <p> É a partir daqui que configuramos que ele execute a aplicaao, geralmente dentro da pasta SRC, com o comando. Porém precisamos passar essa informacao no formato do CMD. precisamos entender que o <strong>RUN</strong> é executada enquanto a imagem está sendo construída, já o <strong>CMD</strong> é executada após o a imagem estar construida. </p>
+            <img src="../dockerPhotos/d10.png" alt="">
+            <h3>User</h3>
+            <p> Utilizar os comandos dentro de umc ontainer através do ROOT é uma grave falha de seguranca, por isso o ideal é criarmos um usuario e um grupo para subir e utiliza-lo no container.</p>
+            <img src="../dockerPhotos/d11.png" alt="">
+            <h3> Rodando a Aplicacao </h3>
+            <p> Nosso container através do EXPOSED está escutando na porta 3000, porem precisamos informar ao Mac que a porta 3000 do container está mapeada com a porta 30000 do container. Para isso construimos a imagem normalmente, e em seguida executamos mapeando a porta com o comando: <strong>docker run -dp 3000:3000 nomeDaImagem</strong>. Pronto. Nossa aplicacao estará rodando.</p><br>
+            <h3> Otimizando a Performance: </h3>
+            <img src="../dockerPhotos/d12.png" alt="">
+            <h3>Tags em Imagens :</h3>
+            <p>Conforme vamos evoluindo e alterando o sistema, teremos provavelmente diversas imagens da mesma aplicacao, porém com versoes diferentes. Quando executamos o comando <strong>docker Image</strong> podemos listar as imagens e a sua respectiva tag. Utilizando o comando <strong>docker build -t app:nomeDaTag</strong> podemos criar uma nova tag. Porém quando damos denovo o <strong>docker images</strong> perceberemos que a latest nao será excluida, na verdade nao atualiuizamos, e sim criamos outra. Para alterar, colocamos <strong>docker image tag app:nomeDaTagAtual app:NomeDaNovaTag</strong>. </p><br>
+            <h3> Compartilhando Imagens :</h3>
+            <p> Chegou a hora de compartilhar a nossa imagem, fazer um backup da imagem, ou até mesmo apenas fazer o upload. Uma vez que ela estiver no dockerhub, podemos fazer o download dela em qualquer outra máquina. Para isso, precisamos primeiro ir no <a href="https://hub.docker.com/" target="_blank"> DockerHub </a> e em seguida poderemos criar repositórios, públicos ou privados. Em seguida voltamos ao nosso terminal e listamos nossas imagens, e pegamos a versao mais atual (através da TAG). Agora adiconaremos uma nova tag que é igual ao seu repositorio criado. por ex: guittgui/app . Para isso colocamos o comando: <strong>docker image tag IMAGEID guittgui/app:v1</strong> pronto, agora temos a versao 1 renomeada. Agora já estamos prontos para fazer o upload, e para isso primeiro realizamos nosso login: <strong>docker login</strong> e em seguida pro upload colocamos o comando: <strong>docker push nomeDoRepositorio:TAG. </strong>. A partir desse momento já podemos conferir no nosso repositório no dockerHub.</p><br>
+            <h3> Salvando e Carregando Imagens: </h3>
+            
+            
+            <hr>
+            <h2>Container Docker</h2>
+
         </div>
 
 
