@@ -11,6 +11,8 @@ BackEnd:
 
 5- CI/CD - PIPELINES - Integração Contínuas. 
 
+6- Documentacao NODE.
+
 ________________________________
 
 
