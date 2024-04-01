@@ -2,17 +2,25 @@ BackEnd:
 
 1-  TESTES With Jest.
 (Unitário, Integração).
-
 2- Mensageria 
-
 3- Arquitetura
-
 4- Deploy Heroku + Deploy AWS/AZURE (EC2, EC3).
-
 5- CI/CD - PIPELINES - Integração Contínuas. 
-
 6- Documentacao NODE.
+7- Princípios SOLID.
 
 ________________________________
 
+ROADMAP RS:
+==> API NATIVAS - FileSystem, Stream, Crypto.
+==> Typescript
+==> JWT
+==> Princípios SOLID
+==> SQL - ORM (Prisma).
+==> Docker. 
+==> Framework (Fastify/NestJS).
+==> Testes automatizados (Jest,Vitest).
+==> DesignPatters
+==> Deploy & CI/CD. 
+___________________________________-
 
