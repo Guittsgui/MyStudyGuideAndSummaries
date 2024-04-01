@@ -1,0 +1,8 @@
+BackEnd:
+
+- Mensageria.
+- Arquitetura.
+
+-Deploy Genérico/Heroku.
+-Deploy Específico: AWS/AZURE. 
+
