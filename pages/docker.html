@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
-
             <a href="../index.html">Home</a>
             <div class="title">
                 <h1>Docker Resume Guide</h1>
@@ -106,10 +105,10 @@
             <h3> Volumes Persistentes</h3>
             <p> Imagine o seguinte cenário: Temos um container e criamos dentro dele 02 arquivos. Em seguida resolvemos remover o container. Quando criarmos outro, ele terá esses arquivos? A resposta é não pois um container sempre é criado baseado em sua <strong>imagem</strong> e como na imagem nao temos os arquivos, logo no container também não terá.  Para isso temos o que chamamos de <strong>Volume</strong>, que podem ser local ou em nuvem. Para isso, precisamos primeiro criar um volume, depois vincula-lo a um container. Para criarmos o volume, utilizamos o comando: <strong>docker volume create app-dados</strong>. Para verificarmos o que há dentro dele, podemos usar o comando: <strong>docker volume inspect app-dados</strong> assim teremos informacoes. Tendo o volume criado, basta colocarmos um container para rodar com o comando: <strong>docker run -d -p 3000:3000 --name nomeContainer -v nomeDoDiretorio:/dioretorio app:v2</strong>. Em geral, os dados do volume são persistenets já os daos de um container não. </p><br>
             <h3> Copiando arquivos do Host p/ Container</h3>
-            <p> Também é possível copiarmos arquivos do nosso host local para um container, e também do container para nosso host local. Por ex: Podemos acessar um container, criar um arquivo .txt dentro dele, e copia-lo para nosso host local. </p>
-
+            <p> Também é possível copiarmos arquivos do nosso host local para um container, e também do container para nosso host local. Por ex: Podemos acessar um container, criar um arquivo .txt dentro dele, e copia-lo para nosso host local. Para isso podemos utilizar o comando <strong>docker cp</strong>. Comecamos colocando a origem e em seguida o destino. ex: <strong>docker cp nomeImage:/app/arquivo . (desitno)</strong>. Da mesma forma podemos copiar do mac para dentro do container, só mudando a origem e o destino.  </p>
             <hr>
             <h2>Docker Compose </h2>
+            <p> Aqui iremos começar a falar de algo extremamente importante chamado de <strong>Docker Compose</strong>. Para que ele serve? Quem é ele? Imagine que tenhamos uma aplicação com o backend, o frontend e nosso banco de dados. Será que vale a pena</p>
             <hr>
 
         </div>
