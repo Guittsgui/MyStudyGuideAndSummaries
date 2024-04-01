@@ -171,7 +171,7 @@ small{
 
 .skillbox{
     width: 900px;
-    height: 170px;
+    height: 130px;
     border: 1px solid black;
     border-radius: 20px;
     box-shadow: 2px 2px 2px gray;
@@ -179,7 +179,6 @@ small{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
     padding: 10px;
     cursor: pointer;
 }
@@ -225,4 +224,19 @@ small{
 }
 .Docker:hover{
     background-color: rgb(255, 228, 209);
+}
+
+.cloud{
+    background-color: rgb(142, 142, 255);
+}
+.cloud:hover{
+    background-color: rgb(192, 192, 250);
+}
+
+.clean{
+    background-color: chartreuse;
+}
+
+.clean:hover{
+    background-color: rgb(225, 253, 195);
 }

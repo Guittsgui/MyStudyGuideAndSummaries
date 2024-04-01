@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Front End.</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+            <a href="../index.html">Home</a>
+            <div class="title">
+                <h1>Cloud Resume Guide</h1>
+            </div>
+            <div class="nav">
+                <ul>   
+                    <p> <a href="#cloud"> Intro </a></p>
+                    <p> <a href="#aws"> Aws </a></p>
+                </ul>
+            </div>
+
+        <div class="base">
+            <h2 id="cloud"> Introdução Cloud </h2>
+            <p> O que é a computação em nuvem ? Computação em nuvem nada mais é do que o fornecimento de recursos computacionais de maneira remota públicas na internet. Basicamente deixamos de adquirir os hardwares e iremos pagar de acordo com o uso. Funciona como uma espécie de taxímetro, a partir da cloud nós não precisamos estipular o quanto iremos usar para poder comprar, e temos recursos "infinitos" em nuvem na qual podemos ir usando e pagamos conforme formos utilizando. Dito isto fica uma pergunta, quem cuida desses <strong>recursos "remotos"</strong> que iremos consumir ? Temos os três principais provedores de recursos: <strong>AWS, AZURE, CGP</strong>. Vale ressaltar que uma grande vantagem é que contratamos por <strong>demanda</strong>. Pagamos pelo que é utilizado. Outra grande vantagem, é que antigamente precisávamos de máquinas físicas (servidores), e muitas vezes esses servidores demorariam semanas ou até meses para que ele chegue e só assim a aplicacao poderia ser colocada em modo de producao. Já com a cloud, em questao de poucos minutos o seu "servidor" já estará online e pronto para ser utilizado. </p>
+            <p> Quando falamos em computacao em nuvem, executar aplicacoes em cloud, precisamos também entender exatamente os tipos de servicos que o cloud provider oferece. Nos dias de hoje possuimos diversos tipos de servicos para que possamos "otimizar". </p>
+            <img src="../cloudPhoto/c1.png" alt="">
+            <p> O <strong>ON-PREMISES </strong> é a infra tradicional onde nós mesmos precisamos gerenciar tudo. Quando falamos em <strong>Infra as a Service</strong> que é quando criamos uma VM dentro do provider, toda a parte mais "física" já passa a ser responsabilidade do provider (memória, cpu etc), e nossas responsabilidades ficarão apenas em versionar o SO, seguranca, atualizacoes, etc. Normalmente nosso primeiro contato com Cloud é através deste modelo dest <strong>Infra As a Service</strong>. </p>
+            <p> Já quando começamos a falar de <strong>Platform as a Service (PAAS)</strong> o nível de gestão nossa já é muito menor. Por exemplo, quando desenvolvemos uma aplicacao em <strong>DOTNET</strong> precisamos instalar e configurar uma série de runtime, pacotes, etc. Aqui nesse cenário de PAAS essa preocupacao nao existe mais pois o próprio cloud provider ficará responsável por toda a configuracao. Aqui basicamente nós só precisaremos nos preocuparmos com nossa aplicacao e com os dados da nossa aplicacao.</p>
+            <p> E quando falamos em <strong>Software as a Service</strong> aqui basicamente nós nao gerenciamos nada como por exemplo google drive, etc etc.</p>
+            <p> É importante que entendamos isso para que possamos saber qual o nível de responsábilidade que a equipe/empresa precisará. Quanto mais para a esquerda maior a mão de obra, quanto mais para a direita, menos responsabilidades. </p><br>
+            <p style="color: red"> <strong>OBS: A partir daqui começaremos a entrar nos conceitos de CLOUD utilizando por padrão os serviços da AWS. Porém vale ressaltar que os pilares são agnósticos ou seja, aqui iremos ver apenas conceitos que podem ser aplicados para Azure e também para Google. </strong>.</p><br>
+            <h2 id="aws"> Intro Cloud (AWS Cloud) </h2>
+            <p> AWS é a empresa que tem a maior fatia de presença no mercado. E para começar literalmente do início podemos clicar aqui para <strong><a href="https://aws.amazon.com/pt/free/?gclid=EAIaIQobChMI6pGkvOmhhQMVJmJIAB0FuwSgEAAYASAAEgINGfD_BwE&trk=eb5111a8-7144-44a0-b89b-294d1572e79e&sc_channel=ps&ef_id=EAIaIQobChMI6pGkvOmhhQMVJmJIAB0FuwSgEAAYASAAEgINGfD_BwE:G:s&s_kwcid=AL!4422!3!507891927284!p!!g!!aws%20amazon%20com!12582854283!122410197809&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all" target="_blank">Criar sua Conta </a></strong>. Assim que executamos o cadastro, iremos percebes que temos <strong>TRES</strong> tipos de servicos gratuitos, o de testes (novas features que eles mesmos querem que nós testemos), 12 meses gratuitos em alguns servicos, e também uma série de servicos que são sempre gratuitos. Quando comecamos a trabalhar com AWS precisamos nos deparar com alguns pontos importantes, como nossa localizacao ( que será via regioes), entao uma dica é que caso inicialmente seu objetivo seja estudos, coloque norte da <strong>virginia</strong> pois será consideravelmente mais barato(usest1).  </p>
+            <p> Outra dica que vale bastante a pena se atentar, é que ao criarmos nossa conta teremos o usuário <strong>ROOT</strong> por padrão, por isso, é uma boa dica criar um novo usuário adm para que possamos seguir as boas práticas. Para criar um novo usuário, utilizamos o serviço de <strong>IAM</strong>.   </p>
+        </div>
+
+
+
+
+    <script src="./script.js"></script>
+</body>
+</html>

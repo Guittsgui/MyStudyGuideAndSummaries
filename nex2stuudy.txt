@@ -1,8 +1,16 @@
 BackEnd:
 
-- Mensageria.
-- Arquitetura.
+1-  TESTES With Jest.
+(Unitário, Integração).
 
--Deploy Genérico/Heroku.
--Deploy Específico: AWS/AZURE. 
+2- Mensageria 
+
+3- Arquitetura
+
+4- Deploy Heroku + Deploy AWS/AZURE (EC2, EC3).
+
+5- CI/CD - PIPELINES - Integração Contínuas. 
+
+________________________________
+
 
