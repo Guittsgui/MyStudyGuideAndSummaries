@@ -5,17 +5,21 @@ _____________________________________
 
 BackEnd:
 
-1-  TESTES With Jest.
+==> TESTES With Jest.
 (Unitário, Integração).
 
-Revisar Conceitos de POO, para: 
-2 - Princípios de SOLID 
-3- Arquitetura limpa. 
+==> Conceito de DTO.
 
-4- Mensageria 
-5- Documentacao NODE.
-6- Deploy Heroku + Deploy AWS/AZURE (EC2, EC3).
-7- CI/CD - PIPELINES - Integração Contínuas. 
+==> Upload/Images/Files.
+
+Revisar Conceitos de POO, para: 
+==> Princípios de SOLID 
+==> Arquitetura limpa. 
+
+==> Mensageria 
+==> Documentacao NODE.
+==> Deploy Heroku + Deploy AWS/AZURE (EC2, EC3).
+==> CI/CD - PIPELINES - Integração Contínuas. 
 ________________________________
 
 ROADMAP RS:
