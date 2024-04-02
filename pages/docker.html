@@ -13,7 +13,9 @@
             </div>
             <div class="nav">
                 <ul>   
-                    <li><a href="#img"> ImagemDocker</a></li>   
+                    <li><a href="#img"> ImagemDocker</a></li>  
+                    <li><a href="#cont"> ContainerDocker</a></li> 
+                    <li><a href="#dcomp"> DockerCompose</a></li>
                 </ul>
             </div>
 
@@ -87,7 +89,7 @@
             <p> Chegou a hora de compartilhar a nossa imagem, fazer um backup da imagem, ou até mesmo apenas fazer o upload. Uma vez que ela estiver no dockerhub, podemos fazer o download dela em qualquer outra máquina. Para isso, precisamos primeiro ir no <a href="https://hub.docker.com/" target="_blank"> DockerHub </a> e em seguida poderemos criar repositórios, públicos ou privados. Em seguida voltamos ao nosso terminal e listamos nossas imagens, e pegamos a versao mais atual (através da TAG). Agora adiconaremos uma nova tag que é igual ao seu repositorio criado. por ex: guittgui/app . Para isso colocamos o comando: <strong>docker image tag IMAGEID guittgui/app:v1</strong> pronto, agora temos a versao 1 renomeada. Agora já estamos prontos para fazer o upload, e para isso primeiro realizamos nosso login: <strong>docker login</strong> e em seguida pro upload colocamos o comando: <strong>docker push nomeDoRepositorio:TAG. </strong>. A partir desse momento já podemos conferir no nosso repositório no dockerHub.</p><br>
             <h3> Salvando e Carregando Imagens: </h3>
             <hr>
-            <h2>Container Docker</h2>
+            <h2 id="cont">Container Docker</h2>
             <h3>Rodando e Renomeando</h3>
             <p> Agora que ja vimos tudo necessário sobre <strong>Imagens</strong>, comecaremos agora
             a estudar sobre os <strong>Container</strong>. Primeiro passo é sabermos como iremos iniciar um container. Para rodar/Iniciar um container utilizamos o comando : <strong>Docker run nomeApp:v2 </strong> e é simplesmente isso. Porém precisamos lembrar que precisaremos redirecionar a porta (do mac para o container). Iremos reparar que ao rodarmos o comando desse jeito, o terminal irá ficar "congelado" sem que possamos fazeer nada, e ao apertarmos <strong>ctrl + c</strong> ele irá encerrar. Logo, precisamos utilizar a tag -d para que ele execute o container só que estará em background. <strong>docker run -d nomeApp:v2</strong>. Cada container que iniciamos o docker dá um nome randomico para nossos containers, logo será uma boa prática alterarmos esse nome para que possamos nos localizar melhor. Para isso, utilizamos o comando: <strong>docker run -d --name nomeDoContainer nomeApp:v2 </strong>. Ou seja, aqui podemos ver que podemos iniciar um container de diversas formas, porém uma das mais utilizadas é a última que vimos, rodando em background e o nomeando.</p><br>
@@ -107,7 +109,7 @@
             <h3> Copiando arquivos do Host p/ Container</h3>
             <p> Também é possível copiarmos arquivos do nosso host local para um container, e também do container para nosso host local. Por ex: Podemos acessar um container, criar um arquivo .txt dentro dele, e copia-lo para nosso host local. Para isso podemos utilizar o comando <strong>docker cp</strong>. Comecamos colocando a origem e em seguida o destino. ex: <strong>docker cp nomeImage:/app/arquivo . (desitno)</strong>. Da mesma forma podemos copiar do mac para dentro do container, só mudando a origem e o destino.  </p>
             <hr>
-            <h2>Docker Compose </h2>
+            <h2 id="dcomp">Docker Compose </h2>
             <p> Aqui iremos começar a falar de algo extremamente importante chamado de <strong>Docker Compose</strong>. Para que ele serve? Quem é ele? Imagine que tenhamos uma aplicação com o backend, o frontend e nosso banco de dados. Será que vale a pena subir um container só com todo o conteúdo ou não seria melhor subir de forma separada ? cada funcionalidade em seu "container"? Quem nos permite trabalhar com múltiplos containers é o famoso <strong>Docker Compose</strong>. O primeiro passo que precisamos para trabalhar com DockerCopose é a sua instalacao clicando neste <a href="https://docs.docker.com/compose/install/" target="_blank">LINK AQUI</a>. Caso tenhamos instalado em nosso computador o <strong>DockerDesktop</strong> consequentemente o DockerCompose já está instalado. Caso contrário na documentação acima é possível encontrar o passo a passo. </p>
             <p> Em resumo, o <strong>Docker Compose</strong> é um  DockerFile turbinado, pois nada mais é do que um arquivo onde iremos colocar tudo do frontend, tudo do backend, tudo do db. Em resumo, temos um arquivo que "configura" três containers ao mesmo tempo. E quando utilizarmos o comando <strong>docker-compose up</strong> ele irá construir todos os containers configurados devidamente. Logo, o que tivemos de "novo" aqui, foi o fator de configuração do <strong>DockerCompose</strong> quantos containers, quais containers, nomes, portas, configuracoes etc. Porém ao olharmos afundo, o docker compose possui uma instenção chamada : <strong>YML</strong>. YAML é uma linguagem de programação de <strong>date serialization</strong>, ou seja, é muito utilizada para escrever configuracoes. Ele consegue escrever instrucoes para que outros aplicativos possam ler as instrucoes de cima para baixo. Abaixo temos um exemplo de código em yaml:  </p>
             <img src="../dockerPhotos/d13.png" alt="">
