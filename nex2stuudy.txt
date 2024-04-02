@@ -11,6 +11,8 @@ BackEnd:
 
 ==> ChatGPT with RayCast
 
+==> Decorators.
+
 ==> ZobackEnd
 
 Revisar Conceitos de POO, para: 
