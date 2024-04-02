@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Front End.</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+            <a href="../index.html">Home</a>
+            <div class="title">
+                <h1>Git Resume Guide</h1>
+            </div>
+            <div class="nav">
+                <ul>   
+                    <li><a href="#img"> Chave SSH </a></li>  
+                </ul>
+            </div>
+
+        <div class="base">
+            <h2> Configurando SSH/Github</h2>
+            <p> Uma das primeiras coisas que precisarmos fazer para trabalhar com o <strong>gitHub </strong> é estabelecermos uma conexão entre a nossa máquina e nossa conta do github. O jeito mais seguro de fazer isso é configurando através das <strong>Chaves SSH</strong>. Para isso o <STROng>PRIMEIRO PASSO</STROng> é gerarmos a chave através do comando: <strong>ssh-keygen -t ed25519 -C "your_github_email@example.com"</strong>.</p><br>
+            <p> O <strong>SEGUNDO PASSO</strong> é ativarmos nosso SSH AGENT através do comando: <strong>eval "$(ssh-agent -S)"</strong>. </p><br>
+            <p> O <strong>TERCEIROPASSO</strong> após termos gerado nossa chave, precisamos copia-la, para abrir e copiar, basta utilizarmos o comando: <strong>cat /home/joaozinho/.ssh/id_ed25519.pub</strong> depois irmos até o nosso github => settings => adicionar nova chave ssh.</p><br>
+            <p> Para confirmar se a conexao foi estabelecida, <strong>ssh -T git@github.com</strong>.</p>
+            <hr>
+            
+        </div>
+
+
+
+
+    <script src="./script.js"></script>
+</body>
+</html>

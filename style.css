@@ -240,3 +240,10 @@ small{
 .clean:hover{
     background-color: rgb(225, 253, 195);
 }
+
+.git{
+    background-color: blueviolet;
+}
+.git:hover{
+    background-color: rgb(204, 155, 249);
+}
