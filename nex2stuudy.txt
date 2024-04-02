@@ -1,15 +1,16 @@
-Terça Guia Estudos: 
-MySQL + MongoDB 
-
 _____________________________________
 
 BackEnd:
 
 ==> TESTES With Jest.
 (Unitário, Integração).
-==> Conceito de DTO.
+
 ==> Upload/Images/Files.
+
+==> Conceito de DTO.
+
 ==> ChatGPT with RayCast
+
 ==> ZobackEnd
 
 Revisar Conceitos de POO, para: 
@@ -17,8 +18,11 @@ Revisar Conceitos de POO, para:
 ==> Arquitetura limpa. 
 
 ==> Mensageria 
+
 ==> Documentacao NODE.
+
 ==> Deploy Heroku + Deploy AWS/AZURE (EC2, EC3).
+
 ==> CI/CD - PIPELINES - Integração Contínuas. 
 ________________________________
 

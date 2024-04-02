@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Front End.</title>
+        <title>Architecture</title>
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
@@ -12,13 +12,30 @@
                 <h1>Architecture Resume Guide</h1>
             </div>
             <div class="nav">
-                <ul>   
+                <ul>  
+                    <li><a href="#solid"> Solid </a></li> 
                 </ul>
             </div>
 
         <div class="base">
-            <h1> Clean Architecture </h1>
-            <h2>  </h2>
+            <h2 id="solid"> S.O.L.I.D</h2> 
+            <p> Aqui abaixo iremos descrever superficialmente em qual consiste cada um dos 5 pilares de <strong>SOLID</strong>.</p><br>
+            <p> <strong> -- S -- Single Responsability Principle </strong> Consiste em um príncipio que diz que uma classe, componente, entidade e até funcao deve ter apenas uma responsabilidade. Uma boa dica que temos para que possamos seguir o principio da responsabilidae única, é registrar o nome de funcoes/etc com o que ela está fazendo, por exemplo: <strong>registerUser</strong>. Caso tenhamos dificuldade em fazer isso, significa que talvez exista responsabilidade demais nessa funcao. </p>
+            <img src="../arqPhoto/a1.png" alt="" class="peq">
+            <img src="../arqPhoto/a2.png" alt="" class="peq">
+            <p><strong> --O -- Open-Closed Principle </strong> Classes Entidades e Funcoes devem estar abertas para extensoes e fechadas para modificacoes.  </p>
+            <img src="../arqPhoto/a3.png" alt="" class="peq">
+            <img src="../arqPhoto/a4.png" alt="" class="peq">
+            <p><strong> -- L -- Liskov Substitution Principle </strong> Defende que se tivermos uma classe <small>(classeA)</small> e dela criarmos uma subclasse classe <small>(ClasseB)</small> utiliando herança, a subclasse (classeB) essa instancia tem que conseguir substituir o objeto da classe principal, sem quebrar a aplicação. Respeitar o principio de Liskov forca nossa aplicacao a ter as abstracoes em nivel correto e ser mais consistente. Um exemplo é a classe ave(), com os métodos bicar e voar. Dessa forma, ao criarmos o pica-pau, todos os métodos farã sentido pois ele pica e voa. Ao criarmos o pinguin, ele irá bicar porém irá enfrentar problemas ao voar. Então podemos concluir que a abstracao está feita de forma errada, e o principio sempre irá nos fazer pensar o que realmente a classe pai deve fornecer em comum a todas as outras subclasses. </p>
+            <img src="../arqPhoto/a5.png" alt="" class="arqi" ><br>
+            <img src="../arqPhoto/a6.png" alt="" class="peq">
+            <img src="../arqPhoto/a7.png" alt="" class="peq">
+            <p> <strong>-- I -- Interface Segregation Principle </strong> Diz que clientes (Classe)  não devem ser forcados a depender/Implementar de métodos que eles nao usam. Isso acaba sendo reflexo de respeitar os tres primeiros principios porém especializados em interfaces.  </p>
+            <img src="../arqPhoto/a8.png" alt="" class="peq">
+            <img src="../arqPhoto/a9.png" alt="" class="peq">
+            <p> <strong> -- D -- Dependency Inversion Principle </strong> A parte mais importante desse principio é que um módulo nao deve depender de detalhes de   implementacao de outro módulo diretamente. Deve existir uma camada de abstracao (Interface) ali no meio.</p>
+            <img src="../arqPhoto/a10.png" alt="" class="peq">
+            <img src="../arqPhoto/a11.png" alt="" class="peq">
         </div>
 
 
