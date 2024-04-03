@@ -20,6 +20,13 @@
             </div>
 
         <div class="base">
+
+            <h2>DesignPatterns</h2>
+            <p> Dessign Patterns são padrões que adotamos para "estruturar"melhor nosso código. Existem vários conhecidos e aqui iremos breviamente passar por alguns deles.</p>
+            <h3> Singleton </h3>
+            <p> </p>
+
+            
             <h2 id="solid"> S.O.L.I.D</h2> 
             <p> Aqui abaixo iremos descrever superficialmente em qual consiste cada um dos 5 pilares de <strong>SOLID</strong>.</p><br>
             <p> <strong> -- S -- Single Responsability Principle </strong> Consiste em um príncipio que diz que uma classe, componente, entidade e até funcao deve ter apenas uma responsabilidade. Uma boa dica que temos para que possamos seguir o principio da responsabilidae única, é registrar o nome de funcoes/etc com o que ela está fazendo, por exemplo: <strong>registerUser</strong>. Caso tenhamos dificuldade em fazer isso, significa que talvez exista responsabilidade demais nessa funcao. </p>
@@ -51,7 +58,8 @@
             <p> <strong style="color: darkblue;">Camada Externa: <small>Frameworks & Drivers</small> </strong> O usuário/cliente se comunica com a camada mais externa. Essa camada normalmente é chamada de <strong>Infra</strong>. Banco de dados, UI, Serviços Terceiros… <strong style="color: green;">Interface Adapters</strong> - Essa camada faz a adaptação da camada mais externa para uma **interface** na qual a camada de casos de uso conhece. MVC - model, view, controller ficam aqui. A camada de casos de uso não deve conhecer a implementação da camada de infra. Essa camada da aplicação não depende diretamente da implementação de outra camada, ela apenas conhece uma abstração (um contrato) e faz uso desse contato. <strong style="color: pink; text-shadow: 1px 1px 1px black;">Use Cases / BusinessRules </strong> - Camada de casos de uso, contém as regras de negócio da nossa aplicação. Não conhece detalhes das camadas mais externas, só usa abstrações. Esses casos de uso orquestram o fluxo dos dados de/para as entidades e direcionam essas entidades para usar suas regras de negócios. Exemplo: Aplicativo de transferência de remessa internacional (Remessa Online ou Paypal). Exemplo De Regra: O cliente deve poder transferir um valor de seu saldo para outro cliente da plataforma.
             <strong style="color: yellow; text-shadow: 1px 1px 1px black;">Entities</strong> - As **entidades são os objetos de negócios**. São as regras mais gerais e de mais alto nível do negócio. Elas são os menos propensos a mudar quando algo externo muda. Exemplo: Aplicativo de transferência de remessa (Remessa Online ou Paypal). O cliente deve conter um CNPJ, um número de conta no Brasil, e um saldo, sendo o CNPJ um identificador único de cada cliente</p>
             <p> Dito isto, o principal objetivo da <strong>CleanArch</strong> é proteger a nossa regra de negócios de alteracoes externas. Conforme mais vamos para dentro das camdas , menos elas conhecem do software. Na entidade por exemplo, ela nao conhece nada do software, apenas depende de uma interface. Ela nao sabe qual framework, db será utilizado, nada disso. </p>
-            <p> Imagine um cenário: Imagine que não utilizemos clean arch, e dentro das nossas regras de negócio temos códigos SQL, ORM'S tudo junto. Imagine que por algum motivo sua empresa resolva trocar de banco, por qualquer motivo que seja, valor mais acessível por enquanto. Isso irá dar uma trabalheira considerável, baseado que teremos que praticamente mudar toda nossa aplicacao, mexer em todas as nossas classes. </p>
+            <p> Imagine um cenário: Imagine que não utilizemos clean arch, e dentro das nossas regras de negócio temos códigos SQL, ORM'S tudo junto. Imagine que por algum motivo sua empresa resolva trocar de banco, por qualquer motivo que seja, valor mais acessível por enquanto. Isso irá dar uma trabalheira considerável, baseado que teremos que praticamente mudar toda nossa aplicacao, mexer em todas as nossas classes. Se utilizassemos clean code, se precisarmos mudar o banco de dados, precisaremos mudar a base obviamente <strong>Domp</strong> e a única coisa que precisaremos fazer é criar um novo interface Adeptor. </p>
+            <p> Em resumo <strong>CleanArch é um código Desacoplado.</strong> </p>
 
             
 

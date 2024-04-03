@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Curso NodeJS.</title>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+            <a href="../index.html">Home</a>
+            <div class="title">
+                <h1>Resumo Curso de Node.</h1>
+            </div>
+            <div class="nav">
+                <ul>   
+                     <li><a href="#app">Iniciando</a></li>
+                </ul>
+            </div>
+
+        <div class="base">
+            <h1> Resumo Curso </h1>
+            <p> Curso consiste em mostrar o desenvolvimento em NodeJS o mais próximo possível do mundo real. Curso ministrado por <strong>Waldemar Neto</strong>. </p>
+            <p><small><a href="https://www.youtube.com/watch?v=W2ld5xRS3cY&list=PLz_YTBuxtxt6_Zf1h-qzNsvVt46H8ziKh&index=2" target="_blank">Link</a></small></p><br>
+            <h2> Configurações Iniciais: </h2>
+            <h3> Configurando ESLint </h3>
+            <p> basicamente precisamos instalar : <strong>npm install -D @typescript-eslint/eslint-plugin eslint @typescript-eslint/parser</strong>. Em seguida podemos criar o .eslintrc, e setar as seguintes configuracoes: </p>
+            <img src="../nodeCurs/n1.png" alt="">
+            <p> Logo após podemos ir dentro do <strong>package json</strong> e criar um comando para rodar o eslint , etambém fixar possíveis erros: </p>
+            <img src="../nodeCurs/n2.png" alt="">
+            <p> É importante termos um para concertar e outro para quebrar caso haja erros, pois em ambiente de desenvolvimento iremos querer concertar porém quando estivermos trabalhando com pipelines/etc não podemos permitir que ele suba com errors. </p><br>
+            <h3> Configurando tsNodeDev </h3>
+            <p> Precisamos instalar o <strong>ts-node</strong> através do comando: <strong>npm i -D ts-node-dev</strong>. Ems eguida podemos ir até o package json configurar o comando apra rodar através do TSNODEDEV. A grande diferenca é que o tsnode dev consegue apontar direto para um arquivo <strong>TypeScript</strong>. </p>
+            <img src="../nodeCurs/n3.png" alt="">
+            <h3> Configurando o JEST em Node + TS</h3>
+            <p> Primeiro instalar <strong>npm install -D jest ts-jest @types/jest</strong>. O tsJest basicamente é o que faz o jest conversar com typescript. O próximo passo é criar a configuração do Jest ( Uma a global, e outra que iremos sobreescrever apenas para os testesfuncionais.) </p>
+            <hr>
+            <h2 id="app"> Iniciando a App </h2>
+            <img src="../nodeCurs/n4.png" alt="">
+            
+            <p> </p>
+        </div>
+
+
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
