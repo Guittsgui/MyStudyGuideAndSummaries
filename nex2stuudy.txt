@@ -4,17 +4,11 @@ BackEnd:
 
 ==> TESTES With Jest.
 (Unitário, Integração).
-
 ==> Upload/Images/Files.
-
 ==> Conceito de DTO.
-
 ==> ChatGPT with RayCast
-
 ==> Decorators.
-
 ==> ZobackEnd
-
 Revisar Conceitos de POO, para: 
 ==> Princípios de SOLID 
 ==> Arquitetura limpa. 
