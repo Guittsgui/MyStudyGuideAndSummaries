@@ -1,40 +1,43 @@
 _____________________________________
+Quinta Feira: 
+==>> Testes 
+    => Bonieky Aulas.
+    => RocketSeat video Visto + InMemoryRepository.
+    => Testes Integracao
+    => Testes E2E.
+==>> Deploy 
+    => Sites já Descritos no Cap.
+    => Procurar esses deplys c/ Docker.
+==>> Swagger/OpenAPI
+
+==>> Readme
+
+______________________________________________________
+==>> Serviço de Mensageria
+    => O que é?
+    => Kafka vs RabbitMQ
+    => Achar conteúdo Prático na Internet - NODE.
 
 BackEnd:
 
-==> TESTES With Jest.
-(Unitário, Integração).
 ==> Upload/Images/Files.
+
 ==> Conceito de DTO.
+==> Kafka x RabbitMQ.
 ==> ChatGPT with RayCast
 ==> Decorators.
 ==> ZobackEnd
-Revisar Conceitos de POO, para: 
-==> Princípios de SOLID 
 ==> Arquitetura limpa. 
-
 ==> Mensageria 
-
 ==> Documentacao NODE.
-
-==> Deploy Heroku + Deploy AWS/AZURE (EC2, EC3).
-
 ==> CI/CD - PIPELINES - Integração Contínuas. 
-________________________________
-
-ROADMAP RS:
 ==> API NATIVAS - FileSystem, Stream, Crypto.
-==> Typescript.
-==> JWT.
-==> Princípios SOLID
 ==> SQL - ORM (Prisma).
-==> Docker/Kubernetes. 
+==> Kubernetes. 
 ==> Framework (Fastify/NestJS).
-==> Testes automatizados (Jest,Vitest).
-==> DesignPatters.
-==> Deploy & CI/CD. 
 ==> Conceito DTO. 
 ==> HateOAS / Swagger.
+==> Segurança e Performance
 
 ___________________________________
 

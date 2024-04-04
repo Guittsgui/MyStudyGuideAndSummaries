@@ -9,35 +9,30 @@
     <body>
             <a href="../index.html">Home</a>
             <div class="title">
-                <h1>Resumo Curso de Node.</h1>
+                <h1>NODE JS - RESUME. </h1>
             </div>
             <div class="nav">
                 <ul>   
-                     <li><a href="#app">Iniciando</a></li>
                 </ul>
             </div>
 
         <div class="base">
-            <h1> Resumo Curso </h1>
-            <p> Curso consiste em mostrar o desenvolvimento em NodeJS o mais próximo possível do mundo real. Curso ministrado por <strong>Waldemar Neto</strong>. </p>
-            <p><small><a href="https://www.youtube.com/watch?v=W2ld5xRS3cY&list=PLz_YTBuxtxt6_Zf1h-qzNsvVt46H8ziKh&index=2" target="_blank">Link</a></small></p><br>
-            <h2> Configurações Iniciais: </h2>
-            <h3> Configurando ESLint </h3>
-            <p> basicamente precisamos instalar : <strong>npm install -D @typescript-eslint/eslint-plugin eslint @typescript-eslint/parser</strong>. Em seguida podemos criar o .eslintrc, e setar as seguintes configuracoes: </p>
-            <img src="../nodeCurs/n1.png" alt="">
-            <p> Logo após podemos ir dentro do <strong>package json</strong> e criar um comando para rodar o eslint , etambém fixar possíveis erros: </p>
-            <img src="../nodeCurs/n2.png" alt="">
-            <p> É importante termos um para concertar e outro para quebrar caso haja erros, pois em ambiente de desenvolvimento iremos querer concertar porém quando estivermos trabalhando com pipelines/etc não podemos permitir que ele suba com errors. </p><br>
-            <h3> Configurando tsNodeDev </h3>
-            <p> Precisamos instalar o <strong>ts-node</strong> através do comando: <strong>npm i -D ts-node-dev</strong>. Ems eguida podemos ir até o package json configurar o comando apra rodar através do TSNODEDEV. A grande diferenca é que o tsnode dev consegue apontar direto para um arquivo <strong>TypeScript</strong>. </p>
-            <img src="../nodeCurs/n3.png" alt="">
-            <h3> Configurando o JEST em Node + TS</h3>
-            <p> Primeiro instalar <strong>npm install -D jest ts-jest @types/jest</strong>. O tsJest basicamente é o que faz o jest conversar com typescript. O próximo passo é criar a configuração do Jest ( Uma a global, e outra que iremos sobreescrever apenas para os testesfuncionais.) </p>
+            <h1> Resumo Iniciar:  </h1><br>
+            <h2>Arquitetura: </h2>
+            <p><strong>Database </strong> - Arquivo com a instancia do prisma para que possa ser utilizado em diversas partes do código.</p>
+            <img src="../nodeResume/2.png" alt="">
             <hr>
-            <h2 id="app"> Iniciando a App </h2>
-            <img src="../nodeCurs/n4.png" alt="">
-            
-            <p> </p>
+            <p><strong>Domaing -> Entities</strong> Aqui iremos criar as entidades a nível de domínio. São as entidades de forma mais pura, elas são a camada mais interna do ciclo de Clean, elas não conhecem mais nada. Essas <strong>Entidades</strong> geralmente são criada a partir de Classes. </p>
+            <hr>
+            <p><strong>Application -> useCases </strong> Aqui dentro iremos pensar tudo o que cada entidade pode vir a fazer. Por exemplo, um usuário pode ser cadastrar no sistema. Aqui entra basicamente todas as ações que alguém pode fazer dentro da nossa aplicação. Aqui falamos de <strong>Inspecao de Requisitos</strong>. Esses casos de uso geralmente serão uma classe que possuirá um único método chamado <strong>execute</strong> que irá executar o useCase.  Dentro de cada useCase é necessário que ele receba por parâmetro todos os dados que serão necessários para que ele efetivamente construa. <strong>Exemplo:</strong></p>
+            <img src="../nodeResume/3.png" alt="">
+            <p> <strong style="color: brown;"> A partir deste momento podemos comecar a testar as entidades e userCases. A partir daqui temos a base da estrutura da aplicacao. Temos as entidades e suas userCases. A partir daqui podemos mapear o funcionamento da aplicacao quase por completo sem depender de banco de dados, rotas, controllers.</strong></p>
+            <hr>
+            <p><strong>Repositories: </strong>Dando continuidade, em algum momento iremos precisar começar a testar baseado em recursos que venham do banco, por exemplo: Posso adicionar um usuário com email já existente ? A resposta é não, mas como saberemos disso se o detentor dessa informacao é o banco ? usando. Para isso entendemos o <strong>Repositories.</strong> Teremos duas pastas divididas nessa sessao onde teremos os repositorios que se conectarao com o banco de dados (Prisma), e Também o repositório In-Memory (Mock). Para cada entidade que tivermos um repositório teremos uma interface, que sempre começará com a letra I, no caso de usuários por exemplo, usaremos <strong>IUserRepository</strong>. Dentro dele iremos definir o <strong>Contrato</strong> ou seja, os métodos que os UserRepositories(prisma+memory) deverão seguir. </p>
+            <img src="../nodeResume/1.png" alt="">
+            <hr>
+
+
         </div>
 
 
