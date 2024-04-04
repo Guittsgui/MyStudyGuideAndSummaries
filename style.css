@@ -265,7 +265,7 @@ small{
     margin: 20px auto;
     border-radius: 20px;
     box-shadow: 2px 2px 2px gray;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 .awsBox p {
     margin-bottom: 10px;

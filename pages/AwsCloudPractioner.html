@@ -16,7 +16,7 @@
                     <li><a href="#iam"> IAM </a></li>
                     <li><a href="#estructure">AwsEstruc</a></li>
                     <li><a href="#elastic"> EC2</a></li>
-                    <li><a href="#ec2armazenamento"> ArmazenamentEC2</a></li>
+                    <li><a href="#ec2armazenamento"> EBS </a></li>
                     <li><a href="#ec2escalabilidade"> EscalabilidadeEC2</a></li>
                 </ul>
             </div>
@@ -112,9 +112,15 @@
             </div>
             <p> Após o passo a passo, podemos criar nossa ec2, que depois de cerca de <strong>cinco minutos</strong> ele irá subir nossa ec2. Dessa forma, ao voltarmos a área de EC2 ela já estará ali com todas as informações da mesma, como seu dns, ip publico, ip privado, etc.  Ao selecionarmos um opnto, aparecerá uma série de informacoes abaixo. Provavelmente se colocarmos durante a criacao algum script inicial, após a máqiuna estar rodando, já podemos acessa-la através de seu ip-público via protocolo <strong>HTTP</strong>. Ou seja, ela já estará liberada para que qualquer pessoa tenha acesso a aplicacao apenas. Nao a nossa máquina para executar tarefas/mudancas. Para isso, é necessário como já vimos acesasr via PowerShell ou via SSH. </p><br>
             <h3> Acessando via SSH</h3>
-
+            <p> Hoje em dia a form amais segura de acessar sua ec2 é via o próprio terminal sedido pela amazon. Basta irmos até as ec2, selecionarmos a que iremos querer conectar, clicar no canto superior em <strong>Conectar</strong>. A forma mais fácil é a conexao de instancia do EC2. Basta clicar em <strong>Conectar</strong> e pronto. estaremos dentro da nossa máquina linux (ec2). </p><br>
+            <h3> Status da Instância</h3>
+            <p> Ao selecionarmos nossa h2, no canto superior ao lado de Coenctar, temos o <strong>Estado da Instancia</strong> onde iremos poder interromper a instancia, reiniciar a instancia e também encerrar a instancia. </p><br>
+            <h3> Alterando o Security Group </h3>
+            <p> Quando falamos na parte de configuracoes de seguranca ao criar uma máquina, falamos em seu firewall. Firewall é um securtity group que estará protegendo nossa instancia EC2. Aqui poderemos permitir ou bloquear acessos para nossa instancia. Podemos permitir ou bloquear trafego In e Out da instancia. Ao lado esquerdo da EC2, temos uma opção chamada <strong>SecurityGroups </strong> onde teremos nossos grupos de seguranca. Ali podemos criar e configurar grupos, que ficarao salvos, e que possamos usar em quantos servicos ec2 quisermos. Ao alterarmos alguma regra de algum grupo, imediatamente será aplicada para todos seus servicos que utilizem a máquina.  </p>
             <hr>
-            <h2 id="ec2armazenamento">Armazenamento EC2</h2>
+            <h2 id="ec2armazenamento">EBS - Elastic Block Store <small>(EC2)</small></h2>
+            <p> É nada mais nada menos do que o Disco de HD nas máquinas. Se formos pensar, não seria muito inteligente da aws utilizar o próprio disco dos servidores, afinal, lembra quando falamos dos datacenters? Nos datacenter fisicos, se um servidor parasse de funcionar automaticamente tudo que está em seu disco também pararia, além dos recursos ficarem limitados, etc. Então a <strong>AWS</strong> pensou: Ao invés de utilizar os discos locais dos servidores, ela passará a comprar servidor exclusivo para discos (storages) e vai fazer com que todos esses se paressam um só. Em resumo ela cria um <strong>Cluster de Storage</strong>. Esse cluster de storage é conectado ao servidor físico. Em resumo, Quando nossa <strong>EC2 </strong> do nosso servidor precisa de acesso a disco, ele acessa ele acessa o storage, cria os discos virtuais <strong>(EBS)</strong> via network. Consequentemente caso um falhe, ele terá replicações dentro do cluster. Podemos então concluir que <strong>o disco da AWS é um disco de Rede.</strong>. Temos ainda uma grande vantagem nessa modelagem da AWS. Imagine que não queiramos mais um servidor, podemos exclui-lo, e caso futuramente precisemos desses dados, basta criarmos outro servidor, e conseguimos recuperar os dados através do que chamamos de <strong>ATTACH</strong> .Ao montarmos nossas máquinas virtuais, automáticamente temos <strong>30 gb de armazenamento gratuitos.</strong>. Esses discos SEMPRE serão disponibilizados na mesma zona de localidade que ele foi criado. Teoricamente não podemos move-los para outra zona. A menos que seja via <strong>SnapChots</strong>. Caso a próprio aws pergunte, sómente pode ser attach dentro da mesma zona de disponibilidade. </p>
+            <img src="../aws/c5.png" alt="" class="photocel">
             <hr>
             <h2 id="ec2escalabilidade">Escalabilidade EC2</h2>
             <hr>
