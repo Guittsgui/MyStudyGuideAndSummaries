@@ -257,3 +257,15 @@ small{
 .arqi{
     height: 240px;
 }
+
+.awsBox{
+    border: 1px solid black;
+    padding: 20px;
+    width: 600px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px gray;
+}
+.awsBox p {
+    margin-bottom: 10px;
+}
