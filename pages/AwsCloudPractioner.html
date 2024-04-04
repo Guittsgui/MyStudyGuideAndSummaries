@@ -16,6 +16,8 @@
                     <li><a href="#iam"> IAM </a></li>
                     <li><a href="#estructure">AwsEstruc</a></li>
                     <li><a href="#elastic"> EC2</a></li>
+                    <li><a href="#ec2armazenamento"> ArmazenamentEC2</a></li>
+                    <li><a href="#ec2escalabilidade"> EscalabilidadeEC2</a></li>
                 </ul>
             </div>
 
@@ -89,8 +91,33 @@
                 <p><STRONg>CAPACIDADE-DEMANDA <span style="color: green;">$$$</span></STRONg> É quando alugamos por tempo pré determinado uma capacidade X de recursos. Ex: EC2 c/ tais configs por 72 horas.</p>
                 <p><strong> SAVING-PLANS <span style="color: green;">$$</span></strong> São planos mais economicos, onde estabelecemos contratos pré definidos de 01 a 03 anos, informando a amazon quanto tempo ficaremos.</p>
                 <p><strong>SPOT <span style="color: green;">$</span></strong> É quando a Amazon nos fornece uma instancia que não está sendo utilizada mas pode vir a ser. Logo, nosso serviço pode sair do ar a qualquer instante.</p>
+                
             </div>
-            
+            <p> E como a AWS cobra esses valores?  A AWS cobra cada instância por <strong>SEGUNDO</strong>. Em resumo funcion aigual uma academia, quanto mais comprometido formos, quanto maior tempo estabelercermos o contrato, mais barato será o servico. Quanto mais inesperado for, mais caro será o servico.</p><br>
+            <h3> Valores da EC2 </h3> 
+            <p> Para saber exatamente os valores podemos ir no site da amazon e ver os tipos recursos, e o que é adicional para cada máquina. Porém olhar tudo no olho pode se tornar um pouco confuso. Para solucionar isso, a AWS nos proporciona uma <a href="https://calculator.aws/#/" target="_blank"> Calculadora de Preços</a>,onde poderemos ir setando os recursos que gostaermos de ir adicionado a nossa EC2, e assim sabermos o quanto realmente iremos gastar.</p><br>
+            <h3> Instanciando uma EC2 </h3>   
+            <p> A partir de todo nosso conhecimento adquirido nesse capitulo, iremos finalmente por a mão na massa para subir uma máquina EC2. Para isso usaremos um exemplo no qual criaremos um <strong>web-server</strong> com o objetivo de subir um site para a ec2.</p> 
+            <p> A primeira coisa que precisamos fazer é irmos até a área de <strong>EC2</strong> dentro da AWS para que possamos começar. Para testes, utilize o northVirginia. Pois ali encontramos as maiores zonas de disponibilidade e também os melhores valores $. Entrando dentro da área de EC2, a primeira coisa que nos deparamos é um mapeamento geral de todas as nossas EC2. </p>
+            <img src="../aws/c4.png" alt="">
+            <p> Para criarmos uma instancia, clicamos no botao laranja <strong>EXECUTAR INSTANCIA </strong> onde ele irá nos guiar para um passo a passo. </p>
+            <div class="awsBox">
+                <h2> Passo a Passo:</h2>
+                <p><strong>Passo 01:</strong> Escolher um nome para nosso servidor/ec2</p>
+                <p><strong>Passo 02:</strong> Escolher qual SO será utilizado, qual tipo de Linux será utilizado, a imagem do linux. </p>
+                <p> <strong>Passo 03:</strong> Em seguida precisaremos selecionar o tipo de instancia (Qual máquina irá rodar, os recursos), como já vimos nos tópicos acima. </p>
+                <p><strong>Passo04:</strong> Chave de Login - Para acessarmos essa máquina virtual de outro local, sua casa por exemplo, geralmente utilizaremos via SSH ou via ClientShell. Para que possamos acessar de casa ou Trabalho, ou de qualqeur local que nao esteja dentro da rede AWS, precisamos ter uma chave de login. Que pode ser criado ali mesmo. <strong><small>Usar RSA + .PPK</small></strong> </p>
+                <p><strong>Passo05: </strong> Configurarcoes Redes - Configuraremos o firewall, quem pode acessar, quais tipos se pode ou nao http, https.  </p>
+                <p> <strong>Passo06:</strong> Configuracao de Armazenamento onde selecionaremos os recursos da nossa máquina.</p>
+            </div>
+            <p> Após o passo a passo, podemos criar nossa ec2, que depois de cerca de <strong>cinco minutos</strong> ele irá subir nossa ec2. Dessa forma, ao voltarmos a área de EC2 ela já estará ali com todas as informações da mesma, como seu dns, ip publico, ip privado, etc.  Ao selecionarmos um opnto, aparecerá uma série de informacoes abaixo. Provavelmente se colocarmos durante a criacao algum script inicial, após a máqiuna estar rodando, já podemos acessa-la através de seu ip-público via protocolo <strong>HTTP</strong>. Ou seja, ela já estará liberada para que qualquer pessoa tenha acesso a aplicacao apenas. Nao a nossa máquina para executar tarefas/mudancas. Para isso, é necessário como já vimos acesasr via PowerShell ou via SSH. </p><br>
+            <h3> Acessando via SSH</h3>
+
+            <hr>
+            <h2 id="ec2armazenamento">Armazenamento EC2</h2>
+            <hr>
+            <h2 id="ec2escalabilidade">Escalabilidade EC2</h2>
+            <hr>
         </div>
 
 
