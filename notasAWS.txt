@@ -1,4 +1,6 @@
 Course outline
+
+
 Module 1: Introduction to Amazon Web Services
 Summarize the benefits of AWS
 Describe differences between on-demand delivery and cloud deployments
