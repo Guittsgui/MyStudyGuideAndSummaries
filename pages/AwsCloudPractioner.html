@@ -201,13 +201,45 @@
             <p> Básicamente quando vamos excluir algo do S3, ele não será deletado e sim marcado por uma <strong>TAG</strong>. Logo, é possível que recuperemos. Sempre que realizamos um download por exemplo de um objeto dentro de uma bucket, outra versão é criada. Nós pagamos por todas as cópias e seu devido espaço, por isso podemos configurar já que a princípio as versões são ilimitadas. Vale ressaltar que ao habilitar o versionamento de bucket, ele só contará dali para frente. Caso habilite o versionamento em uma bucket que já contenha determinado número de arquivos, eles não estarão dentro do versionamento.</p><br>
             <h3>Replicação de Buckets</h3>
             <p> Aqui falaremos sobre replicação de dados dentro do S3. É extremamente importante caso tenhamos um grupo de objetos que deve ser replicado para uma outra área/região da AWS. Basicametne temos dois cenários: <strong>cenário 01</strong> Temos uma bucket onde ficam nossos objetos de <strong>Desenvolvimento</strong> e gostariamos que sempre que uma feature fosse lancada ela se replicasse para uma outra bucket de <strong>Producao</strong> por exemplo. Isso é chamado de <strong>SRR</strong> - Same Region Replication. Ou seja, replicao dentro da mesma regiao. Muito utilizado para producao e teste. o <strong>cenário 02</strong> é muito parecido com o 01, porém deixando em regiões diferentes. As vezes temos nossa bucket de produção em uma região e queremos criar uma outra bucket de backup por exemplo em outra região. Essa é chamada de <strong>CRR</strong>. <strong>OBS:</strong> Para a replicacao acontecer o versionamento deve estar habilitado.</p>
-            
-
-
+            <div class="awsBox">
+                <p><strong>SSR</strong> - Same Region Replicaiton</p>
+                <p><strong>CRR</strong> - Cross Region Replicaiton</p>
+            </div>
+            <p> Para criarmos a replicacao, precisamos selecionar a bucjket principal, clicar em gerenciamento e em seguida teremos as regras de replicação para serem habilitadas. Onde poderemos selecionar o nome da regra, o status On/Off, a bucket de origem (selecionada), em seguida selecionar uma bucket de destino e selecionar. e em seguida <strong>Salvar</strong>. </p><br>
+            <h3>Sobre Criptografia S3</h3>
+            <p> É o que irá garantir que os arquivos armazenados nas buckets sejam criptografados. A forma que vimios até agora é a mais clássica: o client envia um arquivo sem nenhuma criptografia, e o server (aws) encripta para nós. <strong>(Server Side Encription).</strong>. Porém existe outro cenário não muito comum, mas existe, que é quando o próprio cliente criptografa e logo em seguida ele envia para a aws. <strong>(Client Side Encription).</strong> O jeito recomandado pela prórpia aws é o <strong>SSE</strong>.</p>
+            <br>
+            <h3> Storage Gateway</h3>    
+            <p> Solução da aws para extender o armazenamento da sua empresa. Cenário: Estamos dentro de nossa empresa e dentro dela ainda tenhamos alguns serviços/hardwares/Storages. Esses storages possuem todos os arquivos da empresa e um dia pediram para que seja realizaod um backup para dentro da cloud da AWS. Porém, quem irá fazer a conexão entre o storage local e a S3? Em resumo, do nosso storage parte para o <strong>STORAGE GATEWAY</strong> e do storage Gataway para o S3. Esse <strong>Sotorage Gataway</strong> pode ser tanto físico quanto uma <strong>VM</strong>.</p><br>
+            <h3>AWS Snow</h3>
+            <p> SnowFamily - Basicamente existem 3 servicos de snow, <strong>snowCone, snowBall, snowMobile</strong>. São muito utilizados quando precisamos fazer uploads de dispositivos físicos para a nuvem que sejam em grandes proporcoes. Afinal, se precisarmos fazer um upload de 100TB de arquivos por exemplo, sem esses servicos demoraria dias e dias. Ambos são dispositivo que são enviadod para a empresa para que possemos fazer o upload dos arquivos, depois enviamos de volta para a aws, e assim a aws faz o upload do dispositivo para a sua bucket do S3. Digitando <strong>AWS SNOWFAMILLY</strong> temos acesso a contratacao desses servicos. </p>
+            <div class="awsBox">
+                <p><strong>SnowCone</strong> - Quatidade pequena de Dados</p>
+                <p><strong>SnowBall</strong> - Quatidade média de Dados</p>
+                <p><strong>SnowMobile</strong> - Quantitade gigante de Dados (caminhão).</p>
+            </div>
             <hr>
             <h2 id="db"> Banco de Dados</h2>
+            <p> Existem basicamente dois tipos de bancos de dados. (Relacionais <strong>SQL</strong> e Não Relacionais <strong>NoSQL</strong> ). Agora que já entendemos o que são banco de dados, vamos tentar entender as soluções da AWS para tais cenários. Primeiramente precisamos saber que não é uma boa prática colocarmos nosso database junto de uma instancia da EC2. Pois caso o servidor caia, cairá junto todos os seus dados. Para isso a AWS possui seu próprio sistema de Databases, na qual a própria aws se preocupa com tudo. </p><br>
+            <h3> AWS RDS </h3>
+            <p> Relational Database - São os banco de dados que usam SQL, 100%, tendo como o principal o <strong>Aurora</strong>, pois é da própria AWS, porém, também podemos trabalhar com <strong>Postgrees, MySQL, MariaDB, Oracle, Microsoft SQLServer</strong>. Qualquer um desses que escolhermos estão dentro da <strong>RDS</strong>, serão gerenciados pela AWS. obs: Todos eles ainda são instancias EC2.</p><br>
+            <h3> Elasticache </h3>
+            <p> É o qeu chamamos de <strong>InMemory</strong>. Porém não é possível armazenar uma grande quantidade de dados devido ao seu alto valor. Ele funcionará como um <strong>Cache de Memória</strong>. Podem ser <strong>Redis ou MemCache <small>mais simples</small>. </strong> Nosso usuário quer acessar uma página de E-COMMERCE para ver quanto custa um produto. Nosso servidor realiza uma requisicao para o ElasticCache perguntando qunato custa o produto, e como é a primeira vez, ele não irá saber e enviará uma response dizendo que nao sabe, Entao o servidor irá perguntar ao banco de dados, e automaticamente responderá o valor e esse valor será armazenado no elasticCatche. Logo, os produtos mais procurados por exemplo, sempre estarão disponíveis de forma mais rápida no ElasticCache. </p><br>
+            <h3> Dynamo DB </h3>
+            <p> É o banco de dados oficial da AWS para bancos não relacionais. Ele funciona de forma <strong>Servlesss</strong> no caso nós não vemos o servidor, deixando toda a aplicacao de forma muito mais rápidal.  </p><br>
+            <h3> AWS Neptune</h3>
+            <p> É um tipo de banco de dados da AWS dedicados quando falamos de <strong>SocialNetwork</strong>. Ele estará disponível em até 3 AZ, e estará em 15 Read Replicas, com baixissima latencia etc. Em resumo ele cria Graph Datasets de forma excenelnte (Visualizar dados dentro do banco). </p><br>
+            <h3> AWS Glue</h3>    
+            <p> Ele faz o ETL - <strong>Extract Transform Load</strong>, muito utilizada na parte de <strong>Analytics</strong>. Extract- RDS? S3 ? -> Transform -> GLUE, ETL (transofrma e limpa os dados) -> Load - Redshift. </p>       
             <hr>
             <h2 id="redes">Redes</h2>
+            <h3>Intro</h3>
+            <p> Para começarmos a falar de redes, vamos começar falando de <strong>VPC - Virtual Private Cloud </strong> que é a forma que temos oferecida pela aws de criarmos um ambiente virtual isolado na nuvem. Não quer dizer que nosso ambiente já nao seja isolado. Porém quando subimos a primeira EC2, a AWS por baixo dos panos fez as configurações das nossas <strong>Redes</strong>. Todas as instancias dentro de uma subnet conseguem se falar. Essa subnet está dentro de uma zona de avaliabilidade. Porém tudo isso deve ser criado dentro de uma VPC, que por padrão vem configurada <strong>(Default)</strong>. Geralmente a subnet e a VPC não conseguema cesso a internet e para isso precisamos configurar o <strong>InternetGataway</strong> tanto para fora quanto para dentro. Uma outra vantagem é que podemos definir quais subredes podem ou não podem ter acesso a internet. Por exemplo, nossa aplicacao deve ter acesso a internet, porém nosso database já não precisará ter acesso ao mundo exterior, pois ela se conectará apenas com nossas ec2.  </p><br>
+            <h3>Criando uma VPC</h3>
+            <p> Ninguém trabalha na VPC default, por isso o primeiro passo é criarmos as nossas próprias vpc. Para que uma VPC seja eficiente, precisamos construir 04 pontos: <strong>VPC'S, Sub-Redes, Tabela de Rotas, Gateway da Internet</strong>. Para criar uma vpc, clique em <strong>Criar VPC</strong>, onde iremos informar seu nome, </p>
+
+
+
             <hr>
             <h2 id="cd"> Content Delivery</h2>
             <hr>
