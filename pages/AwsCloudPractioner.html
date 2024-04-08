@@ -236,20 +236,37 @@
             <h3>Intro</h3>
             <p> Para começarmos a falar de redes, vamos começar falando de <strong>VPC - Virtual Private Cloud </strong> que é a forma que temos oferecida pela aws de criarmos um ambiente virtual isolado na nuvem. Não quer dizer que nosso ambiente já nao seja isolado. Porém quando subimos a primeira EC2, a AWS por baixo dos panos fez as configurações das nossas <strong>Redes</strong>. Todas as instancias dentro de uma subnet conseguem se falar. Essa subnet está dentro de uma zona de avaliabilidade. Porém tudo isso deve ser criado dentro de uma VPC, que por padrão vem configurada <strong>(Default)</strong>. Geralmente a subnet e a VPC não conseguema cesso a internet e para isso precisamos configurar o <strong>InternetGataway</strong> tanto para fora quanto para dentro. Uma outra vantagem é que podemos definir quais subredes podem ou não podem ter acesso a internet. Por exemplo, nossa aplicacao deve ter acesso a internet, porém nosso database já não precisará ter acesso ao mundo exterior, pois ela se conectará apenas com nossas ec2.  </p><br>
             <h3>Criando uma VPC</h3>
-            <p> Ninguém trabalha na VPC default, por isso o primeiro passo é criarmos as nossas próprias vpc. Para que uma VPC seja eficiente, precisamos construir 04 pontos: <strong>VPC'S, Sub-Redes, Tabela de Rotas, Gateway da Internet</strong>. Para criar uma vpc, clique em <strong>Criar VPC</strong>, onde iremos informar seu nome, </p>
-
-
-
+            <p> Ninguém trabalha na VPC default, por isso o primeiro passo é criarmos as nossas próprias vpc. Para que uma VPC seja eficiente, precisamos construir 04 pontos: <strong>VPC'S, Sub-Redes, Tabela de Rotas, Gateway da Internet</strong>. Para criar uma vpc, clique em <strong>Criar VPC</strong>, onde iremos informar seu nome, sua faixa de ip, seu tipo de locação, e depois clicar em Criar. A partir do momento que criamos uma VPC, dentro da região temos nossa nova VPC. Agora dentro da nossa VPC é possível que criemos nossas sub-redes. </p>
             <hr>
-            <h2 id="cd"> Content Delivery</h2>
+            <h2 id="cd"> ContentDelivery - Route53</h2>
+            <p> Aqui falaremos de <strong>Route 53</strong> que é basicamente o serviço de <strong>DNS</strong> da AWS. Basicamente ele converte URL em IP e assim chegando até a EC2. Basicamente ao realizarmos a requisicao o próprio pc irá consultar seu cache dns para ver se el já está lá. Caso não saiba, ele irá enviar uma requisicao para o DNS para pedir o IP. Esse é o funcionamento do DNS. O mapeamento de URL para IP é chamado de <strong>Records</strong>, que podem ser de URL para IP (A-Records), e existem vairos outros records, que vale a pena a leitura. Vale lembrar que para o exame não é necessário saber os tiops de Records, mas é válido por saber que o <strong>route53</strong> cobre todos eles.  </p>
+            <img src="../aws/c6.png" alt="">
+            <h3> Route53 Polices </h3>
+            <p> A verdade é que esse servico de traducao qualquer servico da internet faz. O que a aws teria para oferecer de vantagem ? A vantagem que temos com a aws são suas <strong>Polices</strong> com uma série de vantagens como podemos ver no <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html" target="_blank">Link</a>. Mas aqui abaixo temos algum resumo principalmente para esse exame:  </p>
+            <div class="awsBox">
+                <p><strong>Simples Routing</strong> - Básico clássico, requisição envia a URL para o route53, e ele responde devolvendo o ip/Página.</p>
+                <p><strong> Weighted Rout</strong> - Podemos balancear através do Route53 as requisicoes, como por eexemplo: temos 3 ec2, podemos colocar 80% pro 1, 10 pro 2, 10 pro 3. tudo isso via "Dns".</p>
+                <p><strong>Latency Routing Police- </strong> Se um usuário de um país afastado dentar acessar nossa aplicacao, através da política de latencia ele irá retornar a com menor. </p>
+            </div>
+            <p> Agora que já vimos o que é, vamos configurar uma route53 na prática. Para isso precisamos comprar um domínio, que pode ser adquirido dentro da própria configuracao da <strong>Route53.</strong> Tendo nosso domínio, já podemos clicar em <strong>zona hospedada</strong> e realizar as devidas configuracoes. </p><br>
+            <h3> AWS CloudFront</h3>
+            <span style="color: red;"> Procurar sobre CLOUDFRONT, TRANSFER ACCELERATION, GLOBAL ACCELERATOR.</span>
             <hr>
             <h2 id="containers">Containers</h2>
+            <p> Aqui entraremos no mundo de <strong>DOCKER / CONTAINERS</strong>. A diferença entre ele e virtualizacao para muitos parece poucas, mas é extremamente robusta. Basicamente docker veio solucionar o problema do "Ah, mas na minha máquina funciona". Em resumo, quando a aplicacao estiver funcionando em sua máquina dentro de um container, ao transferirmos esse container por completo para outro servidor, ou qualquer otura coisa, ela irá funcionar perfeitamente pois estará sendo executado de forma <strong>independente</strong>.</p><br>
+            <h3> ECS - Elastic Container Service</h3>
+            <p> É o serviço que utilizamos dentro da AWS para rodarmos nossos <strong>Containers</strong>.  </p>
+            <p><span style="color: red;"> Exame: O que é ECS? Quais os Comopnentes ECS.</span></p>
             <hr>
             <h2 id="ic"> Integracoes Cloud</h2>
             <hr>
             <h2 id="cs"> Computação Servless</h2>
             <hr>
             <h2 id="bs">Billing & Support </h2>
+            <h3> AWS Control Tower </h3>
+            <p> Aqui é um servico para empresas que utilizam os servicos da AWS em GRANDE ESCALA. (Geralmente Multinacionais). Ele trabalha com empresa que tenha múltiplas contas. Se temos uma empresa provavelemnte teremos uma organizacao. Essa organizacao possui contas, e muitas podem ter até mais de 50 contas, sendo que em cada conta temos diversas configuracoes para ser feita. Então, a <strong>AWS CONTROL TOWER </strong> entra para simplificar a criacao dessas contas para as empresas. É um processo que simplifica a criacao de multiplas contas em ambientes grandes. </p><br>
+            <h3>AWS Ram</h3>
+            <p> <strong> Resource Access Manager</strong> - Ele funciona dentro de uma estrutura com organizacoes.  </p>
             <hr>
             <h2 id="ml">Machine Learning & AI </h2>
             <hr>
