@@ -19,6 +19,19 @@
                     <li><a href="#ec2armazenamento"> EBS </a></li>
                     <li><a href="#ec2escalabilidade"> EscalabilidadeEC2</a></li>
                     <li><a href="#s3"> S3 </a></li>
+                    <li><a href="#db"> DB</a></li>
+                    <li><a href="#redes">Redes</a></li>
+                    <li><a href="#cd">ContentDelivery</a></li>
+                </ul>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="#containers"> Containers </a></li>
+                    <li><a href="#ic">IntegracaoCloud</a></li>
+                    <li><a href="#cs">CompServless</a></li>
+                    <li><a href="#bs"> BillingSuport</a></li>
+                    <li><a href="#ml">MachineLearning</a></li>
+                    <li><a href="#wa"> WellArchFramework</a></li>
                 </ul>
             </div>
 
@@ -155,9 +168,64 @@
             <h3> ELB & ALB </h3>
             <p> Aqui estamos falando do melhor amigo do autoscaling, é igual arroz e feijao para brasileiros. Vamos retornar ao ecxxemplo acima dos usuários e do nosso grupo de auto scaling. Existe um buraco entre eles que ainda não foi explicado. Afinal, quando o usuário  digita a url da nossa aplicacao, como que a requisicao sabe para exatamente qual servidor ela irá ? Para saber, entre o usuário e o servidor é necessário o <strong>Load Balancer</strong>. Ele tem que ver quem é o webserver1, quem é o webserver2, e também tem que ver que estao dentro de um autoscalinggroup, pois caso o autoscaling crie um novo webserver, ele precisa notificar o loadbalance, para que o load saiba e possa encaminhar. Por isso sempre qeu criamos um autoscaling sempre criamos um loadbalance e vice-versa.  O LoadBalance irá gerar uma URL, uma url bem estranha. Então, quando o usuário digita a sua url, o DNS o redireciona para o LoadBalance, e de acordo com a regra de balanceamento, ele irá redirecionar para o servidor correto. Temos três tipos de LoadBalance que podem ser conferidos dentro do site, porém o mais utilizado é chamado de <strong>Aplication Load Balance</strong>, pois através dele conseguimos fazer decisoes de roteamento baseado em aplicacoes (http, https).</p><br>
             <h3> Criando a Topologia</h3>
-            <p> Aqui iremos colocar a mao na massa e iremos criar nosso auto scaling. Começaremos criando nosso <strong>Modelo de Execução</strong>. Lembre-se, Aqui não estaremos criando uma instância, estaremos criando um modelo para que todas as instancias dentro do autoscaling saiam igual a ela. </p>
+            <p> Aqui iremos colocar a mao na massa e iremos criar nosso auto scaling. Começaremos criando nosso <strong>Modelo de Execução</strong>. Lembre-se, Aqui não estaremos criando uma instância, estaremos criando um modelo para que todas as instancias dentro do autoscaling saiam igual a ela. Aqui o procedimento será praticamente igual ao de criar uma instancia, se nao for Exatamente igual. O próximo passo, é comecar a criar nosso <strong>Grupo de Auto Scaling</strong>. O primeiro passo é configurar o nome do AutoScaling, e em seguida escolher o modelo das instancias. Em segundo passo, iremos configurar as redes, e as zonas que as nossas instancias serão criadas. Em terceiro, iremos criar nosso <strong>Balanceamento de Carga</strong>, onde colocaremos o seu tipom, seu nome, e também se será apenas interno ou externo, e o delay, que é o tempo que o loadbalance irá demorar par acomecar a enviar para um servidor recem criado. O quarto passo é extremamente importante, Precisamos setar nossa capacidade desejada, o míninimo viavel, e o máximo. Ou seja, "Eu desejo trabalahr com dois servidores o tempo inteiro, o mínimo viavel é um servidor, e pode se espandidr até 04 servidores". Quinto passo podemos adicionar notificacoes caso queiramos e pronto. <strong>Finalizado.</strong>. A partir daqui, não iremos mais acessar nossa aplicacao através do IP público da nossa máquina, e sim através do link fornecido pelo nosso <strong>LoadBalance</strong>.  </p>
             <hr>
             <h2> S3 </h2>
+            <p> S3 - Simples Storage Service - Serviço com acesso ilimitado de espaço. Ao criarmos uma pasta/Bucket dentro da aws, podemos colocar la dentro videos/fotos/doc/. Lá podemos organizar da forma que quisermos. Não tem preço fixo, pagamos exatamente pela quantiadde que utilizamos. Para nos habituarmos ao linguajar da AWS, chamamos de <strong>Bucket</strong> as pastas, e de <strong>Objetos</strong> todos os arquivos la dentro. Basicamente criamos uma bucket, dentro dela podemos nos organizar colocando nossos arquivos dentro de pastas e assim por diante. Por trás dos panos a AWS possui um grande <strong>Cluster</strong> onde todos os objetos ficam salvos, por isso sendo ilimitado. Grandes clientes <strong>S3</strong> é a netflix por exemplo, que em 2020 pagava 20 milhões de dólares por mês para a AWS para utilizar seu servico de S3 & outros serviços. </p>
+            <p> <strong>S3</strong> é muito utilizado para quando precisamos fazer backup's de arquivos de uma empresa, ou então quando os arquivos precisam ser disponibilizados para uma aplicacao, websites estáticos, hospedagem de vídeos, ou então até mesmo <strong>Archive</strong> (Que é quando precisamos guardar arquivos por uma quantiade X de anos devido a política da empresa por ex). S3 pode ser muito caro ou baraot, depende de em quanto tempo você irá querer resgatar aquele dado. Para criarmos uma <strong>Bucket</strong> é necessário que fornecemos um <strong>nome único</strong>. O tamanho máximo de um objeto único que podemos hospedar na AWS é de <strong>5TB</strong>.</p><br>
+            <h3> Criando uma Bucket + Upload</h3>
+            <p> Basta acessarmos a área S3 e em seguida Criar uma Bucket. O primeiro passo é escolhermos o <strong>Nome Único</strong> e em seguida a região a ser criada. De forma muito simples temos nossa <strong>bucket</strong> criada e em seguida basta clicar em "adicionar arquivos" ou então arrastar o arquivo  para a região da página, e clicar em <strong>Carregar</strong>. Após upados, podemos clicar nesse arquivo e iremos observar suas propriedades. O principal motivo do nome único de uma bucket, é que é gerado um link único para cada objeto, baseado em seu nome. Porém se copiarmos o link e jogarmos no navegador, não conseguiremos acessar o arquivo, pois geralmente a bucket será <strong>Privada</strong>. Caso queiremos abrir, precisamos clicar no botão abrir, pois o próprio botão já irá gerar uma URL com um response content + token de seguranca, assim permite ser aberta com tal token. </p><br>
+            <h3> Classes do S3</h3>
+            <p> Após termos uma bucket criada e colocarmos duas imagens por exemplo lá dentro, precisamos pensar em <strong>quanto isso irá custar ?</strong> Será que a AWS S3 possui algo <strong>Free Tier ?</strong> E a resposta é que sim. A AWS fornece até 5gb gratuitos no S3 por até 12 meses. Porém, e se tivermos que pagar? Isso irá depender da classe que será armazenada. A AWS possui uma grande lista de classes onde podemos armazenar diversos tipos de objetos. Por exemplo, temos um backup de uma empresa. Provavelmente só iremos acessar esse backup se algo der errado ou então provavelmente nucna serão acessados. Logo, para esse caso, podemos colocar em uma classe mais barata ... Já supomos que tenhamos uma série de vídeos na qual construiremos um website para funcionários da empresa acessarem e poderem assistir. Esses vídeos serão acessados provavelmente o tempo inteiro, então precisam ficar em uma área mais "nobre". Essas áreas são as chamadas <strong>Classes</strong>. Vale ressaltar que: Uma Bucket não pertence a uma classe, e sim os objetos dentro de uma bucket que pertencem a uma classe. Voce pode ter 10 objetos, cada um pertencendo a uma classe diferente (caso hajam). Entendendo as classes, podemos partir para os seus <strong>Valores</strong>, onde na mesma página podemos conferir os valores e realizar um possível resumo.  </p>
+            <p> <span style="color: red;"> LER CADA UMA E ELABORAR UM RESUMO. <a href="https://aws.amazon.com/pt/s3/storage-classes/" target="_blank"> LINK </a> </span></p><br>
+            <h3> Hospedando um WebSite </h3>
+            <p> WebSites estáticos também são uma ótima opção para serem hospedados na <strong>S3</strong>, para isso, precisamos criar uma bucket pública bastando não selecionar o bloqueio. Em seguida podemos realizar o up do site igual vimos acima da mesma forma que fazemos com qualquer objeto, ao ser upado, seleciona-lo, clicar em propriedades e ativar a hospedagem de site estático e definir o elemento raíz. Porém mesmo assim, ainda não iremos conseguir acessar nosso site estático mesmo tendo subido o objeto como público, pois existe o que chamamos de <strong>Política da Bucket</strong>. Ali podemos editar a política colocando esse <strong>JSON</strong>. </p><br>
+            <P>{
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Sid": "PublicReadGetObject",
+                        "Effect": "Allow",
+                        "Principal": "*",
+                        "Action": [
+                            "s3:GetObject"
+                        ],
+                        "Resource": [
+                            "arn:aws:s3:::Bucket-Name/*"
+                        ]
+                    }
+                ]
+            }</P><br>
+            <h3> Versionamento </h3>
+            <p> Podemos muitas vezes deletar arquivos "sem querer". Porém quando se trata de arquivos de empresas precisamos levar a sério. Para isso que existe o versionamento, para previnir delecoes erradas, ou arquivos que precisam ser restaurantes com o tempo. </p>
+            <p> Básicamente quando vamos excluir algo do S3, ele não será deletado e sim marcado por uma <strong>TAG</strong>. Logo, é possível que recuperemos. Sempre que realizamos um download por exemplo de um objeto dentro de uma bucket, outra versão é criada. Nós pagamos por todas as cópias e seu devido espaço, por isso podemos configurar já que a princípio as versões são ilimitadas. Vale ressaltar que ao habilitar o versionamento de bucket, ele só contará dali para frente. Caso habilite o versionamento em uma bucket que já contenha determinado número de arquivos, eles não estarão dentro do versionamento.</p><br>
+            <h3>Replicação de Buckets</h3>
+            <p> Aqui falaremos sobre replicação de dados dentro do S3. É extremamente importante caso tenhamos um grupo de objetos que deve ser replicado para uma outra área/região da AWS. Basicametne temos dois cenários: <strong>cenário 01</strong> Temos uma bucket onde ficam nossos objetos de <strong>Desenvolvimento</strong> e gostariamos que sempre que uma feature fosse lancada ela se replicasse para uma outra bucket de <strong>Producao</strong> por exemplo. Isso é chamado de <strong>SRR</strong> - Same Region Replication. Ou seja, replicao dentro da mesma regiao. Muito utilizado para producao e teste. o <strong>cenário 02</strong> é muito parecido com o 01, porém deixando em regiões diferentes. As vezes temos nossa bucket de produção em uma região e queremos criar uma outra bucket de backup por exemplo em outra região. Essa é chamada de <strong>CRR</strong>. <strong>OBS:</strong> Para a replicacao acontecer o versionamento deve estar habilitado.</p>
+            
+
+
+            <hr>
+            <h2 id="db"> Banco de Dados</h2>
+            <hr>
+            <h2 id="redes">Redes</h2>
+            <hr>
+            <h2 id="cd"> Content Delivery</h2>
+            <hr>
+            <h2 id="containers">Containers</h2>
+            <hr>
+            <h2 id="ic"> Integracoes Cloud</h2>
+            <hr>
+            <h2 id="cs"> Computação Servless</h2>
+            <hr>
+            <h2 id="bs">Billing & Support </h2>
+            <hr>
+            <h2 id="ml">Machine Learning & AI </h2>
+            <hr>
+            <h2 id="wa"> WellArchitect FrameWork</h2>
+
+
+            
+           
         </div>
 
 
@@ -166,3 +234,5 @@
     <script src="./script.js"></script>
 </body>
 </html>
+
+
