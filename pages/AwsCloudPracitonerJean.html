@@ -116,6 +116,13 @@
                 
                 <hr>
                 <h2> Integrações Cloud </h2>
+                <p><strong class="red"> SNS: </strong> Serviço de notificação da AWS. Recebe a informacao e envia, que pode ser separado por tópicos. Ele recebe e envia sem Armazenar nada.</p>
+                <p><strong class="red"> SQS: </strong> Funciona como um servico de Fila (FIFO). Ele recebe as notificacoes e pode reter essas informacoes de 04 até a 14 dias.  </p>
+                <p><strong class="red"> Kinesis</strong> Serviço de envio de dados em tempo real. Muito utilizado para <strong>IOT</strong> como carros, geladeiras, lampadas. Através do Kinesis, ele recebe, analisa <strong>Kinesis Analytics</strong>, e envia (Kinesyys Firehose), depois envia para um redshift ou um s3. Para a prova: <strong>Captura dados em tempo real, muito usado em IOT.</strong></p>
+                <hr>
+                <h2> Containers </h2>
+                <p><strong class="red">Docker </strong> - Permite que englobemos aplicacoes em Containers. Basicamente pegamos nossa aplicacao, geramos uma <strong>Imagem</strong> dela, ou seja, informamos tudo o que é necessário para a nossa aplicacao rodar, e em seguida a fechamos em um container. Logo, se a nossa aplicacao estiver rodando em um container em nossa máquina de forma perfeita, em qualquer outro servidor ele irá rodar também, pois iremos enviar o container por completo.</p>
+                <p><strong class="red"> Amazon EKS -</strong> Elastic Kubernetes Service, </p>
             </div>
 
 
