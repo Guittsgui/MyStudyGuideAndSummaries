@@ -79,8 +79,24 @@
                 <p><strong class="red"> LoadBalance: </strong>Está sempre junto do autoScaling, pois é ele que irá gerenciar os acessos aos seus servidores. A requisicao chega nele, e ele mapeia para qual ec2 deve ser encaminhada.  </p>
                 <hr>
                 <h2> S3 - Simple Storage Service</h2>
-                <p><strong class="red">S3 </strong> Talvez o segundo serviço mais utilizado da Amazon, serviço onde armazenamos <strong>Objetos</strong> em nossas <strong>Buckets</strong>. É ilimitado, paga pela quantidade em uso. Precisa ter um nome único. Cria um endereço na WEB. </p>
-
+                <p><strong class="red">S3 </strong> Talvez o segundo serviço mais utilizado da Amazon, serviço onde armazenamos <strong>Objetos</strong> em nossas <strong>Buckets</strong>. É ilimitado, paga pela quantidade em uso. Precisa ter um nome único. Cria um endereço na WEB que pode ser público ou privado. Existem tipos de bucket S3. Para esse exame não precisa ir muito a dentro, basta saber por alto. </p>
+                <p><strong class="red"> Standard: </strong> É o normal da AWS. Armazenado e pronto para uso.</p>
+                <p><strong class="red"> Intelligent Tieing: </strong> Consegue monitorar os arquivos utilizados e não utilizados, poendo alterar sua categoria de acordo com o uso. </p>
+                <p><strong class="red"> Glacier:</strong> Muito barato, porém quando precisarmos acessar, precisamos avisar previamente a AWS, pois ela só irá retornar o arquivo em algumas horas, e se mesmo assim quisermos, teremos que pagar uma "quebra de contrato".  </p>
+                <p><strong class="red"> Versionamento: </strong> Pode ou nao ser habilitado. É uma forma de a cada mudanca que realizarmos em agum arquivo, será salvo uma nova cópia. O antigo fica de versionamento e o atual passa para prçduãao. Todos ocupam espaço, pagamos por eçpaco total. </p>
+                <p><strong class="red">Criptografia: </strong> Todo arquivo que jogamos para dentro do S3 ele automáticamente é encriptografado pela AWS <strong>(ServerSideEncryption)</strong> que é a forma indicada por eles mesmo de criptografia. Porém é possível que um cliente nao confie ou por qualquer motivo prefira fazzer a criptografia. Isso é chamado de <strong>Client Side Encryption</strong>.</p>
+                <p><strong class="red"> Storage Gateway</strong> Servic1o utilizado para copiar dados de um servidor físico para dentro da AWS. O storage Gateway pode ser uma máquina virtual, como também pode ser um dispositivo físico que a aws envia para voce, voce pluga no seu datacenter, copia, e em seguida envia para eles de volta para que eles subam para dentro de sua <strong>S3</strong>.</p>
+                <p><strong class="red">SnowFamilly: </strong> Aqui é quando precisamos transportar GRANDES quantidades de dados para a AWS. para isso ela pode enviar tres tipos de recursos: <strong>SnowCone</strong> (menos quantidade - 8tb), <strong>SnowBall</strong> (quantidade média - 80tb), <strong>SnowMobile</strong> que é literalmente um caminhão para dados gigantescos.(100PB)</p>
+                <hr>
+                <h2> Banco de Dados:</h2>
+                <p><strong class="red"> DataBases: </strong> Podem ser de estruturas relacionais ou nao relacionais. </p>
+                <p><strong class="red"> Aws Rds: </strong> Relational DataBase System , é o sistemas de banco relacionais da AWS, que tem os principais: <strong>Aurora, Mysql, Oracle, Postgres, MariaDB, SQLServer</strong>. O aurora é o prórpio da AWS que obviamente é o que ela tenta "empurrar" para que utilize.</p>
+                <p><strong class="red">Elastic Cache:</strong> É um sistema de resposta em memória, que sempre vai ser muito mais rápido do que seu rds mesmo ele sendo em um ultra SSD de ebs. Como funciona? O <strong>ElasticCache</strong> salva algumas requisicoes do banco de dados, em memória. Por exemplo: Um mega desconto no Carro X. Provavelmente o bacno receberá milhares de requisicoes para esse carro. O elastic cache salva essa informacao, e apenas o primeiro vai ter que ir até o banco, todos os demais outros serão respondidos pelo ElasticCache.</p>
+                <p><strong class="red"> DynamoDB</strong> Serviço NOSQL, que está disponível em 03 zonas de disponibilidade e 100% Servless. </p>
+                <p><strong class="red"> Glue: </strong> responsável pelo ETL: Extrair, Transformar e Carregar. Muito utilizado para trabalahr com dados analíticos, de forma que irá lhe mostrar de forma "legível"ou "amigável".</p>
+                <p><strong class="red"> Neptune </strong> Muito utilizado por redes sociais que exigem grandes quantidades de links entre elas. (Junção de Links). </p>
+                <hr>
+                <h2> Redes VPC </h2>
             </div>
 
 
