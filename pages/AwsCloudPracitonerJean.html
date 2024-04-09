@@ -98,7 +98,24 @@
                 <hr>
                 <h2> Redes VPC </h2>
                 <p><strong class="red"> VPC'S: </strong> Premissa do conhecimento Cloud. Aqui é onde comçamos a entender como esses servicos vistos se comunicam. Onde temos os Ip's , subnets. Por padrão a AWS já nos cria uma VPC <strong>default</strong> dentro de uma <strong>Região</strong>. Por padrão ela é isolada da internet e possui suas <strong>subredes.</strong> Servidores dentro de uma mesma VPC conseguem se comunicar entre si, caso estejam em vpc's diferentes, não se comunicam.</p>
-                <p><strong class="red"> Nacl: </strong>  Network Access List- Protege a subnet através de um conjunto de regras que permite ou nega o acesso. Cria uma lista de acesso e bloqueia também. Le de cima para baixo, dando match para de ler. </p>
+                <p><strong class="red"> Nacl: </strong>  Network Access Control List- Protege a subnet através de um conjunto de regras que permite ou nega o acesso. Cria uma lista de acesso e bloqueia também. Le de cima para baixo, dando match para de ler. </p>
+                <p><strong class="red"> VPC Pearling:</strong> É a forma que permite com que uma VPC se comunique com outra VPC.</p>
+                <p><strong class="red"> AWS Transit Gateway: </strong> Quando em nossa conta AWS temos muitas VPC'S e queremos conectar todoas elas, fazemos isso através do TransitGateway.  </p>
+                <p><strong class="red"> VPC EndPoints:</strong> É o fráfego para serviços passarem por dentro da infra da AWS ao invés de passarem pelo mundo externo <strong>Internet.</strong> Para o <strong>S3 & DYNAMODB</strong> é chamado de Gateway, e para todos os demais são chamados de Interface. </p>
+                <p><strong class="red"> VPN & VPN Site To Site </strong> VPN é quando temos um usuário de home office por exemplo, e ele quer se conectar com os servicos da aws de uma empresa. Ele faz isso através da VPN. Já a vpn Site to Site É quando queremos estabelecer uma coãexao da nossa empresa e todos seus funcionários tenham acesso a nossa cloud da AWS. </p>
+                <p><strong class="red"> Private Link:</strong> Serve para conectar as conta.  </p>
+                <p><strong class="red"> Direct Connect:</strong> É como o próprio nome já diz, quando queremos conectar nossa empresa 100% dedicada a aws, feita de forma física e direta. (Cabeamento). Mas e a vpn site to site ? ou a vpn Normal ? o problema dessas solucoes é que elas dependen da internet. </p>
+                <p><strong class="red"> VPC Flow Logs </strong> Monitoramento de todos os logs, erros, que acontecem dentro de suas subredes.</p>
+                <p><strong class="red"> Internet Gateway:</strong> Portão que permite a conexão de sua VPC com o mundo externo (internet). </p>
+                <hr>
+                <h2> Route53 </h2>
+                <p><strong class="red">Route53: </strong> É o serviço de DNS da internet que pode atuar da forma simples (Realiza a traducao de URL para IP), mas que também possuem vários tipos de políticas (Não contemplados nessa prova). </p>
+                <p><strong class="red"> CloudFront - CDN: </strong> É basicamente quando o usuário <strong>Precisa acessar com baixa latencia e alta velocidade.</strong>. Ele trabalha com cash, que acelera a entrega de servicos. <span style="color: red;">Rever</span> </p>
+                <p><strong class="red"> AWS Global Acelerator:</strong> Servico que melhora a disponibilidade e desempenho de suas aplicacoes para usuário em todo o mundo. Ele faz isso redirecionando o tráfego de usuários para aplicacoes mais próximas c menos latencia. </p>
+                <p><strong class="red"> AWS Transfer Acceleration: </strong> Recurso da Amazon S3 que permite a transferencia rápida e segura de arquivos por longa distancias entre um cliente e um bucket do S3.</p><br>
+                
+                <hr>
+                <h2> Integrações Cloud </h2>
             </div>
 
 
