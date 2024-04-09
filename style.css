@@ -274,3 +274,47 @@ small{
 .photocel{
     width: 700px;
 }
+
+.mainResume{
+    border: 1px solid black;
+    width: 800px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px gray;
+    margin: auto;
+    padding: 50px;
+}
+
+.mainResume p{
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.mainResume h2{
+    text-align: center;
+    color: tomato;
+    font-size: 25px;
+    
+}
+
+.mainResume img{
+    text-align: center;
+}
+.titleResume{
+    text-align: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 50px;
+}
+.red{
+   margin-right: 20px;
+   font-size: 20px;
+   color: darkred;
+   text-shadow: .5px .5px .5px black
+}
+
+.ri{
+    width: 400px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -3,23 +3,85 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AwsJean</title>
+        <title>AWS-Resume</title>
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
             <a href="../index.html">Home</a>
-            <div class="title">
-                <h1>Architecture Resume Guide</h1>
-            </div>
-            <div class="nav">
-                <ul>  
+            <div class="mainResume">
+                <div class="titleResume">
+                    <h1> Resumo AWS Cloud Practioner</h1>
+                </div>
+                <h2>Tipos Nuvem</h2>
+                <p><strong class="red">Packaged Software</strong> DataCenters antigos, onde nós mesmos somos o responsável por tudo, desde a parte física até os hardwares. Antigos DataCenters.</p>
+                <p><strong class="red">InfraAsService</strong> É basicamente quando nós alugamos a parte física da nuvem. Ela fica responsável pela parte física, nós ficamos responsáveis por toda a configuração.</p>
+                <p><strong class="red">PlatformAsService</strong> Aqui nós só precisamos nos preocupar com nossa aplicacao e com os dados dela. De resto a nuvem controla tudo. </p>
+                <p><strong class="red">SoftwareAsService</strong> Estágio mais alto de software em nuvem, onde básicamente só precisamos utilizar. (gmail um exemplo). A nuvem controal tudo. </p>
+                <p><strong class="red">Nuvem Pública</strong> Nuvem que qualquer pessoa pode entrar em seus serviços via internet e contratar o serviço que mais lhe agrade. São compartilhados entre seus datacenters.</p>
+                <p><strong class="red">Nuvem Privada</strong> É quando você precisa de um Datacenter único e exclusivo para voce e para sua empresa. Obviamente pagará a mais por isso. Geralmente utilizado por Bancos, Governos.</p>
+                <p><strong class="red">Nuvem Híbrida</strong> É o meio termo dos dois mundos, Quando por exemplo podemos colocar informacoes sensíveis na privada, e as demais na publica.</p>
+                <hr>
+                <h2> I A M </h2>
+                <p><strong class="red">Iam</strong> Gerenciador de identidade da Amazon, permite gerenciar segurança e recursos aos serviços da AWS. Permite o controle do acesso das contas, quais ações. É fundamental para a segurança da nossa conta Cloud.</p>
+                <p><strong class="red">Usuários: </strong> Representam pessoas ou sistemas que interagem com a AWS</p>
+                <p><strong class="red">Grupos:</strong> Permitem agrupar usuários com permissões semelhantes. Ao invés de darmos permissões pessoas por pessoa, criamos um grupo e concedemos ao grupo. Quando quisermos outro user com a mesma auth, basta adicionar ao grupo.</p>
+                <p><strong class="red">Funções:</strong>Cocnede permissões temporárias a entidades confiáveis como aplicativos ou servços. Também conhecida como <strong>ROLES</strong>.</p>
+                <p><strong class="red"> Política Acesso: </strong> É o que define em si o que pode ou o que nao pode ser acessado.</p>
+                <p><strong class="red"> MFA: </strong> É adicionar mais um fator a sua conta, nao qual além da senha pede um código de um dispositivo que escolhemos.</p>
+                <p><strong class="red"> Auditoria e Monitoramento:</strong> O IAM permite o rastreamento de toads as atividades relacionadas a seguranca de sua conta. </p>
+                <p><strong class="red"> AWS Organizations:</strong> Recurso da AWS que permite que voce crie várias contas a partir da sua conta. De forma que quando sua empresa ficar "grande", podemos dividir em várias sub empresas para cada filial, de forma que o faturamento fique todo em apenas um só local. </p>
+                <p><strong class="red"> IAM Identity Center </strong> É o antigo <strong>SingleSignOn</strong> que permite que a AWS sincronize com softwares de terceiros(Email,Recursos,Aplicacoes).</p>
+                <p><strong class="red"> Políticas de Senhas: </strong> Senhas robustas com diversos requisitos.</p>
+                <p><strong class="red"> AWS CloudShell </strong> Ambiente de linha de comando baseado em navegador, na qual precisamos estar logado dentro de nossa conta para que possamos acessar todos os recursos da aws a partir de linha de comando em uma máquina virtual da própria AWS.</p>
+                <p><strong class="red"> CLI </strong> Outra forma de acessar a AWS através de comandLine, porém não integrado a AWS. precisamos realizar download de algumas coisas, e configurar as chaves de acesso. </p>
+                <p><strong class="red"> AWS AccessKey </strong> Combinação de duas chaves (Private/Acces) que inserimos na aplicacao ou na comandline para que possamos acessar os recurssos e serviços da AWS. </p>
+                <p><strong class="red"> AWS Sdk </strong> Kit que permite a integracao de nosso software com os servicos AWS. </p>
+                <hr>
+                <h2> Infraestrutura Global </h2>
+                <p><strong class="red"> Infra: </strong> As regioes da AWS são áreas geográficas nas quais a AWS tem dataCenters. Cada regiao é completamente independente das outras, com sua própria infraestrutura física e elétrica.  </p>
+                <p><strong class="red"> Aws Region: </strong> É uma grande área física onde a AWS opera. ( Topo da Cadeia.) </p>
+                <p><strong class="red"> Zona de Disponibilidade (AZ`s): </strong> Dentro de cada região, temos várias zonas de disopnibilidade, que são os grandiosos dataCenters físicos da AWS. Cada AZ fica em um local dentro da regãao, porém são altamente conectados. AZ'S permitem a disponibilidade e recuperação de desastres. </p>
+                <p><strong class="red"> Zonas Locais: </strong> Zonas projetadas para fornecer baixa latencia e alto desempenho para aplicativos que exigem proximadade física com seus usuários. </p>
+                <p><strong class="red"> WaveLenght: </strong> Serviço de computacao e armazenamento em redes 5g. Fornece infra de borda móvel de latencia ultrabaixa. Baixa latencia, Alta escalabilidade.</p>
+                <p><strong class="red"> Outspots: </strong> Família de solução que fornecem infraestrutra e servicos da AWS para uma experiencia híbrida consistente. </p>
+                <hr>
+                <h2> Responsábilidade Compartilhada: </h2>
+                <p><strong class="red"> ResponsábilidadeCompartilhada: </strong> Em resumo é de responsabilidade da aws cuidar de toda a parte de hardware, Compute, Storage, Database, Networking. Todo o resto passa a ser de responsábilidade do cliente. </p>
+                <img src="../awsResume/c2.png" alt="">
+                <hr>
+                <h2>Elastic Cloud Computing - EC2 </h2>
+                <p><strong class="red"> EC2 </strong> Talvez o principal serviço da AWS. Aqui é onde criamos uma máquina virtual, subimos uma máquina virtual, tudo isso é a famosa <strong>EC2.</strong> Existem vários tipos de <strong>EC2.</strong>, porém para esse exame não é necessário decorarmos qual tipo de máquina é para qual coisa, e seus valores. Precisamos apenas saber que existem diversos tipos.</p>
+                <p><strong class="red"> Uso Geral:</strong> Equilibrio entre recursos. <strong>Linha M7, MA, M6.... </strong> </p>
+                <p><strong class="red"> Otimizado Comp:</strong> São da família c7, c5....</p>
+                <p><strong class="red"> Otimizado para Memória:</strong> São da família R.. </p>
+                <h2> Modelos e Precos:</h2>
+                <p><strong class="red"> Sob Demanda: </strong> É quando simplesmente subimos a EC2 e vamos pagando de acordo com o uso. Não há contrato, não há acordo.</p>
+                <p><strong class="red"> Spot:</strong> Até 90% de desconto. Porém a aws a aloca em máquinas que ela pode "tirar" a qualquer momento. </p>
+                <p><strong class="red"> Hosts Dedicados: </strong> É a nuvem privada. É quando pegamos um servidor da aws inteiro para nós. </p>
+                <p><strong class="red"> Capacidade por Demanda: </strong> É quando temos uma data definida. Por exemplo: Precisaremos da máquina X, c/ tais configuracoes, do dia 10 ao dia 20. </p>
+                <p><strong class="red"> Saving Plans: </strong> É quando fazemos um contrato com a AWS para que abaixe o valor da sob demanda, e deixamos acordado que usaremos o servico por 1 a 3 anos.</p>
+                <h2> EBS - Elastic Block Store</h2>
+                <p><strong class="red"> EBS </strong> É o serviço de armazenamento das nossas EC2. A Aws possui o hack de máquinas virtuais, e o hack de disco. Um EBS está "atrelado" a uma EC2. Um EBS só pode estar atrelado a UMA instancia de EC2. </p>
+                <p><strong class="red"> HDD</strong> Mais memória e menos velocidade. </p>
+                <p><strong class="red"> SSD </strong> Menos memória e mais velocidade.</p>
+                <p><strong class="red"> SnapShots </strong> É uma espécie de um backup. Ele irá tirar uma foto do disco. Não é pago para o servico de snapshot em si. Porém é pago pelo espaço que o snapshot está utilizando. Pode ser configurado rotinas, como uma vez por semana, todos os dias, de acordo como quiser. </p>
+                <p><strong class="red"> AMI </strong> É uma cópia da "Imagem" da máquina para que possa ser reutilizada futuramente. Por exemplo: Criamos uma EC2, instalamos tudo, configuramos. Se acharmos que for necessário futuramente termos outra máquina igual, podemos utilizar a AMI. </p>
+                <p><strong class="red"> Snap x AMI </strong> O Snap acaba funcionando como um Backup e já a AMI é salvar a máquina. </p>
+                <p><strong class="red"> EFS </strong> Armazenamento em disco que toads as VM's da nossa organizacao conseguem localizar e acessar esse EFS. Se criarmos um arquivo em uma máquina, todas as demais irão ver. </p>
+                <p><strong class="red"> EFX </strong> É a mesma coisa que EFX porém para máquinas Windows. </p>
+                <p><strong class="red">EFX Lustre </strong> Mesma coisas das de cima, porém para máquina de hiper alto poder.</p>
+                <hr>
+                <h2> Escalabilidae EC2</h2>
+                <p><strong class="red"> Disponibilidade: </strong> Estamos falando de nossa aplicacao estar sempre disponível Para isso, mesmo que um servidor caia, tem uma réplica em outro. (Zonas de Disponibilidae). </p>
+                <p><strong class="red"> Escalabilidade: </strong> Podem ser <strong>Horizontal ou Vertical</strong>. Vertical é qual melhoramos os recursos de um servidor colocando mais recursos como mais ram, mais memória, mais tudo. Já a Horizontal, é quando aumentamos o número de máquinas.</p>
+                <p><strong class="red"> Elasticidade:</strong> É justamente o fator que permite que nossos servidores cresçam horizontal, se esticando, e voltando ao normal quando necessário. </p>
+                <p><strong class="red"> AutoScaling: </strong> É justamente ao pé da letra o fato de se auto escalar. O fato de esticar horizontalmente. </p>
+                <p><strong class="red"> LoadBalance: </strong>Está sempre junto do autoScaling, pois é ele que irá gerenciar os acessos aos seus servidores. A requisicao chega nele, e ele mapeia para qual ec2 deve ser encaminhada.  </p>
+                <hr>
+                <h2> S3 - Simple Storage Service</h2>
+                <p><strong class="red">S3 </strong> Talvez o segundo serviço mais utilizado da Amazon, serviço onde armazenamos <strong>Objetos</strong> em nossas <strong>Buckets</strong>. É ilimitado, paga pela quantidade em uso. Precisa ter um nome único. Cria um endereço na WEB. </p>
 
-                </ul>
             </div>
-
-        <div class="base">
-            <p></p>
-        </div>
 
 
 
